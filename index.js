@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-fontawesome'
+  name: '@fortawesome/ember-fontawesome'
 };
