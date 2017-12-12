@@ -10,7 +10,7 @@ module.exports = {
   treeForVendor(vendorTree) {
     return new MergeTrees([
       vendorTree,
-      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome/index.js')), {
+      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome')), {
         destDir: 'fontawesome'
       })
     ])
