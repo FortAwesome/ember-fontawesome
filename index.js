@@ -1,27 +1,24 @@
 /* eslint-env node */
 'use strict'
-var Funnel = require('broccoli-funnel');
-var MergeTrees = require('broccoli-merge-trees');
+var Funnel = require('broccoli-funnel')
+var MergeTrees = require('broccoli-merge-trees')
+var path = require('path')
 
 module.exports = {
   name: '@fortawesome/ember-fontawesome',
 
-  included() {
-    this._super.included.apply(this, arguments);
-    this.import('node_modules/@fortawesome/fontawesome/index.js', {
-      exports: {
-        fontawesome: ['default']
-      }
-    })
+  treeForVendor(vendorTree) {
+    return new MergeTrees([
+      vendorTree,
+      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome/index.js')), {
+        destDir: 'fontawesome'
+      })
+    ])
   },
 
-  treeForVendor(vendorTree) {
-    var fontawesomeTree = new Funnel('node_modules/@fortawesome/fontawesome',
-      {
-        destDir: 'vendor',
-        files: ['index.js', 'index.es.js']
-      }
-    )
-    return new MergeTrees([vendorTree, fontawesomeTree]);
+  included() {
+    this._super.included.apply(this, arguments)
+    this.import('vendor/fontawesome/index.js')
+    this.import('vendor/shims/fontawesome-shim.js')
   },
 }
