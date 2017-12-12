@@ -28,9 +28,11 @@
     "@fortawesome/fontawesome": ">=1.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": ">=1.0.0",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^6.6.0",
-    "ember-cli-htmlbars": "^2.0.3",
-    "@fortawesome/fontawesome": ">=1.0.0"
+    "ember-cli-htmlbars": "^2.0.3"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
