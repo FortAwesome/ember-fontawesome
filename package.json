@@ -35,6 +35,7 @@
     "ember-cli-htmlbars": "^2.0.3"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free-solid": "^5.0.1",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
     "ember-cli": "~2.17.0",
