@@ -1,5 +1,5 @@
 import Component from '@ember/component'
-import layout from '../templates/components/fontawesome-icon'
+import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
 import fontawesome from '@fortawesome/fontawesome' // eslint-disable-line no-unused-vars
 

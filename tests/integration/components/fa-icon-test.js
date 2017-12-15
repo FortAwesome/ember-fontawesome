@@ -13,7 +13,7 @@ const faCoffee = {
   ]
 }
 
-moduleForComponent('fontawesome-icon', 'Integration | Component | fontawesome icon', {
+moduleForComponent('fa-icon', 'Integration | Component | fa icon', {
   integration: true
 })
 
@@ -22,7 +22,7 @@ test('it renders coffee', function(assert) {
   // Handle any actions with this.on('myAction', function(val) { ... });
   this.set('faCoffee', faCoffee)
 
-  this.render(hbs`{{fontawesome-icon icon=faCoffee}}`)
+  this.render(hbs`{{fa-icon icon=faCoffee}}`)
 
   assert.equal(this.$().text().trim(), '')
   assert.equal(this.$('svg').attr('data-icon'), 'coffee')
