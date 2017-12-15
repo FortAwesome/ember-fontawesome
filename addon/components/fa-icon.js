@@ -46,6 +46,7 @@ function normalizeIconArgs (icon) {
 
 export default Component.extend({
   layout,
+  tagName: 'span',
 
   // @TODO: make this less hacky—shouldn't be a copy-paste from the -node component
   attributeBindings: [
