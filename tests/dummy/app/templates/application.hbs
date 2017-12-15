@@ -1,7 +1,16 @@
 <h2 id="title">Welcome to Ember</h2>
+<h3>Using Components and Templates</h3>
+<p>This approach results in an intermediate parent element, which we've change to a <code>span</code>
+  from the default <code>div</code>, but still, it's an intermediate element that we'd prefer
+  not to have there.</p>
 {{fa-icon icon=faCoffee}}
-{{fa-icon icon='cog'}}
-{{fa-icon icon='cog' pulse=true}}
+{{fa-icon icon='square'}}
 {{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
-<p>Expecting no icon between these bars |{{fa-icon icon='unfindable-icon'}}| (and a warning log in the console)</p>
+<p>Missing icon: Expecting no icon between these bars |{{fa-icon icon='unfindable-icon'}}| (and a warning log in the console)</p>
+<h3>Using a Helper</h3>
+<p>This is an alternative to exploring implementing instead as an Ember helper and having the helper
+simply return a full formed html structure from <code>fontawesome.icon().html</code></p>
+{{fa-icon-alt icon=faCoffee}}
+{{fa-icon-alt icon='square'}}
+{{fa-icon-alt icon='circle' transform="shrink-9 right-4" mask=faSquare}}
 {{outlet}}
