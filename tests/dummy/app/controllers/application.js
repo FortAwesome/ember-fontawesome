@@ -12,7 +12,10 @@ fontawesome.library.add(
   fas.faInfo,
   fas.faBook,
   fas.faPencilAlt,
-  )
+  fas.faCheckSquare,
+  fas.faSpinner,
+  fas.faSync
+)
 
 export default Controller.extend({
   // Make a couple of icons available via object reference in our templates
