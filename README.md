@@ -1,11 +1,11 @@
-# ember-fontawesome
+# ember-fontawesome-prototype
 
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
 
 * `git clone <repository-url>` this repository
-* `cd ember-fontawesome`
+* `cd ember-fontawesome-prototype`
 * `npm install`
 
 ## Running
