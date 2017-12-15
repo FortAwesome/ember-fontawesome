@@ -7,10 +7,28 @@
 {{fa-icon icon='square'}}
 {{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
 <p>Missing icon: Expecting no icon between these bars |{{fa-icon icon='unfindable-icon'}}| (and a warning log in the console)</p>
+<div>
+  <p>Drag the slider to spin the magic.</p>
+  {{input type='range' value=magic}}
+  <div style="padding:2em;">
+    {{fa-icon icon=faMagic transform=(concat 'rotate-' magic)}}
+  </div>
+</div>
+
 <h3>Using a Helper</h3>
 <p>This is an alternative to exploring implementing instead as an Ember helper and having the helper
 simply return a full formed html structure from <code>fontawesome.icon().html</code></p>
 {{fa-icon-alt icon=faCoffee}}
 {{fa-icon-alt icon='square'}}
 {{fa-icon-alt icon='circle' transform="shrink-9 right-4" mask=faSquare}}
+
+<div>
+  <p>Drag the slider to spin the magic.</p>
+  {{input type='range' value=magic-alt}}
+  <div style="padding:2em;">
+    {{fa-icon-alt icon=faMagic transform=(concat 'rotate-' magic-alt)}}
+  </div>
+</div>
+
+
 {{outlet}}
