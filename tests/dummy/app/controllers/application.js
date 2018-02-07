@@ -24,12 +24,10 @@ export default Controller.extend({
   faMagic: fas.faMagic,
   init(){
     this.set('magic',0)
-    this.set('magic-alt',0)
   },
   actions: {
     updateMagic(val){
       this.set('magic',val)
-      this.set('magic-alt',val)
     }
   }
 });
