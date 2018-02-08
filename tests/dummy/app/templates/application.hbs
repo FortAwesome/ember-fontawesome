@@ -1,45 +1,3 @@
-<h2>Using a Helper</h2>
-<p>This is an alternative implementation as an Ember helper. The helper
-  simply returns a fully formed html structure from <code>fontawesome.icon().html</code></p>
-<p>This alternative is starting to seem preferable over the Ember Component implementation.</p>
-<h3>Icon as Object</h3>
-{{fa-icon-alt icon=faCoffee}}
-<h3>Icon as String</h3>
-{{fa-icon-alt icon='square'}}
-<h3>With Mask and Transform</h3>
-{{fa-icon-alt icon='circle' transform="shrink-9 right-4" mask=faSquare}}
-
-<h3>"Dynamic" Icons</h3>
-<div>
-  <p>Drag the slider to spin the magic.</p>
-  {{input type='range' value=magic-alt}}
-  <div style="padding:2em;">
-    {{fa-icon-alt icon=faMagic transform=(concat 'rotate-' magic-alt)}}
-  </div>
-</div>
-
-<h3>Fixed Width</h3>
-<!-- @TODO: Do we need the style attribute to come through? -->
-<div>{{fa-icon-alt icon='home' fixedWidth=true style="background:MistyRose"}} Home</div>
-<div>{{fa-icon-alt icon='info' fixedWidth=true style="background:MistyRose"}} Info</div>
-<div>{{fa-icon-alt icon='book' fixedWidth=true style="background:MistyRose"}} Library</div>
-<div>{{fa-icon-alt icon='pencil-alt' fixedWidth=true style="background:MistyRose"}} Applications</div>
-<div>{{fa-icon-alt icon='cog' fixedWidth=true style="background:MistyRose"}} Settings</div>
-
-<h3>List Icons</h3>
-<ul class="fa-ul">
-  <li><span class="fa-li">{{fa-icon-alt icon='check-square'}}</span>List icons can</li>
-  <li><span class="fa-li">{{fa-icon-alt icon='check-square'}}</span>be used to</li>
-  <li><span class="fa-li">{{fa-icon-alt icon='spinner' pulse=true}}</span>replace bullets</li>
-  <li><span class="fa-li">{{fa-icon-alt icon='square'}}</span>in lists</li>
-</ul>
-<h3>Animation (Spin)</h3>
-{{fa-icon-alt icon='sync' spin=true}}
-
-<h2>Using Components and Templates</h2>
-<p>This approach results in an intermediate parent element, which we've change to a <code>span</code>
-  from the default <code>div</code>, but still, it's an intermediate element that we'd prefer
-  not to have there.</p>
 {{fa-icon icon=faCoffee}}
 {{fa-icon icon='square'}}
 {{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
@@ -52,5 +10,21 @@
   </div>
 </div>
 
+<h3>Fixed Width</h3>
+<!-- @TODO: Do we need the style attribute to come through? -->
+<div>{{fa-icon icon='home' fixedWidth=true style="background:MistyRose"}} Home</div>
+<div>{{fa-icon icon='info' fixedWidth=true style="background:MistyRose"}} Info</div>
+<div>{{fa-icon icon='book' fixedWidth=true style="background:MistyRose"}} Library</div>
+<div>{{fa-icon icon='pencil-alt' fixedWidth=true style="background:MistyRose"}} Applications</div>
+<div>{{fa-icon icon='cog' fixedWidth=true style="background:MistyRose"}} Settings</div>
 
+<h3>List Icons</h3>
+<ul class="fa-ul">
+  <li><span class="fa-li">{{fa-icon icon='check-square'}}</span>List icons can</li>
+  <li><span class="fa-li">{{fa-icon icon='check-square'}}</span>be used to</li>
+  <li><span class="fa-li">{{fa-icon icon='spinner' pulse=true}}</span>replace bullets</li>
+  <li><span class="fa-li">{{fa-icon icon='square'}}</span>in lists</li>
+</ul>
+<h3>Animation (Spin)</h3>
+{{fa-icon icon='sync' spin=true}}
 {{outlet}}
