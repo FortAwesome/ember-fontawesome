@@ -14,7 +14,19 @@ This is what it can look like in your template:
 {{fa-icon icon=faCoffee}}
 ```
 
-To support that use, you'd need to have made a `faCoffee` object available to your template from a controller. 
+To support that use, you'd need to have made a `faCoffee` object available to your template from a controller, like this:
+```
+import Controller from '@ember/controller';
+import fontawesome from '@fortawesome/fontawesome'
+import fas from '@fortawesome/fontawesome-free-solid'
+
+export default Controller.extend({
+  // Make a couple of icons available via object reference in our templates
+  faCoffee: fas.faCoffee,
+  // ...
+});
+```
+
 Or, you could reference an icon by its name as a string like this...
 ```
 {{fa-icon icon='square'}}
