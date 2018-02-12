@@ -3,36 +3,31 @@
 var Funnel = require('broccoli-funnel')
 var MergeTrees = require('broccoli-merge-trees')
 var path = require('path')
-var debug = require('broccoli-stew').debug
+var stew = require('broccoli-stew')
 var Rollup = require('broccoli-rollup')
 var fs = require('fs')
 var rimraf = require('rimraf');
 var resolve = require('rollup-plugin-node-resolve')
+var FontAwesomePack = require('./broccoli-fontawesome-pack')
 
 module.exports = {
   name: 'ember-fontawesome',
 
   treeForVendor(vendorTree) {
-    const packageContents = `
-      export { ${this.fontawesome.fas.join(',')} }  from '@fortawesome/fontawesome-free-solid/shakable.es.js'
-    `
-    this._tmpDir = `${this.project.root}/${fs.mkdtempSync('ember-fontawesome-pack-')}`
-    const entryFileName = 'free-solid-entry.js'
-    const entryFilePath = `${this._tmpDir}/${entryFileName}`
-    fs.appendFileSync(entryFilePath, packageContents)
-
-    const merged = new MergeTrees([
-      new Funnel(this._tmpDir),
-      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome-free-solid')), {
-        destDir: '@fortawesome/fontawesome-free-solid'
-      }),
+    const iconPackTree = new MergeTrees([
+      new FontAwesomePack(this.app.options.fontawesome || {}),
+      // @TODO: This may be where we'd enumerate all of the icon packages that may
+      // contain declared icons
+      path.dirname(require.resolve('@fortawesome/fontawesome-free-solid'))
     ])
 
-    const rollupNode = new Rollup(merged, {
+    const rollupNode = new Rollup(iconPackTree, {
       rollup: {
-        input: entryFileName,
+        // @TODO: this is a hack, using a string literal for an internal file name from the FontAwesomePack
+        // plugin. Need to parameterize this appropriately somehow.
+        input: 'fontawesome-fas.js',
         output: {
-          file: 'fas-rolled.js',
+          file: 'fa-icons.js',
           format: 'cjs'
         },
         plugins: [
@@ -42,7 +37,7 @@ module.exports = {
       name: 'fontawesome-free-solid-rollup'
     })
 
-    return debug(new MergeTrees([
+    return stew.debug(new MergeTrees([
       vendorTree,
       new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome')), {
         destDir: '@fortawesome/fontawesome'
@@ -51,16 +46,8 @@ module.exports = {
     ]), {name: 'ember-fontawesome-vendor-tree'})
   },
   
-  postBuild() {
-    this.ui.writeLine(`attempting to delete ${this._tmpDir}`)
-    // @TODO: figure out why this isn't deleting
-    rimraf(this._tmpDir, () => {this.ui.writeLine(`failed to remove temp dir: ${this._tmpDir}`)});
-  },
-
   included(app) {
     this._super.included.apply(this, arguments)
-    this.ui.writeLine('in ember-fontawesome:included()')
-    this.fontawesome = app.options.fontawesome
     app.import('vendor/shims/fontawesome-shim.js')
   },
 }
