@@ -8,7 +8,6 @@ module.exports = FontAwesomePack
 FontAwesomePack.prototype = Object.create(Plugin.prototype)
 FontAwesomePack.prototype.constructor = FontAwesomePack
 function FontAwesomePack(options) {
-  debugger
   if (!(this instanceof FontAwesomePack)) return new FontAwesomePack(options);
   options = options || {};
   var name = 'broccoli-fontawesome-pack:' + (options.annotation || '');

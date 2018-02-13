@@ -28,7 +28,10 @@ module.exports = {
         input: 'fontawesome-fas.js',
         output: {
           file: 'fa-icons.js',
-          format: 'cjs'
+          format: 'amd',
+          amd: {
+            id:'@fortawesome/ember-fontawesome/icons'
+          }
         },
         plugins: [
           resolve()
@@ -36,19 +39,43 @@ module.exports = {
       },
       name: 'fontawesome-free-solid-rollup'
     })
+    
+    const apiRollupAMD = new Rollup('node_modules/@fortawesome/fontawesome', {
+      rollup: {
+        input: 'index.es.js',
+        output: {
+          file: 'fontawesome-amd.js',
+          exports: 'named',
+          format: 'amd',
+          amd: {
+            id:'@fortawesome/fontawesome'
+          }
+        },
+        plugins: [
+          resolve()
+        ]
+      },
+      name: 'fontawesome'
+    })
 
     return stew.debug(new MergeTrees([
       vendorTree,
-      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome')), {
-        destDir: '@fortawesome/fontawesome'
-      }),
-      rollupNode
+      // @TODO: figure out whether styles.css needs to be copied over.
+//      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome')), {
+//        include: ['index.js', 'styles.css'],
+//        destDir: '@fortawesome/fontawesome'
+//      }),
+      rollupNode,
+      apiRollupAMD
     ]), {name: 'ember-fontawesome-vendor-tree'})
   },
   
   included(app) {
     this._super.included.apply(this, arguments)
-    app.import('vendor/shims/fontawesome-shim.js')
+ //   app.import('vendor/@fortawesome/fontawesome/index.js')
+    app.import('vendor/fontawesome-amd.js')
+    app.import('vendor/fa-icons.js')
+//    app.import('vendor/shims/fontawesome-shim.js')
   },
 }
 
