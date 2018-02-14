@@ -14,7 +14,6 @@ function FontAwesomeAutoLibrary(options) {
     icons,
     output
   } = options
-  debugger
   if(!(icons && typeof icons === 'object')) throw new Error("Required 'icons' option not given") 
   if(!output) throw new Error("Required 'output' option not given")
 

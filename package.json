@@ -1,7 +1,7 @@
 {
   "name": "ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -36,14 +36,12 @@
     "broccoli-stew": "^1.5.0",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.3",
-    "rimraf": "^2.6.2",
-    "rollup-plugin-alias": "^1.4.0",
     "rollup-plugin-node-resolve": "^3.0.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free-regular": "^5.1.0-3",
-    "@fortawesome/fontawesome-pro-light": "^5.1.0-3",
     "@fortawesome/fontawesome-free-solid": "^5.1.0-3",
+    "@fortawesome/fontawesome-pro-light": "^5.1.0-3",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-viz": "^4.0.0",
     "ember-ajax": "^3.0.0",
@@ -67,6 +65,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "ember-addon": {
-    "configPath": "tests/dummy/config"
+    "configPath": "tests/dummy/config",
+    "defaultBlueprint": "ember-fontawesome"
   }
 }

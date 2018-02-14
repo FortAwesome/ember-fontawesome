@@ -51,7 +51,6 @@ FontAwesomePack.prototype.build = function() {
       ${ selectedIcons.join(',') } 
     }  from '@fortawesome/${this.options.pack}/shakable.es.js'
   `
-  debugger 
   const _thisPlugin = this
   return new Promise(function(resolve, reject) {
     fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), packageContents, (err) => {

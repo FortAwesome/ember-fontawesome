@@ -6,18 +6,18 @@ var path = require('path')
 var stew = require('broccoli-stew')
 var Rollup = require('broccoli-rollup')
 var fs = require('fs')
-var rimraf = require('rimraf');
 var resolve = require('rollup-plugin-node-resolve')
-var FontAwesomePack = require('./broccoli-fontawesome-pack')
-var FontAwesomeAutoLibrary = require('./broccoli-fontawesome-auto-library')
+var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
+var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
 
 module.exports = {
   name: 'ember-fontawesome',
 
   treeForVendor(vendorTree) {
     const iconRollups = [] 
+    debugger
 
-    Object.keys(this.app.options.fontawesome.icons).forEach((pack) => {
+    Object.keys(this.app.options.fontawesome.icons).forEach(pack => {
       const iconExportsFile = `exports-${pack}`
       const iconPackTree = new MergeTrees([
         new FontAwesomePack({
@@ -87,7 +87,7 @@ module.exports = {
   included(app) {
     this._super.included.apply(this, arguments)
     app.import('vendor/fontawesome-amd.js')
-    Object.keys(app.options.fontawesome.icons).forEach((pack) => {
+    Object.keys(app.options.fontawesome.icons).forEach(pack => {
       app.import(`vendor/${pack}.js`)
     })
     app.import('vendor/autoLibrary.js')

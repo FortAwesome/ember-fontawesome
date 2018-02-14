@@ -15,8 +15,6 @@
 bower.json
 ember-cli-build.js
 testem.js
-broccoli-fontawesome-auto-library.js
-package/broccoli-fontawesome-pack.js
 *.tgz
 
 # ember-try
