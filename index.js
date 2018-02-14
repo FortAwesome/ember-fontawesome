@@ -11,7 +11,7 @@ var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
 
 module.exports = {
-  name: 'ember-fontawesome',
+  name: '@fortawesome/ember-fontawesome',
 
   treeForVendor(vendorTree) {
     const iconRollups = [] 

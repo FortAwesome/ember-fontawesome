@@ -1,1 +1,1 @@
-export { default } from 'ember-fontawesome/components/fontawesome-node';
+export { default } from '@fortawesome/ember-fontawesome/components/fontawesome-node';
