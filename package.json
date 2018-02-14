@@ -1,7 +1,7 @@
 {
   "name": "ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -23,9 +23,6 @@
     "build": "ember build",
     "start": "ember serve",
     "test": "ember try:each"
-  },
-  "peerDependencies": {
-    "@fortawesome/fontawesome": ">=1.2.0-2"
   },
   "dependencies": {
     "@fortawesome/fontawesome": ">=1.2.0-2",
