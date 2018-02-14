@@ -9,9 +9,26 @@ module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
     fontawesome: {
-      fas: [
-        'faCoffee'
-      ]
+      icons: {
+        'fontawesome-free-solid': [
+          'faCoffee',
+          'faMagic',
+          'faCircle',
+          'faSquare',
+          'faHome',
+          'faInfo',
+          'faBook',
+          'faPencilAlt',
+          'faCog',
+          'faSpinner',
+          'faCheckSquare',
+          'faSync'
+        ],
+        'fontawesome-free-regular': 'all',
+        'fontawesome-pro-light': [
+          'faAdjust'
+        ]
+      }
     }
   })
 

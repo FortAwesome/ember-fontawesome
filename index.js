@@ -9,35 +9,43 @@ var fs = require('fs')
 var rimraf = require('rimraf');
 var resolve = require('rollup-plugin-node-resolve')
 var FontAwesomePack = require('./broccoli-fontawesome-pack')
+var FontAwesomeAutoLibrary = require('./broccoli-fontawesome-auto-library')
 
 module.exports = {
   name: 'ember-fontawesome',
 
   treeForVendor(vendorTree) {
-    const iconPackTree = new MergeTrees([
-      new FontAwesomePack(this.app.options.fontawesome || {}),
-      // @TODO: This may be where we'd enumerate all of the icon packages that may
-      // contain declared icons
-      path.dirname(require.resolve('@fortawesome/fontawesome-free-solid'))
-    ])
+    const iconRollups = [] 
 
-    const rollupNode = new Rollup(iconPackTree, {
-      rollup: {
-        // @TODO: this is a hack, using a string literal for an internal file name from the FontAwesomePack
-        // plugin. Need to parameterize this appropriately somehow.
-        input: 'fontawesome-fas.js',
-        output: {
-          file: 'fa-icons.js',
-          format: 'amd',
-          amd: {
-            id:'@fortawesome/ember-fontawesome/icons'
-          }
+    Object.keys(this.app.options.fontawesome.icons).forEach((pack) => {
+      const iconExportsFile = `exports-${pack}`
+      const iconPackTree = new MergeTrees([
+        new FontAwesomePack({
+          pack,
+          icons: this.app.options.fontawesome.icons[pack],
+          output: iconExportsFile
+        }),
+        path.dirname(require.resolve(`@fortawesome/${pack}`))
+      ])
+      const rolledIconPackFile = `${pack}.js`
+      const rollupNode = new Rollup(iconPackTree, {
+        rollup: {
+          input: iconExportsFile,
+          output: {
+            file: rolledIconPackFile,
+            format: 'amd',
+            interop: false,
+            amd: {
+              id:`@fortawesome/${pack}`
+            }
+          },
+          plugins: [
+            resolve()
+          ]
         },
-        plugins: [
-          resolve()
-        ]
-      },
-      name: 'fontawesome-free-solid-rollup'
+        name: `${pack}-rollup`
+      })
+      iconRollups.push(rollupNode)
     })
     
     const apiRollupAMD = new Rollup('node_modules/@fortawesome/fontawesome', {
@@ -58,24 +66,32 @@ module.exports = {
       name: 'fontawesome'
     })
 
+    const autoLibraryNode = new FontAwesomeAutoLibrary({
+      icons: this.app.options.fontawesome.icons,
+      output: 'autoLibrary.js'
+    })
+
     return stew.debug(new MergeTrees([
       vendorTree,
-      // @TODO: figure out whether styles.css needs to be copied over.
+      // @TODO: confirm whether styles.css needs to be copied over.
 //      new Funnel(path.dirname(require.resolve('@fortawesome/fontawesome')), {
-//        include: ['index.js', 'styles.css'],
-//        destDir: '@fortawesome/fontawesome'
+//        include: ['styles.css'],
+//        destDir: 'fa-styles'
 //      }),
-      rollupNode,
-      apiRollupAMD
+      apiRollupAMD,
+      autoLibraryNode,
+      ...iconRollups
     ]), {name: 'ember-fontawesome-vendor-tree'})
   },
   
   included(app) {
     this._super.included.apply(this, arguments)
- //   app.import('vendor/@fortawesome/fontawesome/index.js')
     app.import('vendor/fontawesome-amd.js')
-    app.import('vendor/fa-icons.js')
-//    app.import('vendor/shims/fontawesome-shim.js')
-  },
+    Object.keys(app.options.fontawesome.icons).forEach((pack) => {
+      app.import(`vendor/${pack}.js`)
+    })
+    app.import('vendor/autoLibrary.js')
+    // app.import('vendor/fa-styles/styles.css')
+  }
 }
 

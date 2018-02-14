@@ -8,27 +8,53 @@ module.exports = FontAwesomePack
 FontAwesomePack.prototype = Object.create(Plugin.prototype)
 FontAwesomePack.prototype.constructor = FontAwesomePack
 function FontAwesomePack(options) {
-  if (!(this instanceof FontAwesomePack)) return new FontAwesomePack(options);
-  options = options || {};
-  var name = 'broccoli-fontawesome-pack:' + (options.annotation || '');
+  if (!(this instanceof FontAwesomePack)) return new FontAwesomePack(options)
+
+  const { 
+    pack,
+    icons,
+    output
+  } = options
+  
+  if(!pack) throw new Error("Required 'pack' option not specified")
+  if(!(icons === 'all' || Array.isArray(icons))) 
+    throw new Error("icons option must be either 'all' or an array of icon names like 'faCoffee'")
+  if(!output) throw new Error("Required 'output' option not specified")
+
+  this.options = {
+    pack,
+    icons,
+    output,
+    name: `broccoli-fontawesome-pack: ${pack}`,
+    annotation: pack
+  }
+
   Plugin.call(this, [], {
     persistentOutput: true,
-    annotation: options.annotation,
-    name: options.name
-  });
-  this.options = options;
+    annotation: this.options.annotation,
+    name: this.options.name
+  })
 }
 
 FontAwesomePack.prototype.build = function() {
-  // @TODO: use inputNodes to setup the dependencies for the import, and generalize
-  // the import for any set of icon packs.
+  const pack = require(`@fortawesome/${this.options.pack}`)
+  let selectedIcons;
+
+  if(this.options.icons === 'all'){
+    selectedIcons = Object.keys(pack[pack.prefix])
+  } else {
+    selectedIcons = this.options.icons
+  }
+
   const packageContents = `
-    export { ${this.options.fas.join(',')} }  from '@fortawesome/fontawesome-free-solid/shakable.es.js'
+    export { 
+      ${ selectedIcons.join(',') } 
+    }  from '@fortawesome/${this.options.pack}/shakable.es.js'
   `
-  const entryFileName = 'fontawesome-fas.js'
+  debugger 
   const _thisPlugin = this
   return new Promise(function(resolve, reject) {
-    fs.writeFile(path.join(_thisPlugin.outputPath, entryFileName), packageContents, (err) => {
+    fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), packageContents, (err) => {
       if (err) reject(err)
       else {
         resolve()

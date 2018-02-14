@@ -1,8 +1,5 @@
-import Controller from '@ember/controller';
-import { faCoffee } from '@fortawesome/ember-fontawesome/icons';
-import { library } from '@fortawesome/fontawesome';
-
-library.add(faCoffee)
+import Controller from '@ember/controller'
+import { faCoffee } from '@fortawesome/fontawesome-free-solid'
 
 export default Controller.extend({
   faCoffee,
