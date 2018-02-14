@@ -32,7 +32,6 @@ function FontAwesomeAutoLibrary(options) {
 }
 
 FontAwesomeAutoLibrary.prototype.build = function() {
-  debugger
   const _thisPlugin = this
   const moduleContents = `
     (function(){
