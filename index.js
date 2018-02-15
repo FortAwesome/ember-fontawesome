@@ -3,7 +3,6 @@
 var Funnel = require('broccoli-funnel')
 var MergeTrees = require('broccoli-merge-trees')
 var path = require('path')
-var stew = require('broccoli-stew')
 var Rollup = require('broccoli-rollup')
 var fs = require('fs')
 var resolve = require('rollup-plugin-node-resolve')
@@ -71,12 +70,12 @@ module.exports = {
       output: 'autoLibrary.js'
     })
 
-    return stew.debug(new MergeTrees([
+    return new MergeTrees([
       vendorTree,
       fontawesomeRollup,
       autoLibraryNode,
       ...iconRollups
-    ]), {name: 'ember-fontawesome-vendor-tree'})
+    ])
   },
 
   buildConfig() {
