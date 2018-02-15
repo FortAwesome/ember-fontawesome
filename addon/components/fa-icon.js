@@ -44,7 +44,7 @@ function normalizeIconArgs (prefix, icon) {
   }
 }
 
-export default Component.extend({
+const IconComponent = Component.extend({
   layout,
   tagName: 'span',
 
@@ -73,6 +73,7 @@ export default Component.extend({
     'clip-path',
     'id'
   ],
+  
   didReceiveAttrs(){
     this._super(...arguments)
 
@@ -102,4 +103,11 @@ export default Component.extend({
     abstract.attributes && Object.keys(abstract.attributes).forEach((attr) => this.set(attr,abstract.attributes[attr]))
     this.set('abstract', abstract[0])
   }
-})
+});
+
+// Enables {{fa-icon 'iconnamehere'}} syntax, while still allowing {{fa-icon icon='iconnamehere'}}
+IconComponent.reopenClass({
+  positionalParams: ['icon']
+});
+
+export default IconComponent;
