@@ -80,7 +80,7 @@ export default Component.extend({
     const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
     const transformProp = this.get('transform')
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? fontawesome.parse.transform(transformProp) : transformProp)
-    const mask = objectWithKey('mask', normalizeIconArgs(this.get('mask')))
+    const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
     const symbol = this.getWithDefault('symbol', false)
 
     const o = Object.assign({},
