@@ -1,15 +1,23 @@
-{{fa-icon icon=faCoffee}}
-{{fa-icon icon='square'}}
+{{fa-icon icon='coffee'}} 
+<h3>Mask with Transform</h3>
+<p>(expected: black square with white dot inside, pushed to the right side)</p>
 {{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
-<p>Missing icon: Expecting no icon between these bars |{{fa-icon icon='unfindable-icon'}}| (and a warning log in the console)</p>
+<h3>Default fas prefix versus specifying a different prefix for the same icon name</h3>
+{{fa-icon icon='square'}}
+{{fa-icon prefix='far' icon='square'}}
+<h3>Missing Icon</h3>
+<p>Expecting no icon between these bars |{{fa-icon icon='unfindable-icon'}}| (and a warning log in the console)</p>
+<h3>Dynamic with Bound Attribute</h3>
 <div>
   <p>Drag the slider to spin the magic.</p>
   {{input type='range' value=magic}}
   <div style="padding:2em;">
-    {{fa-icon icon=faMagic transform=(concat 'rotate-' magic)}}
+    {{fa-icon icon='magic' transform=(concat 'rotate-' magic)}}
   </div>
 </div>
-
+<h3>Pro Icon</h3>
+<p>(If you have fontawesome-pro-light installed, this should show the 'adjust' icon in the light style)</p>
+{{fa-icon prefix='fal' icon='adjust'}}
 <h3>Fixed Width</h3>
 <!-- @TODO: Do we need the style attribute to come through? -->
 <div>{{fa-icon icon='home' fixedWidth=true style="background:MistyRose"}} Home</div>
@@ -27,4 +35,5 @@
 </ul>
 <h3>Animation (Spin)</h3>
 {{fa-icon icon='sync' spin=true}}
+
 {{outlet}}

@@ -15,8 +15,14 @@
 bower.json
 ember-cli-build.js
 testem.js
+*.tgz
 
 # ember-try
 .node_modules.ember-try/
 bower.json.ember-try
 package.json.ember-try
+
+# ember broccoli build debugging
+/DEBUG
+
+

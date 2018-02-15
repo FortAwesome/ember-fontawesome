@@ -11,37 +11,66 @@ We welcome testers and developers help us get it ready for prime time by install
 This is what it can look like in your template:
 
 ```
-{{fa-icon icon=faCoffee}}
+{{fa-icon icon='coffee'}}
 ```
 
-To support that use, you'd need to have made a `faCoffee` object available to your template from a controller, like this:
+To support that use, you'd need to:
+
+1. `ember install @fortawesome/ember-fontawesome`
+
+1. `yarn add @fortawesome/fontawesome-free-solid` (or `npm install ...`). 
+Do this for each icon pack you'll use in your app. By default, all installed icon packs will be bundled into
+`vendor.js` and also added to the Font Awesome library (i.e. `library.add()`)
+
+1. If you want to include only a subset of icons from an icon pack, add a `fontawesome` configuration 
+object to your applications options in `ember-cli-build.js`. The following example declares that all 
+icons in fontawesome-free-solid should be included in the vendor.js bundle add added to the library,
+and for fontawesome-pro-light, only faAdjust and faAmbulance are to be included in the bundle and added to the library.
+
 ```
-import Controller from '@ember/controller';
-import fontawesome from '@fortawesome/fontawesome'
-import fas from '@fortawesome/fontawesome-free-solid'
+  // ...
+  let app = new EmberApp(defaults, {
+    // Add options here
+    fontawesome: {
+      icons: {
+        'fontawesome-free-solid': 'all'
+        'fontawesome-pro-light': [
+          'faAdjust',
+          'faAmbulance'
+         ]
+      }
+  })
+```
+
+Without a prefix specified, the default `fas` is assumed:
+
+```
+{{fa-icon icon='square'}}
+```
+
+If you need to distinguish styles between two different icons of the same name that have both
+been added to the library, use `prefix=`. 
+```
+{{fa-icon prefix='far' icon='square'}}
+```
+
+You can also import the icon objects from the icon packs and make them available to your templates.
+
+```
+import Controller from '@ember/controller'
+import { faCoffee } from '@fortawesome/fontawesome-free-solid'
 
 export default Controller.extend({
-  // Make a couple of icons available via object reference in our templates
-  faCoffee: fas.faCoffee,
+  faCoffee,
   // ...
 });
 ```
 
-Or, you could reference an icon by its name as a string like this...
+Then in a template:
 ```
-{{fa-icon icon='square'}}
+{{fa-icon icon=faCoffee}}
 ```
-...after adding the icon object to the library, such as in a controller like this:
-```
-import fontawesome from '@fortawesome/fontawesome'
-import fas from '@fortawesome/fontawesome-free-solid'
-
-// Make some of our icons available by their names as strings by adding them to the library
-fontawesome.library.add(
-  fas.faSquare,
-  // ..., etc.
-)
-```
+This object knows its own prefix, by the way, so it wouldn't be necessary to use `prefix=` for disambiguation.
 
 Make it fancier with a mask:
 ```

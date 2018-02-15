@@ -26,7 +26,7 @@ function classList () {
     .filter(key => key)
 }
 
-function normalizeIconArgs (icon) {
+function normalizeIconArgs (prefix, icon) {
   if (icon === null) {
     return null
   }
@@ -35,8 +35,8 @@ function normalizeIconArgs (icon) {
     return icon
   }
 
-  if (Array.isArray(icon) && icon.length === 2) {
-    return { prefix: icon[0], iconName: icon[1] }
+  if(typeof prefix === 'string' && typeof icon === 'string'){
+    return { prefix: prefix, iconName: icon }
   }
 
   if (typeof icon === 'string') {
@@ -76,11 +76,11 @@ export default Component.extend({
   didReceiveAttrs(){
     this._super(...arguments)
 
-    const icon = normalizeIconArgs(this.get('icon'))
+    const icon = normalizeIconArgs(this.get('prefix'), this.get('icon'))
     const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
     const transformProp = this.get('transform')
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? fontawesome.parse.transform(transformProp) : transformProp)
-    const mask = objectWithKey('mask', normalizeIconArgs(this.get('mask')))
+    const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
     const symbol = this.getWithDefault('symbol', false)
 
     const o = Object.assign({},
