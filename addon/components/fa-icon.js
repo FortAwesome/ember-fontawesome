@@ -46,7 +46,7 @@ function normalizeIconArgs (prefix, icon) {
   }
 }
 
-export default Component.extend({
+const IconComponent = Component.extend({
   layout,
   tagName: 'svg',
   classNameBindings: ['class'],
@@ -116,4 +116,11 @@ export default Component.extend({
       }
     })
   }
-})
+});
+
+// Enables {{fa-icon 'iconnamehere'}} syntax, while still allowing {{fa-icon icon='iconnamehere'}}
+IconComponent.reopenClass({
+  positionalParams: ['icon']
+});
+
+export default IconComponent;

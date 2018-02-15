@@ -50,3 +50,16 @@ test('it renders extra classes', function(assert){
   this.render(hbs`{{fa-icon icon=faCoffee class="foo-xyz"}}`)
   assert.ok(this.$('svg').attr('class').split(/\s+/).includes('foo-xyz'))
 })
+
+test('it renders coffee positional', function(assert) {
+  // Set any properties with this.set('myProperty', 'value');
+  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('faCoffee', faCoffee)
+
+  this.render(hbs`{{fa-icon faCoffee}}`)
+
+  assert.equal(this.$().text().trim(), '')
+  assert.equal(this.$('svg').attr('data-icon'), 'coffee')
+  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-coffee'))
+  assert.equal(this.$('svg path').attr('d'), faCoffee.icon[4])
+})
