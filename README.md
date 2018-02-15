@@ -10,8 +10,8 @@ We welcome testers and developers help us get it ready for prime time by install
 
 This is what it can look like in your template:
 
-```
-{{fa-icon icon='coffee'}}
+```hbs
+{{fa-icon 'coffee'}}
 ```
 
 To support that use, you'd need to:
@@ -47,19 +47,20 @@ and for fontawesome-pro-light, only faAdjust and faAmbulance are to be included 
 
 Without a prefix specified, the default `fas` is assumed:
 
-```
-{{fa-icon icon='square'}}
+```hbs
+{{fa-icon 'square'}}
 ```
 
 If you need to distinguish styles between two different icons of the same name that have both
 been added to the library, use `prefix=`. 
-```
-{{fa-icon prefix='far' icon='square'}}
+
+```hbs
+{{fa-icon 'square' prefix='far'}}
 ```
 
 You can also import the icon objects from the icon packs and make them available to your templates.
 
-```
+```js
 import Controller from '@ember/controller'
 import { faCoffee } from '@fortawesome/fontawesome-free-solid'
 
@@ -70,14 +71,17 @@ export default Controller.extend({
 ```
 
 Then in a template:
+
+```hbs
+{{fa-icon faCoffee}}
 ```
-{{fa-icon icon=faCoffee}}
-```
+
 This object knows its own prefix, by the way, so it wouldn't be necessary to use `prefix=` for disambiguation.
 
 Make it fancier with a mask:
-```
-{{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
+
+```hbs
+{{fa-icon 'circle' transform='shrink-9 right-4' mask=faSquare}}
 ```
 
 # More Documentation
