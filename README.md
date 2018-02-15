@@ -22,6 +22,9 @@ To support that use, you'd need to:
 Do this for each icon pack you'll use in your app. By default, all installed icon packs will be bundled into
 `vendor.js` and also added to the Font Awesome library (i.e. `library.add()`)
 
+(NOTE: As of Feb 14, 2018 it's best to use the 5.1 prereleases of the icon packs, since you're already living
+on the edge. So, `yarn add @fortawesome/fontawesome-free-solid@5.1.0-3`)
+
 1. If you want to include only a subset of icons from an icon pack, add a `fontawesome` configuration 
 object to your applications options in `ember-cli-build.js`. The following example declares that all 
 icons in fontawesome-free-solid should be included in the vendor.js bundle add added to the library,
