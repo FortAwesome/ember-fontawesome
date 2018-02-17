@@ -2,6 +2,8 @@ import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
 import fontawesome from '@fortawesome/fontawesome' // eslint-disable-line no-unused-vars
+import { htmlSafe } from '@ember/string'
+import { computed } from '@ember/object' 
 
 function objectWithKey (key, value) {
   return ((Array.isArray(value) && value.length > 0) || (!Array.isArray(value) && value)) ? {[key]: value} : {}
@@ -44,38 +46,64 @@ function normalizeIconArgs (prefix, icon) {
   }
 }
 
+function htmlEscape (str) {
+  return `${str}`
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+}
+
+function joinAttributes (attributes) {
+  return Object.keys((attributes || {})).reduce((acc, attributeName) => {
+    return acc + `${attributeName}="${htmlEscape(attributes[attributeName])}" `
+  }, '').trim()
+}
+
+export function toHtml (abstractNodes) {
+  const { tag, attributes = {}, children = [] } = abstractNodes
+
+  if (typeof abstractNodes === 'string') {
+    return htmlEscape(abstractNodes)
+  } else {
+    return `<${tag} ${joinAttributes(attributes)}>${children.map(toHtml).join('')}</${tag}>`
+  }
+}
+
 export default Component.extend({
   layout,
-  tagName: 'span',
-
-  // @TODO: make this less hacky—shouldn't be a copy-paste from the -node component
+  tagName: 'svg',
+  classNameBindings: ['class'],
   attributeBindings: [
-    'aria-hidden',
-    'aria-labelledby',
-    'data-fa-processed',
+    // attributes watched for mutation
+    'data-prefix',
+    'data-icon',
     'data-fa-transform',
     'data-fa-mask',
-    'data-icon',
-    'data-prefix',
+    // accessibility attributes
+    'aria-hidden',
+    'aria-labelledby',
+    // svg attributes
     'role',
-    'viewBox',
     'xmlns',
-    'd',
-    'fill',
-    'x',
-    'y',
-    'width',
-    'height',
-    'mask',
-    'maskUnits',
-    'maskContentUnits',
-    'transform',
-    'clip-path',
-    'id'
+    'viewBox'
   ],
+
+  html: computed('children', function() {
+    const children = this.get('children')
+    let newHtml
+    if(!children){
+      newHtml = htmlSafe('')
+    } else {
+      newHtml = htmlSafe(children.reduce((acc,cur) => {
+        return `${acc}${toHtml(cur)}`
+      },''))
+    }
+    return newHtml
+  }),
   didReceiveAttrs(){
     this._super(...arguments)
-
     const icon = normalizeIconArgs(this.get('prefix'), this.get('icon'))
     const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
     const transformProp = this.get('transform')
@@ -93,13 +121,13 @@ export default Component.extend({
     // @TODO: consider the equivalent of extraProps
     const renderedIcon = fontawesome.icon(icon, o)
 
-    if (!renderedIcon){
+    if (!renderedIcon) {
       Ember.Logger.warn('Could not find icon', icon)
       return null
     }
 
-    const {abstract} = renderedIcon
+    const abstract = renderedIcon.abstract[0]
+    this.set('children', abstract.children)
     abstract.attributes && Object.keys(abstract.attributes).forEach((attr) => this.set(attr,abstract.attributes[attr]))
-    this.set('abstract', abstract[0])
   }
 })
