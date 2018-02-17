@@ -1,7 +1,7 @@
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
-import fontawesome from '@fortawesome/fontawesome' // eslint-disable-line no-unused-vars
+import { icon, parse } from '@fortawesome/fontawesome'
 import { htmlSafe } from '@ember/string'
 import { computed } from '@ember/object' 
 
@@ -81,13 +81,15 @@ export default Component.extend({
     'data-icon',
     'data-fa-transform',
     'data-fa-mask',
+    'data-fa-processed',
     // accessibility attributes
     'aria-hidden',
     'aria-labelledby',
     // svg attributes
     'role',
     'xmlns',
-    'viewBox'
+    'viewBox',
+    'style',
   ],
 
   html: computed('children', function() {
@@ -104,10 +106,10 @@ export default Component.extend({
   }),
   didReceiveAttrs(){
     this._super(...arguments)
-    const icon = normalizeIconArgs(this.get('prefix'), this.get('icon'))
+    const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
     const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
     const transformProp = this.get('transform')
-    const transform = objectWithKey('transform', (typeof transformProp === 'string') ? fontawesome.parse.transform(transformProp) : transformProp)
+    const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
     const symbol = this.getWithDefault('symbol', false)
 
@@ -119,15 +121,17 @@ export default Component.extend({
     )
 
     // @TODO: consider the equivalent of extraProps
-    const renderedIcon = fontawesome.icon(icon, o)
+    const renderedIcon = icon(iconLookup, o)
 
     if (!renderedIcon) {
-      Ember.Logger.warn('Could not find icon', icon)
+      Ember.Logger.warn('Could not find icon', iconLookup)
       return null
     }
 
     const abstract = renderedIcon.abstract[0]
     this.set('children', abstract.children)
-    abstract.attributes && Object.keys(abstract.attributes).forEach((attr) => this.set(attr,abstract.attributes[attr]))
+    abstract.attributes && Object.keys(abstract.attributes).forEach(attr => {
+     this.set(attr, abstract.attributes[attr]) 
+    })
   }
 })
