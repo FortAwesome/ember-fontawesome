@@ -118,7 +118,11 @@ module.exports = {
     }
     return fontawesomeConfig
   },
-  
+  contentFor(type) {
+    if (type === 'head') {
+      return '<script type="text/javascript">window.FontAwesomeConfig = { autoReplaceSvg: false, observeMutations: false }</script>';
+    }
+  },
   included(app) {
     this._super.included.apply(this, arguments)
     this.fontawesomeConfig = this.buildConfig()
