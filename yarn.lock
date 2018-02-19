@@ -10,7 +10,7 @@
     ember-cli-babel "^6.10.0"
     ember-cli-htmlbars-inline-precompile "^1.0.0"
 
-"@fortawesome/fontawesome-common-types@^0.1.2-1":
+"@fortawesome/fontawesome-common-types@^0.1.2", "@fortawesome/fontawesome-common-types@^0.1.2-1":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.2.tgz#d6aa075058f0c984d6e2ebcbc0052c1f7f9bea72"
 
@@ -32,11 +32,11 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.2-1"
 
-"@fortawesome/fontawesome@>=1.2.0-2":
-  version "1.2.0-2"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.2.0-2.tgz#1bd2436c2cfe5e9048279caf6c9be5a1bcbb1192"
+"@fortawesome/fontawesome@>=1.2.0-4":
+  version "1.2.0-4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.2.0-4.tgz#9fa7c2c68d49bd4bb74aec7ee4111aa1bd9867b1"
   dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.1.2-1"
+    "@fortawesome/fontawesome-common-types" "^0.1.2"
 
 "@glimmer/di@^0.2.0":
   version "0.2.0"

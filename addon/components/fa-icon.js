@@ -89,9 +89,8 @@ export default Component.extend({
     'role',
     'xmlns',
     'viewBox',
-    'style',
+    'safeStyle:style',
   ],
-
   html: computed('children', function() {
     const children = this.get('children')
     let newHtml
@@ -103,6 +102,10 @@ export default Component.extend({
       },''))
     }
     return newHtml
+  }),
+  safeStyle: computed('frameworkStyle', function() {
+    const frameworkStyle = this.get('frameworkStyle')
+    return frameworkStyle ? htmlSafe(`${this.get('frameworkStyle')}`) : undefined
   }),
   didReceiveAttrs(){
     this._super(...arguments)
@@ -131,7 +134,11 @@ export default Component.extend({
     const abstract = renderedIcon.abstract[0]
     this.set('children', abstract.children)
     abstract.attributes && Object.keys(abstract.attributes).forEach(attr => {
-     this.set(attr, abstract.attributes[attr]) 
+      if ( attr === 'style' ) {
+        this.set('frameworkStyle', abstract.attributes[attr])
+      } else {
+        this.set(attr, abstract.attributes[attr]) 
+      }
     })
   }
 })
