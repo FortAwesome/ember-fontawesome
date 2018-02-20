@@ -99,7 +99,6 @@ export default Component.extend({
       {symbol: symbol}
     )
 
-    // @TODO: consider the equivalent of extraProps
     const renderedIcon = icon(iconLookup, o)
 
     if (!renderedIcon) {
