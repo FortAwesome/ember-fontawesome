@@ -1,4 +1,4 @@
-{{fa-icon icon='coffee'}} 
+{{fa-icon icon='coffee' class='foo'}} 
 <h3>Mask with Transform</h3>
 <p>(expected: black square with white dot inside, pushed to the right side)</p>
 {{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
@@ -19,12 +19,16 @@
 <p>(If you have fontawesome-pro-light installed, this should show the 'adjust' icon in the light style)</p>
 {{fa-icon prefix='fal' icon='adjust'}}
 <h3>Fixed Width</h3>
-<!-- @TODO: Do we need the style attribute to come through? -->
-<div>{{fa-icon icon='home' fixedWidth=true style="background:MistyRose"}} Home</div>
-<div>{{fa-icon icon='info' fixedWidth=true style="background:MistyRose"}} Info</div>
-<div>{{fa-icon icon='book' fixedWidth=true style="background:MistyRose"}} Library</div>
-<div>{{fa-icon icon='pencil-alt' fixedWidth=true style="background:MistyRose"}} Applications</div>
-<div>{{fa-icon icon='cog' fixedWidth=true style="background:MistyRose"}} Settings</div>
+<style type="text/css">
+  .MistyRose {
+    background-color: mistyrose;
+  }
+</style>
+<div>{{fa-icon icon='home' fixedWidth=true class="MistyRose"}} Home</div>
+<div>{{fa-icon icon='info' fixedWidth=true class="MistyRose"}} Info</div>
+<div>{{fa-icon icon='book' fixedWidth=true class="MistyRose"}} Library</div>
+<div>{{fa-icon icon='pencil-alt' fixedWidth=true class="MistyRose"}} Applications</div>
+<div>{{fa-icon icon='cog' fixedWidth=true class="MistyRose"}} Settings</div>
 
 <h3>List Icons</h3>
 <ul class="fa-ul">

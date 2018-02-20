@@ -4,12 +4,7 @@ import { faCoffee, faSquare } from '@fortawesome/fontawesome-free-solid'
 export default Controller.extend({
   faCoffee,
   faSquare,
-  init(){
-    this.set('magic',0)
-  },
-  actions: {
-    updateMagic(val){
-      this.set('magic',val)
-    }
+  init() {
+    this.set('magic', 0)
   }
 });
