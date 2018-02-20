@@ -32,9 +32,9 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.2-1"
 
-"@fortawesome/fontawesome@>=1.2.0-4":
-  version "1.2.0-4"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.2.0-4.tgz#9fa7c2c68d49bd4bb74aec7ee4111aa1bd9867b1"
+"@fortawesome/fontawesome@>=1.2.0-5":
+  version "1.2.0-5"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.2.0-5.tgz#1e3fcffb80eab9e49f83268dc11289f97bf3fdff"
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.2"
 
