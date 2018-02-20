@@ -1,7 +1,7 @@
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
-import { icon, parse } from '@fortawesome/fontawesome'
+import { icon, parse, toHtml } from '@fortawesome/fontawesome'
 import { htmlSafe } from '@ember/string'
 import { computed } from '@ember/object' 
 
@@ -46,31 +46,6 @@ function normalizeIconArgs (prefix, icon) {
   }
 }
 
-function htmlEscape (str) {
-  return `${str}`
-    .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-}
-
-function joinAttributes (attributes) {
-  return Object.keys((attributes || {})).reduce((acc, attributeName) => {
-    return acc + `${attributeName}="${htmlEscape(attributes[attributeName])}" `
-  }, '').trim()
-}
-
-export function toHtml (abstractNodes) {
-  const { tag, attributes = {}, children = [] } = abstractNodes
-
-  if (typeof abstractNodes === 'string') {
-    return htmlEscape(abstractNodes)
-  } else {
-    return `<${tag} ${joinAttributes(attributes)}>${children.map(toHtml).join('')}</${tag}>`
-  }
-}
-
 export default Component.extend({
   layout,
   tagName: 'svg',
@@ -103,12 +78,13 @@ export default Component.extend({
     }
     return newHtml
   }),
-  safeStyle: computed('frameworkStyle', function() {
-    const frameworkStyle = this.get('frameworkStyle')
-    return frameworkStyle ? htmlSafe(`${this.get('frameworkStyle')}`) : undefined
+  safeStyle: computed('_frameworkStyle', function() {
+    const frameworkStyle = this.get('_frameworkStyle')
+    return frameworkStyle ? htmlSafe(`${this.get('_frameworkStyle')}`) : undefined
   }),
   didReceiveAttrs(){
     this._super(...arguments)
+    if('_frameworkStyle' in this.attrs) throw new Error('_frameworkStyle attribute is reserved for internal use and may not be set from a template')
     const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
     const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
     const transformProp = this.get('transform')
@@ -130,12 +106,12 @@ export default Component.extend({
       Ember.Logger.warn('Could not find icon', iconLookup)
       return null
     }
-
+    
     const abstract = renderedIcon.abstract[0]
     this.set('children', abstract.children)
     abstract.attributes && Object.keys(abstract.attributes).forEach(attr => {
       if ( attr === 'style' ) {
-        this.set('frameworkStyle', abstract.attributes[attr])
+        this.set('_frameworkStyle', abstract.attributes[attr])
       } else {
         this.set(attr, abstract.attributes[attr]) 
       }
