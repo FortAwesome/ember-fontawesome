@@ -1,7 +1,7 @@
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
-import { icon, parse, toHtml } from '@fortawesome/fontawesome'
+import { icon, parse, toHtml, config } from '@fortawesome/fontawesome'
 import { htmlSafe } from '@ember/string'
 import { computed } from '@ember/object' 
 
@@ -101,20 +101,21 @@ const IconComponent = Component.extend({
 
     const renderedIcon = icon(iconLookup, o)
 
-    if (!renderedIcon) {
-      Ember.Logger.warn('Could not find icon', iconLookup)
-      return null
+    if (renderedIcon) {
+      const abstract = renderedIcon.abstract[0]
+      this.set('children', abstract.children)
+      abstract.attributes && Object.keys(abstract.attributes).forEach(attr => {
+        if ( attr === 'style' ) {
+          this.set('_frameworkStyle', abstract.attributes[attr])
+        } else {
+          this.set(attr, abstract.attributes[attr]) 
+        }
+      })
+    } else {
+      Ember.Logger.warn(`Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}`)
+      this.set('class', config.replacementClass)
+      this.set('viewBox', '0 0 448 512')
     }
-    
-    const abstract = renderedIcon.abstract[0]
-    this.set('children', abstract.children)
-    abstract.attributes && Object.keys(abstract.attributes).forEach(attr => {
-      if ( attr === 'style' ) {
-        this.set('_frameworkStyle', abstract.attributes[attr])
-      } else {
-        this.set(attr, abstract.attributes[attr]) 
-      }
-    })
   }
 });
 
