@@ -7,17 +7,16 @@ var fs = require('fs')
 module.exports = FontAwesomePack
 FontAwesomePack.prototype = Object.create(Plugin.prototype)
 FontAwesomePack.prototype.constructor = FontAwesomePack
-function FontAwesomePack(options) {
-  if (!(this instanceof FontAwesomePack)) return new FontAwesomePack(options)
-
-  const { 
+function FontAwesomePack(inputNodes, options) {
+  if (!(this instanceof FontAwesomePack)) return new FontAwesomePack(inputNodes, options)
+  const {
     pack,
     icons,
     output
   } = options
-  
+
   if(!pack) throw new Error("Required 'pack' option not specified")
-  if(!(icons === 'all' || Array.isArray(icons))) 
+  if(!(icons === 'all' || Array.isArray(icons)))
     throw new Error("icons option must be either 'all' or an array of icon names like 'faCoffee'")
   if(!output) throw new Error("Required 'output' option not specified")
 
@@ -29,7 +28,9 @@ function FontAwesomePack(options) {
     annotation: pack
   }
 
-  Plugin.call(this, [], {
+  this._isBuilt = false
+
+  Plugin.call(this, inputNodes, {
     persistentOutput: true,
     annotation: this.options.annotation,
     name: this.options.name
@@ -37,6 +38,8 @@ function FontAwesomePack(options) {
 }
 
 FontAwesomePack.prototype.build = function() {
+  if(this._isBuilt) return
+
   const pack = require(`@fortawesome/${this.options.pack}`)
   let selectedIcons;
 
@@ -56,6 +59,7 @@ FontAwesomePack.prototype.build = function() {
     fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), packageContents, (err) => {
       if (err) reject(err)
       else {
+        _thisPlugin._isBuilt = true
         resolve()
       }
     })
