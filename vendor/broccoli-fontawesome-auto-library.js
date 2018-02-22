@@ -17,6 +17,8 @@ function FontAwesomeAutoLibrary(options) {
   if(!(icons && typeof icons === 'object')) throw new Error("Required 'icons' option not given") 
   if(!output) throw new Error("Required 'output' option not given")
 
+  this._isBuilt = false
+
   this.options = {
     icons,
     output,
@@ -32,6 +34,8 @@ function FontAwesomeAutoLibrary(options) {
 }
 
 FontAwesomeAutoLibrary.prototype.build = function() {
+  if(this._isBuilt) return
+
   const _thisPlugin = this
   const moduleContents = `
     (function(){
@@ -49,6 +53,7 @@ FontAwesomeAutoLibrary.prototype.build = function() {
     fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), moduleContents, (err) => {
       if (err) reject(err)
       else {
+        _thisPlugin._isBuilt = true
         resolve()
       }
     })

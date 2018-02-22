@@ -1,5 +1,7 @@
 /* eslint-env node */
 'use strict'
+var broccoliSource = require('broccoli-source')
+var UnwatchedDir = broccoliSource.UnwatchedDir
 var Funnel = require('broccoli-funnel')
 var MergeTrees = require('broccoli-merge-trees')
 var path = require('path')
@@ -14,18 +16,18 @@ module.exports = {
   name: '@fortawesome/ember-fontawesome',
 
   treeForVendor(vendorTree) {
-    const iconRollups = [] 
+    const iconRollups = []
 
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
-      const iconExportsFile = `exports-${pack}`
-      const iconPackTree = new MergeTrees([
-        new FontAwesomePack({
+      const iconExportsFile = `exports-${pack}.js`
+      const iconPackTree = new FontAwesomePack(
+        [new UnwatchedDir('node_modules/@fortawesome')],
+        {
           pack,
           icons: this.fontawesomeConfig.icons[pack],
           output: iconExportsFile
-        }),
-        path.dirname(require.resolve(`@fortawesome/${pack}`))
-      ])
+        }
+      )
       const rolledIconPackFile = `${pack}.js`
       const rollupNode = new Rollup(iconPackTree, {
         rollup: {
@@ -46,8 +48,8 @@ module.exports = {
       })
       iconRollups.push(rollupNode)
     })
-    
-    const fontawesomeRollup = new Rollup('node_modules/@fortawesome/fontawesome', {
+
+    const fontawesomeRollup = new Rollup(new UnwatchedDir('node_modules/@fortawesome/fontawesome'), {
       rollup: {
         input: 'index.es.js',
         output: {
@@ -88,7 +90,7 @@ module.exports = {
         .map(i => i.split('/').pop())
         .reduce((acc, cur) => {
           acc.icons[cur] = 'all'
-          return acc}, {icons: {}}) 
+          return acc}, {icons: {}})
     }
     if(Object.keys(fontawesomeConfig.icons).length === 0) {
       this.ui.writeWarnLine(
