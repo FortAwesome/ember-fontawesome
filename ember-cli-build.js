@@ -2,8 +2,6 @@
 'use strict'
 
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
-const Funnel = require('broccoli-funnel');
-const path = require('path');
 
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {

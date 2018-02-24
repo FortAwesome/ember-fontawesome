@@ -1,11 +1,8 @@
 'use strict';
 var broccoliSource = require('broccoli-source')
 var UnwatchedDir = broccoliSource.UnwatchedDir
-var Funnel = require('broccoli-funnel')
 var MergeTrees = require('broccoli-merge-trees')
-var path = require('path')
 var Rollup = require('broccoli-rollup')
-var fs = require('fs')
 var resolve = require('rollup-plugin-node-resolve')
 var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
