@@ -1,5 +1,4 @@
-/* eslint-env node */
-'use strict'
+'use strict';
 var broccoliSource = require('broccoli-source')
 var UnwatchedDir = broccoliSource.UnwatchedDir
 var Funnel = require('broccoli-funnel')
