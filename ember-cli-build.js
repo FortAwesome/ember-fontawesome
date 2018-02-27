@@ -25,9 +25,6 @@ module.exports = function(defaults) {
           'faSync'
         ],
         'fontawesome-free-regular': 'all',
-        'fontawesome-pro-light': [
-          'faAdjust'
-        ]
       }
     }
   })

@@ -26,12 +26,6 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.2-1"
 
-"@fortawesome/fontawesome-pro-light@^5.1.0-3":
-  version "5.1.0-3"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-pro-light/-/fontawesome-pro-light-5.1.0-3.tgz#eef253540988547ac1d85c0b36cdde6e4aba15f9"
-  dependencies:
-    "@fortawesome/fontawesome-common-types" "^0.1.2-1"
-
 "@fortawesome/fontawesome@>=1.2.0-5":
   version "1.2.0-5"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.2.0-5.tgz#1e3fcffb80eab9e49f83268dc11289f97bf3fdff"
