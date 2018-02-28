@@ -3,7 +3,7 @@ import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome'
 import { htmlSafe } from '@ember/string'
-import { computed } from '@ember/object' 
+import { computed } from '@ember/object'
 
 function objectWithKey (key, value) {
   return ((Array.isArray(value) && value.length > 0) || (!Array.isArray(value) && value)) ? {[key]: value} : {}
@@ -84,6 +84,7 @@ const IconComponent = Component.extend({
   }),
   didReceiveAttrs(){
     this._super(...arguments)
+    /* eslint ember/no-attrs-in-components: 0 */
     if('_frameworkStyle' in this.attrs) throw new Error('_frameworkStyle attribute is reserved for internal use and may not be set from a template')
     const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
     const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
@@ -108,7 +109,7 @@ const IconComponent = Component.extend({
         if ( attr === 'style' ) {
           this.set('_frameworkStyle', abstract.attributes[attr])
         } else {
-          this.set(attr, abstract.attributes[attr]) 
+          this.set(attr, abstract.attributes[attr])
         }
       })
     } else {
