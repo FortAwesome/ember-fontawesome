@@ -123,6 +123,13 @@ module.exports = {
   },
   included(app) {
     this._super.included.apply(this, arguments)
+
+    if (typeof app.import !== 'function' && app.app) {
+      app = app.app
+    }
+
+    this.app = app
+
     this.fontawesomeConfig = this.buildConfig()
     app.import('vendor/fontawesome.js')
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
