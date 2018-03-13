@@ -7,6 +7,7 @@ var resolve = require('rollup-plugin-node-resolve')
 var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
 var glob = require('glob')
+var buildAstTransform = require('./lib/ast-transform');
 
 module.exports = {
   name: '@fortawesome/ember-fontawesome',
@@ -142,5 +143,16 @@ module.exports = {
       app.import(`vendor/${pack}.js`)
     })
     app.import('vendor/autoLibrary.js')
-  }
+  },
+
+  setupPreprocessorRegistry(type, registry) {
+    registry.add('htmlbars-ast-plugin', {
+      name: 'font-awesome-static-transform',
+      plugin: buildAstTransform(this),
+      baseDir() {
+        return __dirname;
+      },
+    });
+  },
+
 }
