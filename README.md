@@ -27,8 +27,8 @@ on the edge. So, `yarn add @fortawesome/free-solid-svg-icons@5.1.0-4`)
 
 1. If you want to include only a subset of icons from an icon pack, add a `fontawesome` configuration 
 object to your applications options in `ember-cli-build.js`. The following example declares that all 
-icons in fontawesome-free-solid should be included in the vendor.js bundle add added to the library,
-and for fontawesome-pro-light, only faAdjust and faAmbulance are to be included in the bundle and added to the library.
+icons in free-solid-svg-icons should be included in the vendor.js bundle add added to the library,
+and for pro-light-svg-icons, only faAdjust and faAmbulance are to be included in the bundle and added to the library.
 
 ```
   // ...
@@ -36,8 +36,8 @@ and for fontawesome-pro-light, only faAdjust and faAmbulance are to be included 
     // Add options here
     fontawesome: {
       icons: {
-        'fontawesome-free-solid': 'all'
-        'fontawesome-pro-light': [
+        'free-solid-svg-icons': 'all'
+        'pro-light-svg-icons': [
           'faAdjust',
           'faAmbulance'
          ]
