@@ -1,7 +1,7 @@
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
-import { icon, parse, toHtml, config } from '@fortawesome/fontawesome'
+import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/string'
 import { computed } from '@ember/object'
 

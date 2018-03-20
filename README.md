@@ -18,12 +18,12 @@ To support that use, you'd need to:
 
 1. `ember install @fortawesome/ember-fontawesome`
 
-1. `yarn add @fortawesome/fontawesome-free-solid` (or `npm install ...`). 
+1. `yarn add @fortawesome/free-solid-svg-icons` (or `npm install ...`). 
 Do this for each icon pack you'll use in your app. By default, all installed icon packs will be bundled into
 `vendor.js` and also added to the Font Awesome library (i.e. `library.add()`)
 
 (NOTE: As of Feb 14, 2018 it's best to use the 5.1 prereleases of the icon packs, since you're already living
-on the edge. So, `yarn add @fortawesome/fontawesome-free-solid@5.1.0-3`)
+on the edge. So, `yarn add @fortawesome/free-solid-svg-icons@5.1.0-4`)
 
 1. If you want to include only a subset of icons from an icon pack, add a `fontawesome` configuration 
 object to your applications options in `ember-cli-build.js`. The following example declares that all 
@@ -62,7 +62,7 @@ You can also import the icon objects from the icon packs and make them available
 
 ```js
 import Controller from '@ember/controller'
-import { faCoffee } from '@fortawesome/fontawesome-free-solid'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 export default Controller.extend({
   faCoffee,
