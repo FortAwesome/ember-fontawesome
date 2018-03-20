@@ -28,7 +28,7 @@ _All packages are in the [@fortawesome NPM scope](https://www.npmjs.com/search?q
 
 **You'll need to update your package.json file with the renamed packages and new versions.**
 
-What does that mean? You'll need to update your Ember CLI build script to reflect the new package names too.
+### Update your Ember CLI build script config
 
 ~~Old `ember-cli-build.js`:~~
 
