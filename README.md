@@ -44,7 +44,7 @@ $ ember install @fortawesome/ember-fontawesome
 We need at least one style. Let's start with the free version of Solid.
 
 ```
-$ npm i --save @fortawesome/free-solid-svg-icons
+$ npm i --save-dev @fortawesome/free-solid-svg-icons
 ```
 
 ## Add more styles or Pro icons

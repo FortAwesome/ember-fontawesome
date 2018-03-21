@@ -94,7 +94,7 @@ module.exports = {
         'No icons are included in your build configuration.\n'+
         'Any icon packs you install under node_modules will be bundled into vendor.js\n'+
         'and added to the icon library by default.\n\n'+
-        "For example, 'yarn add @fortawesome/free-solid-svg-icons' would add all of the icons in that pack.\n\n"+
+        "For example, 'npm install --save-dev @fortawesome/free-solid-svg-icons' would add all of the icons in that pack.\n\n"+
         'To declare a subset of icons, after adding some icon packs as shown above,\n'+
         'modify your ember-cli-build.js and add a fontawesome config object.\n'+
         'The following example declares that all icons in free-solid-svg-icons should be\n'+
