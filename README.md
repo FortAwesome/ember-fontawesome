@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/@fortawesome/ember-fontawesome.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/ember-fontawesome)
 
-> Font Awesome 5 Vue component using SVG with JS
+> Font Awesome 5 Ember component using SVG with JS
 
 Hey there! We're glad you're here...
 
@@ -76,7 +76,6 @@ Using the Pro packages requires [additional configuration](https://fontawesome.c
 ## or with Yarn
 
 ```
-$ yarn add --dev @fortawesome/fontawesome-svg-core
 $ yarn add --dev @fortawesome/free-solid-svg-icons
 ```
 
@@ -120,8 +119,7 @@ Without a prefix specified, the default `fas` is assumed:
 {{fa-icon 'square'}}
 ```
 
-If you need to distinguish styles between two different icons of the same name
-that have both been added to the library, use `prefix=`.
+**If you want to use an icon from any style other than solid, you must use `prefix=`.**
 
 ```hbs
 {{fa-icon 'square' prefix='far'}}
