@@ -40,7 +40,13 @@
   <li><span class="fa-li">{{fa-icon icon='spinner' pulse=true}}</span>replace bullets</li>
   <li><span class="fa-li">{{fa-icon icon='square'}}</span>in lists</li>
 </ul>
+
 <h3>Animation (Spin)</h3>
-{{fa-icon icon='sync' spin=true}}
+{{fa-icon icon='sync' spin=true}}<br/>
+{{fa-icon icon='sync' spin=isSpinning}} {{input type="checkbox" checked=isSpinning}} Spin it
+
+<h3>Animation (Pulse)</h3>
+{{fa-icon icon='cog' pulse=true}}<br/>
+{{fa-icon icon='cog' pulse=isPulsing}} {{input type="checkbox" checked=isPulsing}} Pulse it
 
 {{outlet}}

@@ -63,3 +63,17 @@ test('it renders coffee positional', function(assert) {
   assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-coffee'))
   assert.equal(this.$('svg path').attr('d'), faCoffee.icon[4])
 })
+
+test('it optionally renders fa-spin class', function(assert){
+  assert.expect(3)
+  this.set('faCoffee', faCoffee)
+  this.set('isSpinning', false)
+
+  this.render(hbs`{{fa-icon icon=faCoffee spin=isSpinning}}`)
+
+  assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should not include fa-spin class')
+  this.set('isSpinning', true)
+  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should include fa-spin class')
+  this.set('isSpinning', true)
+  assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should not include fa-spin class')
+})
