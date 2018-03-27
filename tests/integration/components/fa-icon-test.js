@@ -65,7 +65,7 @@ test('it renders coffee positional', function(assert) {
 })
 
 test('it optionally renders fa-spin class', function(assert){
-  assert.expect(3)
+  assert.expect(2)
   this.set('faCoffee', faCoffee)
   this.set('isSpinning', false)
 
@@ -74,6 +74,4 @@ test('it optionally renders fa-spin class', function(assert){
   assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should not include fa-spin class')
   this.set('isSpinning', true)
   assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should include fa-spin class')
-  this.set('isSpinning', true)
-  assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should not include fa-spin class')
 })

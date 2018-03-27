@@ -9,7 +9,7 @@ function objectWithKey (key, value) {
   return ((Array.isArray(value) && value.length > 0) || (!Array.isArray(value) && value)) ? {[key]: value} : {}
 }
 
-function classList () {
+function classList (previousClasses) {
   let classes = {
     'fa-spin': this.get('spin'),
     'fa-pulse': this.get('pulse'),
@@ -26,6 +26,7 @@ function classList () {
   return Object.keys(classes)
     .map(key => classes[key] ? key : null)
     .filter(key => key)
+    .concat(previousClasses.filter(c => !c.match(/^fa-/)))
 }
 
 function normalizeIconArgs (prefix, icon) {
@@ -87,7 +88,7 @@ const IconComponent = Component.extend({
     /* eslint ember/no-attrs-in-components: 0 */
     if('_frameworkStyle' in this.attrs) throw new Error('_frameworkStyle attribute is reserved for internal use and may not be set from a template')
     const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
-    const classes = objectWithKey('classes', [...classList.bind(this)(), ...this.getWithDefault('class', '').split(' ')])
+    const classes = objectWithKey('classes', [...classList.bind(this)(this.getWithDefault('class', '').split(' '))])
     const transformProp = this.get('transform')
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
