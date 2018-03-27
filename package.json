@@ -8,7 +8,9 @@
   ],
   "license": "MIT",
   "contributors": [
-    "Mike Wilkerson <mwilkerson@gmail.com>"
+    "Mike Wilkerson <mwilkerson@gmail.com>",
+    "Ilya Radchenko <knownasilya@gmail.com>",
+    "Jonathan Johnson <jon.johnson@ucsf.edu>"
   ],
   "directories": {
     "doc": "doc",
