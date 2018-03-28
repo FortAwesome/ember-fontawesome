@@ -52,7 +52,7 @@ FontAwesomePack.prototype.build = function() {
   const packageContents = `
     export { 
       ${ selectedIcons.join(',') } 
-    }  from '@fortawesome/${this.options.pack}/shakable.es.js'
+    }  from '@fortawesome/${this.options.pack}/index.es.js'
   `
   const _thisPlugin = this
   return new Promise(function(resolve, reject) {

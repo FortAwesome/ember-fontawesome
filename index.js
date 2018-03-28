@@ -17,7 +17,7 @@ module.exports = {
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
       const iconExportsFile = `exports-${pack}.js`
       const iconPackTree = new FontAwesomePack(
-        [new UnwatchedDir('node_modules/@fortawesome')],
+        [new UnwatchedDir('node_modules/@fortawesome/fontawesome-svg-core')],
         {
           pack,
           icons: this.fontawesomeConfig.icons[pack],
@@ -45,7 +45,7 @@ module.exports = {
       iconRollups.push(rollupNode)
     })
 
-    const fontawesomeRollup = new Rollup(new UnwatchedDir('node_modules/@fortawesome/fontawesome'), {
+    const fontawesomeRollup = new Rollup(new UnwatchedDir('node_modules/@fortawesome/fontawesome-svg-core'), {
       rollup: {
         input: 'index.es.js',
         output: {
@@ -53,14 +53,14 @@ module.exports = {
           exports: 'named',
           format: 'amd',
           amd: {
-            id:'@fortawesome/fontawesome'
+            id:'@fortawesome/fontawesome-svg-core'
           }
         },
         plugins: [
           resolve()
         ]
       },
-      name: 'fontawesome'
+      name: 'fontawesome-svg-core'
     })
 
     const autoLibraryNode = new FontAwesomeAutoLibrary({
@@ -82,31 +82,32 @@ module.exports = {
     // @TODO: look for any addons contributing config. maybe enumerated in this.app.options.addons
     let fontawesomeConfig
     if(! (fontawesomeConfig = this.app.options.fontawesome) ) {
-      fontawesomeConfig = glob.sync('node_modules/@fortawesome/fontawesome-@(free|pro)*')
+      fontawesomeConfig = glob.sync('node_modules/@fortawesome/@(free|pro)-*-svg-icons')
         .map(i => i.split('/').pop())
         .reduce((acc, cur) => {
           acc.icons[cur] = 'all'
-          return acc}, {icons: {}})
+          return acc
+        }, {icons: {}})
     }
     if(Object.keys(fontawesomeConfig.icons).length === 0) {
       this.ui.writeWarnLine(
         'No icons are included in your build configuration.\n'+
         'Any icon packs you install under node_modules will be bundled into vendor.js\n'+
         'and added to the icon library by default.\n\n'+
-        "For example, 'yarn add @fortawesome/fontawesome-free-solid' would add all of the icons in that pack.\n\n"+
+        "For example, 'npm install --save-dev @fortawesome/free-solid-svg-icons' would add all of the icons in that pack.\n\n"+
         'To declare a subset of icons, after adding some icon packs as shown above,\n'+
         'modify your ember-cli-build.js and add a fontawesome config object.\n'+
-        'The following example declares that all icons in fontawesome-free-solid should be\n'+
+        'The following example declares that all icons in free-solid-svg-icons should be\n'+
         'included in the vendor.js bundle add added to the library,\n'+
-        'and for fontawesome-pro-light, only faAdjust and faAmbulance are to be included in the\n'+
+        'and for pro-light-svg-icons, only faAdjust and faAmbulance are to be included in the\n'+
         'bundle and added to the library.\n'+
         '// ...\n'+
         'let app = new EmberApp(defaults, {\n'+
         '  // Add options here\n'+
         '  fontawesome: {\n'+
         '    icons: {\n'+
-        "      'fontawesome-free-solid': 'all'\n"+
-        "      'fontawesome-pro-light': [\n"+
+        "      'free-solid-svg-icons': 'all'\n"+
+        "      'pro-light-svg-icons': [\n"+
         "        'faAdjust',\n"+
         "        'faAmbulance'\n"+
         '       ]\n'+
@@ -115,11 +116,6 @@ module.exports = {
       )
     }
     return fontawesomeConfig
-  },
-  contentFor(type) {
-    if (type === 'head') {
-      return '<script type="text/javascript">window.FontAwesomeConfig = { autoReplaceSvg: false, observeMutations: false }</script>';
-    }
   },
   included(app) {
     this._super.included.apply(this, arguments)
@@ -140,6 +136,4 @@ module.exports = {
     })
     app.import('vendor/autoLibrary.js')
   }
-
 }
-

@@ -8,7 +8,7 @@ module.exports = function(defaults) {
     // Add options here
     fontawesome: {
       icons: {
-        'fontawesome-free-solid': [
+        'free-solid-svg-icons': [
           'faCoffee',
           'faMagic',
           'faCircle',
@@ -22,7 +22,7 @@ module.exports = function(defaults) {
           'faCheckSquare',
           'faSync'
         ],
-        'fontawesome-free-regular': 'all',
+        'free-regular-svg-icons': 'all',
       }
     }
   })

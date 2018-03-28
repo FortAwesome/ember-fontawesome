@@ -39,7 +39,7 @@ FontAwesomeAutoLibrary.prototype.build = function() {
   const _thisPlugin = this
   const moduleContents = `
     (function(){
-      var _fontawesome = require('@fortawesome/fontawesome');
+      var _fontawesome = require('@fortawesome/fontawesome-svg-core');
       var pack;
       ${Object.keys(_thisPlugin.options.icons).map(function(i){
         const addAll = _thisPlugin.options.icons[i] === 'all'

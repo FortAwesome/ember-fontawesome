@@ -1,5 +1,5 @@
 import Controller from '@ember/controller'
-import { faCoffee, faSquare } from '@fortawesome/fontawesome-free-solid'
+import { faCoffee, faSquare } from '@fortawesome/free-solid-svg-icons'
 
 export default Controller.extend({
   faCoffee,
