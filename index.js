@@ -10,6 +10,7 @@ var glob = require('glob')
 
 module.exports = {
   name: '@fortawesome/ember-fontawesome',
+  fontawesomeConfig: null,
 
   treeForVendor(vendorTree) {
     const iconRollups = []
@@ -77,18 +78,24 @@ module.exports = {
   },
 
   buildConfig() {
-    // 1. start with this.app.options.fontawesome (what the host app configs in ember-cli-fontawesome)
-    // 2. in some circumstance (when nothing is defined?), automatically configure whatever is there under node_modules
+    // 1. start with the host app configuration
+    // 2. If no icons are defined, automatically configure whatever is there under node_modules
     // @TODO: look for any addons contributing config. maybe enumerated in this.app.options.addons
-    let fontawesomeConfig
-    if(! (fontawesomeConfig = this.app.options.fontawesome) ) {
-      fontawesomeConfig = glob.sync('node_modules/@fortawesome/@(free|pro)-*-svg-icons')
+    let addonOptions = (this.parent && this.parent.options) || (this.app && this.app.options) || {};
+    let fontawesomeConfig;
+    fontawesomeConfig = addonOptions['fontawesome'] || {
+      icons: {}
+    };
+
+    if (Object.keys(fontawesomeConfig.icons).length === 0) {
+      glob.sync('node_modules/@fortawesome/@(free|pro)-*-svg-icons')
         .map(i => i.split('/').pop())
         .reduce((acc, cur) => {
           acc.icons[cur] = 'all'
           return acc
-        }, {icons: {}})
+        }, fontawesomeConfig);
     }
+
     if(Object.keys(fontawesomeConfig.icons).length === 0) {
       this.ui.writeWarnLine(
         'No icons are included in your build configuration.\n'+
