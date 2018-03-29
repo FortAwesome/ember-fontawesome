@@ -16,8 +16,8 @@ function classList (previousClasses) {
     'fa-fw': this.get('fixedWidth'),
     'fa-border': this.get('border'),
     'fa-li': this.get('listItem'),
-    'fa-flip-horizontal': this.get('flipHorizontal'),
-    'fa-flip-vertical': this.get('flipVertical'),
+    'fa-flip-horizontal': this.get('flip') === 'horizontal' || this.get('flip') === 'both',
+    'fa-flip-vertical': this.get('flip') === 'vertical' || this.get('flip') === 'both',
     [`fa-${this.get('size')}`]: this.getWithDefault('size', null) !== null,
     [`fa-rotate-${this.get('rotation')}`]: this.getWithDefault('rotation', null) !== null,
     [`fa-pull-${this.get('pull')}`]: this.getWithDefault('pull', null) !== null
