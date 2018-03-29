@@ -7,6 +7,7 @@ module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
     fontawesome: {
+      enableExperimentalBuildTimeTransform: true,
       icons: {
         'free-solid-svg-icons': [
           'faCoffee',
