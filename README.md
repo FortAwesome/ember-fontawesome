@@ -4,6 +4,32 @@
 
 > Font Awesome 5 Ember component using SVG with JS
 
+<!-- toc -->
+
+- [Introduction](#introduction)
+    + [Upgrading Font Awesome?](#upgrading-font-awesome)
+    + [Get started](#get-started)
+    + [Learn about our new SVG implementation](#learn-about-our-new-svg-implementation)
+    + [Going from 0.0.x to 0.1.0](#going-from-00x-to-010)
+- [Installation](#installation)
+- [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
+- [or with Yarn](#or-with-yarn)
+- [Subsetting icons](#subsetting-icons)
+- [Usage](#usage)
+  * [Template](#template)
+  * [Icon objects](#icon-objects)
+- [Features](#features)
+  * [Basic](#basic)
+  * [Advanced](#advanced)
+- [Contributing to Development](#contributing-to-development)
+  * [Running](#running)
+  * [Running Tests](#running-tests)
+  * [Building](#building)
+
+<!-- tocstop -->
+
+## Introduction
+
 Hey there! We're glad you're here...
 
 #### Upgrading Font Awesome?
@@ -105,7 +131,7 @@ let app = new EmberApp(defaults, {
 
 ## Usage
 
-The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
+### Template
 
 This is what it can look like in your template:
 
@@ -124,6 +150,8 @@ Without a prefix specified, the default `fas` is assumed:
 ```hbs
 {{fa-icon 'square' prefix='far'}}
 ```
+
+### Icon objects
 
 You can also import the icon objects from the icon packs and make them
 available to your templates.
@@ -147,11 +175,11 @@ Then in a template:
 This object knows its own prefix, by the way, so it wouldn't be necessary to
 use `prefix=` for disambiguation.
 
-Make it fancier with a mask:
+## Features
 
-```hbs
-{{fa-icon 'circle' transform='shrink-9 right-4' mask=faSquare}}
-```
+The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
+
+### Basic
 
 Spin and pulse animation:
 
@@ -199,6 +227,8 @@ Pull left or right:
 {{fa-icon 'coffee' pull='left'}}
 {{fa-icon 'coffee' pull='right'}}
 ```
+
+### Advanced
 
 Power Transforms:
 
