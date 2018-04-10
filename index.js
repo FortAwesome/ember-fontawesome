@@ -7,6 +7,7 @@ var resolve = require('rollup-plugin-node-resolve')
 var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
 var glob = require('glob')
+var buildAstTransform = require('./lib/ast-transform');
 
 module.exports = {
   name: '@fortawesome/ember-fontawesome',
@@ -84,6 +85,7 @@ module.exports = {
     let addonOptions = (this.parent && this.parent.options) || (this.app && this.app.options) || {};
     let fontawesomeConfig;
     fontawesomeConfig = addonOptions['fontawesome'] || {
+      enableExperimentalBuildTimeTransform: false,
       icons: {}
     };
 
@@ -137,10 +139,31 @@ module.exports = {
     this.app = app
 
     this.fontawesomeConfig = this.buildConfig()
+
+    this.setupPreprocessorRegistryAfterConfiguration('parent', app.registry);
+
     app.import('vendor/fontawesome.js')
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
       app.import(`vendor/${pack}.js`)
     })
     app.import('vendor/autoLibrary.js')
-  }
+  },
+
+  /**
+   * setupPreprocessorRegistry is called before included
+   * see https://github.com/ember-cli/ember-cli/issues/3701
+   * as a workaround we ignore that hook and call this method from included
+   */
+  setupPreprocessorRegistryAfterConfiguration(type, registry) {
+    if (this.fontawesomeConfig.enableExperimentalBuildTimeTransform) {
+      registry.add('htmlbars-ast-plugin', {
+        name: 'font-awesome-static-transform',
+        plugin: buildAstTransform(this),
+        baseDir() {
+          return __dirname;
+        },
+      });
+    }
+  },
+
 }

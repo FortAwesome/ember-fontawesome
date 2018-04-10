@@ -37,12 +37,14 @@
     "broccoli-rollup": "^2.0.0",
     "broccoli-source": "^1.1.0",
     "broccoli-stew": "^1.5.0",
+    "ember-ast-helpers": "0.3.5",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.3",
     "glob": "^7.1.2",
     "rollup-plugin-node-resolve": "^3.0.2"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.1.0-7",
     "@fortawesome/free-regular-svg-icons": "^5.1.0-7",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-7",
     "broccoli-asset-rev": "^2.4.5",
