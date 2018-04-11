@@ -4,30 +4,55 @@
 
 > Font Awesome 5 Ember component using SVG with JS
 
+<!-- toc -->
+
+- [Introduction](#introduction)
+  * [Upgrading Font Awesome?](#upgrading-font-awesome)
+  * [Get started](#get-started)
+  * [Learn about our new SVG implementation](#learn-about-our-new-svg-implementation)
+  * [Going from 0.0.x to 0.1.0](#going-from-00x-to-010)
+- [Installation](#installation)
+  * [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
+  * [Subsetting icons](#subsetting-icons)
+- [Usage](#usage)
+  * [Template](#template)
+  * [Icon objects](#icon-objects)
+- [Features](#features)
+  * [Basic](#basic)
+  * [Advanced](#advanced)
+- [Contributing to Development](#contributing-to-development)
+  * [Running](#running)
+  * [Running Tests](#running-tests)
+  * [Building](#building)
+
+<!-- tocstop -->
+
+## Introduction
+
 Hey there! We're glad you're here...
 
-#### Upgrading Font Awesome?
+### Upgrading Font Awesome?
 
 If you've used Font Awesome in the past (version 4 or older) there are some
 things that you should learn before you dive in.
 
 > https://fontawesome.com/how-to-use/upgrading-from-4
 
-#### Get started
+### Get started
 
 This package is for integrating with Ember.js. If you aren't using Ember then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
 > https://fontawesome.com/get-started
 
-#### Learn about our new SVG implementation
+### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
 > https://fontawesome.com/how-to-use/svg-with-js
 
-#### Going from 0.0.x to 0.1.0
+### Going from 0.0.x to 0.1.0
 
 See [UPGRADING.md](./UPGRADING.md).
 
@@ -47,7 +72,13 @@ We need at least one style. Let's start with the free version of Solid.
 $ npm i --save-dev @fortawesome/free-solid-svg-icons
 ```
 
-## Add more styles or Pro icons
+or with Yarn
+
+```
+$ yarn add --dev @fortawesome/free-solid-svg-icons
+```
+
+### Add more styles or Pro icons
 
 Brands are separated into their own style and for customers upgrading from
 version 4 to 5 we have a limited number of Regular icons available.
@@ -73,13 +104,7 @@ $ npm i --save-dev @fortawesome/pro-light-svg-icons
 
 Using the Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/js-component-packages).
 
-## or with Yarn
-
-```
-$ yarn add --dev @fortawesome/free-solid-svg-icons
-```
-
-## Subsetting icons
+### Subsetting icons
 
 If you want to include only a subset of icons from an icon pack, add a
 `fontawesome` configuration object to your applications options in
@@ -105,7 +130,7 @@ let app = new EmberApp(defaults, {
 
 ## Usage
 
-The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
+### Template
 
 This is what it can look like in your template:
 
@@ -124,6 +149,8 @@ Without a prefix specified, the default `fas` is assumed:
 ```hbs
 {{fa-icon 'square' prefix='far'}}
 ```
+
+### Icon objects
 
 You can also import the icon objects from the icon packs and make them
 available to your templates.
@@ -147,11 +174,11 @@ Then in a template:
 This object knows its own prefix, by the way, so it wouldn't be necessary to
 use `prefix=` for disambiguation.
 
-Make it fancier with a mask:
+## Features
 
-```hbs
-{{fa-icon 'circle' transform='shrink-9 right-4' mask=faSquare}}
-```
+The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
+
+### Basic
 
 Spin and pulse animation:
 
@@ -199,6 +226,8 @@ Pull left or right:
 {{fa-icon 'coffee' pull='left'}}
 {{fa-icon 'coffee' pull='right'}}
 ```
+
+### Advanced
 
 Power Transforms:
 
