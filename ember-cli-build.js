@@ -10,18 +10,18 @@ module.exports = function(defaults) {
       enableExperimentalBuildTimeTransform: true,
       icons: {
         'free-solid-svg-icons': [
-          'faCoffee',
-          'faMagic',
-          'faCircle',
-          'faSquare',
-          'faHome',
-          'faInfo',
-          'faBook',
-          'faPencilAlt',
-          'faCog',
-          'faSpinner',
-          'faCheckSquare',
-          'faSync'
+          'coffee',
+          'magic',
+          'circle',
+          'square',
+          'home',
+          'info',
+          'book',
+          'pencilAlt',
+          'cog',
+          'spinner',
+          'checkSquare',
+          'sync'
         ],
         'free-regular-svg-icons': 'all',
       }

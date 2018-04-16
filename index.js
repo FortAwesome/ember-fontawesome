@@ -122,8 +122,8 @@ module.exports = {
         '    icons: {\n'+
         "      'free-solid-svg-icons': 'all'\n"+
         "      'pro-light-svg-icons': [\n"+
-        "        'faAdjust',\n"+
-        "        'faAmbulance'\n"+
+        "        'adjust',\n"+
+        "        'ambulance'\n"+
         '       ]\n'+
         '    }\n'+
         '});'
