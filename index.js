@@ -8,6 +8,8 @@ var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
 var glob = require('glob')
 var buildAstTransform = require('./lib/ast-transform');
+var writeFile = require('broccoli-file-creator');
+const { config, dom } = require('@fortawesome/fontawesome-svg-core');
 
 module.exports = {
   name: '@fortawesome/ember-fontawesome',
@@ -70,12 +72,15 @@ module.exports = {
       output: 'autoLibrary.js'
     })
 
+    const fontawesomeStyles = writeFile('fontawesome.css', dom.css());
+
     return new MergeTrees([
       vendorTree,
       fontawesomeRollup,
       autoLibraryNode,
-      ...iconRollups
-    ])
+      ...iconRollups,
+      fontawesomeStyles
+    ]);
   },
 
   buildConfig() {
@@ -147,6 +152,9 @@ module.exports = {
       app.import(`vendor/${pack}.js`)
     })
     app.import('vendor/autoLibrary.js')
+
+    config.autoAddCss = false;
+    app.import('vendor/fontawesome.css');
   },
 
   /**
