@@ -150,30 +150,6 @@ Without a prefix specified, the default `fas` is assumed:
 {{fa-icon 'square' prefix='far'}}
 ```
 
-### Icon objects
-
-You can also import the icon objects from the icon packs and make them
-available to your templates.
-
-```js
-import Controller from '@ember/controller'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
-export default Controller.extend({
-  faCoffee,
-  // ...
-});
-```
-
-Then in a template:
-
-```hbs
-{{fa-icon faCoffee}}
-```
-
-This object knows its own prefix, by the way, so it wouldn't be necessary to
-use `prefix=` for disambiguation.
-
 ## Features
 
 The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
@@ -238,7 +214,7 @@ Power Transforms:
 Masking:
 
 ```hbs
-{{fa-icon 'coffee' transform='shrink-6' mask=faCircle}}
+{{fa-icon 'coffee' transform='shrink-6' mask='circle'}}
 ```
 
 Symbols:

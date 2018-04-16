@@ -1,10 +1,9 @@
 <h3>Basic Usage</h3>
 {{fa-icon 'coffee'}} (with icon name, after adding icon object to the library)<br/>
-{{fa-icon faCoffee}} (with the icon object explicitly, regardless of library)<br/>
 {{fa-icon icon='coffee' class='foo'}} (explictly using icon attribute, and with additional class name)
 <h3>Mask with Transform</h3>
 <p>(expected: black square with white dot inside, pushed to the right side)</p>
-{{fa-icon icon='circle' transform="shrink-9 right-4" mask=faSquare}}
+{{fa-icon icon='circle' transform="shrink-9 right-4" mask='square'}}
 <h3>Default fas prefix versus specifying a different prefix for the same icon name</h3>
 {{fa-icon icon='square'}}
 {{fa-icon prefix='far' icon='square'}}
