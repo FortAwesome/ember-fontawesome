@@ -38,6 +38,7 @@
     "broccoli-rollup": "^2.0.0",
     "broccoli-source": "^1.1.0",
     "broccoli-stew": "^1.5.0",
+    "camel-case": "^3.0.0",
     "ember-ast-helpers": "0.3.5",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.3",

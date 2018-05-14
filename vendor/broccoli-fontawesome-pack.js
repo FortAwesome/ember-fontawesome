@@ -3,6 +3,7 @@
 var Plugin = require('broccoli-plugin')
 var path = require('path')
 var fs = require('fs')
+var camelCase = require('camel-case')
 var { config } = require('@fortawesome/fontawesome-svg-core');
 
 module.exports = FontAwesomePack
@@ -47,13 +48,15 @@ FontAwesomePack.prototype.build = function() {
   if(this.options.icons === 'all'){
     selectedIcons = Object.keys(pack[pack.prefix])
   } else {
+    const prefix = config.familyPrefix;
+    //Look for icons which already contain the prefix as eg `faPencil` or `fa-pencil` without catching `fax`
+    const regexp = new RegExp(`^${prefix}([A-Z]|-)`);
     selectedIcons = this.options.icons.map(iconName => {
-      const prefix = config.familyPrefix;
-      if (iconName.substr(0, 2) === prefix) {
-        return iconName;
+      if (!regexp.test(iconName)) {
+        iconName = `${prefix}-${iconName}`;
       }
 
-      return prefix + iconName.charAt(0).toUpperCase() + iconName.substr(1);
+      return camelCase(iconName);
     });
   }
 

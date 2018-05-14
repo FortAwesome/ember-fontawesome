@@ -17,10 +17,11 @@ module.exports = function(defaults) {
           'home',
           'info',
           'book',
-          'pencilAlt',
+          'pencil-alt',
           'cog',
           'spinner',
           'checkSquare',
+          'fax',
           'sync'
         ],
         'free-regular-svg-icons': 'all',

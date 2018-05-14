@@ -110,8 +110,8 @@ If you want to include only a subset of icons from an icon pack, add a
 `fontawesome` configuration object to your applications options in
 `ember-cli-build.js`. The following example declares that all icons in
 `free-solid-svg-icons` should be included in the `vendor.js` bundle add
-added to the library, and for `pro-light-svg-icons`, only `adjust` and
-`ambulance` are to be included in the bundle and added to the library.
+added to the library, and for `pro-light-svg-icons`, only `adjust`,
+`ambulance`, and `pencil-alt` are to be included in the bundle and added to the library.
 
 ```
 // ...
@@ -122,7 +122,8 @@ let app = new EmberApp(defaults, {
       'free-solid-svg-icons': 'all'
       'pro-light-svg-icons': [
         'adjust',
-        'ambulance'
+        'ambulance',
+        'pencil-alt'
        ]
     }
 })
