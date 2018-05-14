@@ -4,7 +4,6 @@ import Ember from 'ember'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/string'
 import { computed } from '@ember/object'
-import { deprecate } from '@ember/application/deprecations';
 
 function objectWithKey (key, value) {
   return ((Array.isArray(value) && value.length > 0) || (!Array.isArray(value) && value)) ? {[key]: value} : {}
@@ -36,14 +35,6 @@ function normalizeIconArgs (prefix, icon) {
   }
 
   if (typeof icon === 'object' && icon.prefix && icon.iconName) {
-    deprecate(
-      `Passing an icon object is no longer supported, use the icon name as a string instead ({{fa-icon '${icon.iconName}'}}). `,
-      false,
-      {
-        id: 'ember-fontawesome-no-object',
-        until: '0.2.0'
-      }
-    );
     return icon
   }
 
