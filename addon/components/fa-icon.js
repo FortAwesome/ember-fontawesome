@@ -30,8 +30,8 @@ function classList (previousClasses) {
 }
 
 function normalizeIconArgs (prefix, icon) {
-  if (icon === null) {
-    return null
+  if (!icon) {
+    return { prefix: 'fas', iconName: null };
   }
 
   if (typeof icon === 'object' && icon.prefix && icon.iconName) {
