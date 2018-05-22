@@ -7,7 +7,7 @@ import { computed, getWithDefault } from '@ember/object'
 import appConfig from 'ember-get-config';
 
 function getConfigOption (key, defaultValue) {
-  return getWithDefault(appConfig, `environment.fontawesome.${key}`, defaultValue);
+  return getWithDefault(appConfig, `fontawesome.${key}`, defaultValue);
 }
 
 function objectWithKey (key, value) {
