@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.1.0-7",
+  "version": "0.1.0-8",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -13,7 +13,8 @@
     "Jonathan Johnson <jon.johnson@ucsf.edu>",
     "Rob Madole <robmadole@gmail.com>",
     "Tom Carter <tomc@spiceworks.com>",
-    "Julien Guimont <julien.guimont@gmail.com>"
+    "Julien Guimont <julien.guimont@gmail.com>",
+    "Xaser Acheron <github.com/XaserAcheron>"
   ],
   "directories": {
     "doc": "doc",

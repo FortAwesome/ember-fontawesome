@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
-## [0.1.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.0) - 2018-00-00
+## [0.1.0-8](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.0-8) - 2018-05-25
 
-### Changed
-* Upgrading to Font Awesome 5.1.0
+### Added
+* Ability to specify the default prefix in the configuration #35 #49
