@@ -131,6 +131,28 @@ let app = new EmberApp(defaults, {
 
 ## Usage
 
+### Configuration
+
+Out of the box, icons will use the Solid style unless a prefix is manually specified.
+To change the default to Regular or Light, add a `fontawesome` configuration object
+to your application's `environment.js` and set the `defaultPrefix` option.
+
+```js
+module.exports = function(environment) {
+  let ENV = {
+    // Add options here
+    fontawesome: {
+      defaultPrefix: 'fal' // light icons
+    }
+  };
+  // ...
+  return ENV;
+};
+```
+
+As a reminder, the free version of Font Awesome does not include a complete set of icons
+for any style other than Solid, so this setting is recommended only for Pro subscribers.
+
 ### Template
 
 This is what it can look like in your template:
@@ -139,13 +161,13 @@ This is what it can look like in your template:
 {{fa-icon 'coffee'}}
 ```
 
-Without a prefix specified, the default `fas` is assumed:
+Without a prefix specified, the default specified in `environment.js` (or `fas`, if none set) is assumed:
 
 ```hbs
 {{fa-icon 'square'}}
 ```
 
-**If you want to use an icon from any style other than solid, you must use `prefix=`.**
+If you want to use an icon from any style other than the default, use `prefix=`.
 
 ```hbs
 {{fa-icon 'square' prefix='far'}}
