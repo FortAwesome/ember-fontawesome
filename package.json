@@ -43,6 +43,7 @@
     "ember-ast-helpers": "0.3.5",
     "ember-cli-babel": "^6.6.0",
     "ember-cli-htmlbars": "^2.0.3",
+    "ember-get-config": "^0.2.4",
     "glob": "^7.1.2",
     "rollup-plugin-node-resolve": "^3.0.2"
   },

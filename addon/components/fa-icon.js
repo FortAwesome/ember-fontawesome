@@ -3,7 +3,12 @@ import layout from '../templates/components/fa-icon'
 import Ember from 'ember'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/string'
-import { computed } from '@ember/object'
+import { computed, getWithDefault } from '@ember/object'
+import appConfig from 'ember-get-config';
+
+function getConfigOption (key, defaultValue) {
+  return getWithDefault(appConfig, `fontawesome.${key}`, defaultValue);
+}
 
 function objectWithKey (key, value) {
   return ((Array.isArray(value) && value.length > 0) || (!Array.isArray(value) && value)) ? {[key]: value} : {}
@@ -30,8 +35,10 @@ function classList (previousClasses) {
 }
 
 function normalizeIconArgs (prefix, icon) {
+  const defaultPrefix = getConfigOption('defaultPrefix', 'fas');
+
   if (!icon) {
-    return { prefix: 'fas', iconName: null };
+    return { prefix: defaultPrefix, iconName: null };
   }
 
   if (typeof icon === 'object' && icon.prefix && icon.iconName) {
@@ -43,7 +50,7 @@ function normalizeIconArgs (prefix, icon) {
   }
 
   if (typeof icon === 'string') {
-    return { prefix: 'fas', iconName: icon }
+    return { prefix: defaultPrefix, iconName: icon }
   }
 }
 
