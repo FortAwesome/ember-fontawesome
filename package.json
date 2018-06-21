@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.1.0-8",
+  "version": "0.1.0",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -32,7 +32,7 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.0-10",
+    "@fortawesome/fontawesome-svg-core": "^1.2.0",
     "broccoli-file-creator": "^1.1.1",
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^2.0.0",
@@ -49,9 +49,9 @@
     "rollup-plugin-node-resolve": "^3.0.2"
   },
   "devDependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.1.0-7",
-    "@fortawesome/free-regular-svg-icons": "^5.1.0-7",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-7",
+    "@fortawesome/free-brands-svg-icons": "^5.1.0",
+    "@fortawesome/free-regular-svg-icons": "^5.1.0",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0",
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-viz": "^4.0.0",
     "ember-ajax": "^3.0.0",

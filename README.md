@@ -296,9 +296,8 @@ For more information on using ember-cli, visit [https://ember-cli.com/](https://
 1. Edit `package.json` and update the version number
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
-1. `npm build` and `npm test`
+1. `npm run build` and `npm test`
 1. `npm publish`
-1. `npm dist-tags add @fortawesome/ember-fontawesome@VERSION prerelease`
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`
 1. Create a [new release](https://github.com/FortAwesome/ember-fontawesome/releases/new) with `CHANGELOG` details
