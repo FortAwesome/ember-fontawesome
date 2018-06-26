@@ -40,21 +40,21 @@ Hey there! We're glad you're here...
 If you've used Font Awesome in the past (version 4 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/how-to-use/upgrading-from-4
+> https://fontawesome.com/how-to-use/on-the-web/setup/upgrading-from-version-4
 
 ### Get started
 
 This package is for integrating with Ember.js. If you aren't using Ember then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/get-started
+> https://fontawesome.com/how-to-use/on-the-web/setup/getting-started
 
 ### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/how-to-use/svg-with-js
+> https://fontawesome.com/how-to-use/on-the-web/advanced/svg-javascript-core
 
 ### Going from 0.0.x to 0.1.0
 
@@ -106,7 +106,7 @@ $ npm i --save-dev @fortawesome/pro-regular-svg-icons
 $ npm i --save-dev @fortawesome/pro-light-svg-icons
 ```
 
-Using the Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/js-component-packages).
+Using the Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
 
 ### Subsetting icons
 
@@ -179,26 +179,28 @@ If you want to use an icon from any style other than the default, use `prefix=`.
 
 ## Features
 
-The following features are available as [part of Font Awesome](https://fontawesome.com/how-to-use/svg-with-js).
+The following features are available as part of Font Awesome. Note that the syntax is different from our general web-use documentation.
 
 ### Basic
 
-Spin and pulse animation:
+[Size](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons):
 
 ```hbs
-{{fa-icon 'coffee' spin=true}}
+{{fa-icon 'coffee' size='4x'}}
 ```
 
-Fixed width:
+[Fixed width](https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons):
 
 ```hbs
 {{fa-icon 'coffee' fixedWidth=true}}
 ```
 
-Border:
+[Rotate](https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons):
 
 ```hbs
-{{fa-icon 'coffee' border=true}}
+{{fa-icon 'coffee' rotation=90}}
+{{fa-icon 'coffee' rotation=180}}
+{{fa-icon 'coffee' rotation=270}}
 ```
 
 Flip horizontally, vertically, or both:
@@ -209,21 +211,19 @@ Flip horizontally, vertically, or both:
 {{fa-icon 'coffee' flip='both'}}
 ```
 
-Size:
+Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons):
 
 ```hbs
-{{fa-icon 'coffee' size='4x'}}
+{{fa-icon 'coffee' spin=true}}
 ```
 
-Rotate:
+[Border](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons):
 
 ```hbs
-{{fa-icon 'coffee' rotation=90}}
-{{fa-icon 'coffee' rotation=180}}
-{{fa-icon 'coffee' rotation=270}}
+{{fa-icon 'coffee' border=true}}
 ```
 
-Pull left or right:
+[Pull left or right](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons):
 
 ```hbs
 {{fa-icon 'coffee' pull='left'}}
@@ -232,25 +232,25 @@ Pull left or right:
 
 ### Advanced
 
-Power Transforms:
+[Power Transforms]((https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)):
 
 ```hbs
 {{fa-icon 'coffee' transform='shrink-6 rotate-30'}}
 ```
 
-Masking:
+[Masking](https://fontawesome.com/how-to-use/on-the-web/styling/masking):
 
 ```hbs
 {{fa-icon 'coffee' transform='shrink-6' mask='circle'}}
 ```
 
-Symbols:
+[Symbols](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-symbols):
 
 ```hbs
 {{fa-icon 'coffee' symbol=true}}
 ```
 
-Layers:
+[Layers](https://fontawesome.com/how-to-use/on-the-web/styling/layering):
 
 ```html
 <span class="fa-layers fa-lg">
@@ -259,7 +259,7 @@ Layers:
 </span>
 ```
 
-Layers text:
+[Layers text](https://fontawesome.com/how-to-use/on-the-web/styling/layering):
 
 ```html
 <span class="fa-layers fa-lg">
