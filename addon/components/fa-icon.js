@@ -4,6 +4,7 @@ import Ember from 'ember'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/string'
 import { computed, getWithDefault } from '@ember/object'
+import { assign } from '@ember/polyfills';
 import appConfig from 'ember-get-config';
 
 function getConfigOption (key, defaultValue) {
@@ -101,7 +102,7 @@ const IconComponent = Component.extend({
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
     const symbol = this.getWithDefault('symbol', false)
 
-    const o = Object.assign({},
+    const o = assign({},
       classes,
       transform,
       mask,
