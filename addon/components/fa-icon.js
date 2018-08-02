@@ -1,3 +1,4 @@
+/*eslint no-console: ["error", { allow: ["warn"] }] */
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
