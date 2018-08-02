@@ -1,6 +1,5 @@
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
-import Ember from 'ember'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/string'
 import { computed, getWithDefault } from '@ember/object'
@@ -122,7 +121,7 @@ const IconComponent = Component.extend({
         }
       })
     } else {
-      Ember.Logger.warn(`Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}`)
+      console.warn(`Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}`)
       this.set('class', config.replacementClass)
       this.set('viewBox', '0 0 448 512')
     }
