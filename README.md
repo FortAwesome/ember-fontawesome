@@ -19,8 +19,8 @@
   * [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
   * [Subsetting icons](#subsetting-icons)
 - [Usage](#usage)
+  * [Configuration](#configuration)
   * [Template](#template)
-  * [Icon objects](#icon-objects)
 - [Features](#features)
   * [Basic](#basic)
   * [Advanced](#advanced)
@@ -28,6 +28,9 @@
   * [Running](#running)
   * [Running Tests](#running-tests)
   * [Building](#building)
+- [How to Help](#how-to-help)
+- [Contributors](#contributors)
+- [Releasing this project (only project owners can do this)](#releasing-this-project-only-project-owners-can-do-this)
 
 <!-- tocstop -->
 
@@ -291,13 +294,43 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
-### Publishing a release
+## How to Help
 
-1. Edit `package.json` and update the version number
-1. Add new contributors to the `contributors` section
-1. Update the `CHANGELOG.md`
-1. `npm run build` and `npm test`
-1. `npm publish`
-1. `git add . && git commit -m 'Release VERSION'`
-1. `git push`
-1. Create a [new release](https://github.com/FortAwesome/ember-fontawesome/releases/new) with `CHANGELOG` details
+Review the following docs before diving in:
+
+* [CONTRIBUTING.md](CONTRIBUTING.md)
+* [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+
+And then:
+
+1. Check the existing issue and see if you can help!
+
+## Contributors
+
+The following contributors have either hepled to start this project, have contributed
+code, are actively maintaining it (including documentation), or in other ways
+being awesome contributors to this project. **We'd like to take a moment to recognize them.**
+
+|                                                            | Name           | GitHub                                             |
+| :--------------------------------------------------------: | -------------- | -------------------------------------------------- |
+| <img src="https://github.com/knownasilya.png?size=72" />   | knownasilya    | [@knownasilya](https://github.com/knownasilya)     |
+| <img src="https://github.com/jrjohnson.png?size=72" />     | jrjohnson      | [@jrjohnson](https://github.com/jrjohnson)         |
+| <img src="https://github.com/ember-tomster.png?size=72" /> | ember-tomster  | [@ember-tomster](https://github.com/ember-tomster) |
+| <img src="https://github.com/juggy.png?size=72" />         | juggy          | [@juggy](https://github.com/juggy)                 |
+| <img src="https://github.com/XaserAcheron.png?size=72" />  | XaserAcheron   | [@XaserAcheron](https://github.com/XaserAcheron)   |
+|                                                            | samcic         | [@samcic](https://github.com/samcic)               |
+
+If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
+
+The Font Awesome team:
+
+|                                                            | Name           | GitHub                                             |
+| :--------------------------------------------------------: | -------------- | -------------------------------------------------- |
+| <img src="https://github.com/supercodepoet.png?size=72" /> | Travis Chase   | [@supercodepoet](https://github.com/supercodepoet) |
+| <img src="https://github.com/robmadole.png?size=72" />     | Rob Madole     | [@robmadole](https://github.com/robmadole)         |
+| <img src="https://github.com/mlwilkerson.png?size=72" />   | Mike Wilkerson | [@mlwilkerson](https://github.com/mlwilkerson)     |
+| <img src="https://github.com/talbs.png?size=72" />         | Brian Talbot   | [@talbs](https://github.com/talbs)                 |
+
+## Releasing this project (only project owners can do this)
+
+See [DEVELOPMENT.md](DEVELOPMENT.md#release)
