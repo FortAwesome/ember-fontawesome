@@ -18,7 +18,7 @@ test:all | Test all supported versions as specified in `config/ember-try.js`
 1. Edit `package.json` and update the version number
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
-1. `npm run build` and `npm test`
+1. `npm run build` and `npm run test:all`
 1. `npm publish`
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`

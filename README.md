@@ -311,14 +311,15 @@ The following contributors have either hepled to start this project, have contri
 code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
-|                                                            | Name           | GitHub                                             |
-| :--------------------------------------------------------: | -------------- | -------------------------------------------------- |
-| <img src="https://github.com/knownasilya.png?size=72" />   | knownasilya    | [@knownasilya](https://github.com/knownasilya)     |
-| <img src="https://github.com/jrjohnson.png?size=72" />     | jrjohnson      | [@jrjohnson](https://github.com/jrjohnson)         |
-| <img src="https://github.com/ember-tomster.png?size=72" /> | ember-tomster  | [@ember-tomster](https://github.com/ember-tomster) |
-| <img src="https://github.com/juggy.png?size=72" />         | juggy          | [@juggy](https://github.com/juggy)                 |
-| <img src="https://github.com/XaserAcheron.png?size=72" />  | XaserAcheron   | [@XaserAcheron](https://github.com/XaserAcheron)   |
-|                                                            | samcic         | [@samcic](https://github.com/samcic)               |
+|                                                            | Name             | GitHub                                             |
+| :--------------------------------------------------------: | ---------------- | -------------------------------------------------- |
+| <img src="https://github.com/knownasilya.png?size=72" />   | Ilya Radchenko   | [@knownasilya](https://github.com/knownasilya)     |
+| <img src="https://github.com/jrjohnson.png?size=72" />     | Jonathan Johnson | [@jrjohnson](https://github.com/jrjohnson)         |
+| <img src="https://github.com/ember-tomster.png?size=72" /> | ember-tomster    | [@ember-tomster](https://github.com/ember-tomster) |
+| <img src="https://github.com/juggy.png?size=72" />         | Julien Guimont   | [@juggy](https://github.com/juggy)                 |
+| <img src="https://github.com/XaserAcheron.png?size=72" />  | Xaser Acheron    | [@XaserAcheron](https://github.com/XaserAcheron)   |
+|                                                            | samcic           | [@samcic](https://github.com/samcic)               |
+| <img src="https://github.com/josemarluedke.png?size=72" /> | Josemar Luedke   | [@josemarluedke](https://github.com/josemarluedke) |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
 

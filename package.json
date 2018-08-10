@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -23,7 +23,8 @@
     "Tom Carter <tomc@spiceworks.com>",
     "Julien Guimont <julien.guimont@gmail.com>",
     "Xaser Acheron <github.com/XaserAcheron>",
-    "samcic <github.com/samcic>"
+    "samcic <github.com/samcic>",
+    "Josemar Luedke <github.com/josemarluedke>"
   ],
   "homepage": "https://github.com/FortAwesome/ember-fontawesome",
   "scripts": {
@@ -80,7 +81,7 @@
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.1.0",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~3.2.0",
+    "ember-source": "~2.18.0",
     "ember-source-channel-url": "^1.0.1",
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "^5.0.0",
