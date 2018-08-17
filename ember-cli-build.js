@@ -6,27 +6,6 @@ const EmberAddon = require('ember-cli/lib/broccoli/ember-addon')
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     // Add options here
-    fontawesome: {
-      enableExperimentalBuildTimeTransform: true,
-      icons: {
-        'free-solid-svg-icons': [
-          'coffee',
-          'magic',
-          'circle',
-          'square',
-          'home',
-          'info',
-          'book',
-          'pencil-alt',
-          'cog',
-          'spinner',
-          'checkSquare',
-          'fax',
-          'sync'
-        ],
-        'free-regular-svg-icons': 'all',
-      }
-    }
   })
 
   /*
