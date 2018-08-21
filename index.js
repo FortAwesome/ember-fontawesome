@@ -83,27 +83,49 @@ module.exports = {
     ]);
   },
 
-  buildConfig() {
+  /**
+   * Read the configuration from `ember-cli-build` and `environment.js`
+   * and combine them with defaults to arrive at a complete configuration
+   *
+   * This work can't be done in the ember-cli `config` hook because it is run
+   * after `included` in some cases.
+   */
+  readConfig() {
+    const config = this.app.project.config();
+    const appConfig = config['fontawesome'] || {};
+    const configDefaults = {
+      enableExperimentalBuildTimeTransform: false,
+      icons: {},
+      defaultPrefix: 'fas',
+    };
+    let buildConfig = {};
+
+    let addonOptions = (this.parent && this.parent.options) || (this.app && this.app.options) || {};
+    if ('fontawesome' in addonOptions) {
+      this.ui.writeWarnLine(`fontawesome is no longer configured in 'ember-cli-build.js'.
+      All configuration should be moved to 'environment.js'.
+      See https://github.com/FortAwesome/ember-fontawesome#subsetting-icons for details.
+      `);
+      buildConfig = addonOptions.fontawesome;
+    }
+
+    this.fontawesomeConfig = Object.assign(configDefaults, buildConfig, appConfig);
+  },
+
+  includeIconPackages() {
     // 1. start with the host app configuration
     // 2. If no icons are defined, automatically configure whatever is there under node_modules
     // @TODO: look for any addons contributing config. maybe enumerated in this.app.options.addons
-    let addonOptions = (this.parent && this.parent.options) || (this.app && this.app.options) || {};
-    let fontawesomeConfig;
-    fontawesomeConfig = addonOptions['fontawesome'] || {
-      enableExperimentalBuildTimeTransform: false,
-      icons: {}
-    };
-
-    if (Object.keys(fontawesomeConfig.icons).length === 0) {
+    if (Object.keys(this.fontawesomeConfig.icons).length === 0) {
       glob.sync('node_modules/@fortawesome/@(free|pro)-*-svg-icons')
         .map(i => i.split('/').pop())
         .reduce((acc, cur) => {
           acc.icons[cur] = 'all'
           return acc
-        }, fontawesomeConfig);
+        }, this.fontawesomeConfig);
     }
 
-    if(Object.keys(fontawesomeConfig.icons).length === 0) {
+    if(Object.keys(this.fontawesomeConfig.icons).length === 0) {
       this.ui.writeWarnLine(
         'No icons are included in your build configuration.\n'+
         'Any icon packs you install under node_modules will be bundled into vendor.js\n'+
@@ -129,7 +151,6 @@ module.exports = {
         '});'
       )
     }
-    return fontawesomeConfig
   },
   included(app) {
     this._super.included.apply(this, arguments)
@@ -141,9 +162,9 @@ module.exports = {
       app = current.app || app;
     } while (current.parent.parent && (current = current.parent));
 
-    this.app = app
-
-    this.fontawesomeConfig = this.buildConfig()
+    this.app = app;
+    this.readConfig();
+    this.includeIconPackages();
 
     this.setupPreprocessorRegistryAfterConfiguration('parent', app.registry);
 
