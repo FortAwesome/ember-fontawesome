@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
-## [0.1.3](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.2) - 2018-07-30
+## [0.1.4](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.4) - 2018-08-22
+
+### Fixed
+*  Inconsistency in configuration #57
+*  Build time component doesn't use defaultPrefix #65 
+
+---
+
+## [0.1.3](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.3) - 2018-08-10
 
 ### Fixed
 * Remove deprecated Ember.logger #64
