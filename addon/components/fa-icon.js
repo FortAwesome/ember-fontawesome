@@ -74,6 +74,7 @@ const IconComponent = Component.extend({
     'xmlns',
     'viewBox',
     'safeStyle:style',
+    'title',
   ],
   html: computed('children', function() {
     const children = this.get('children')

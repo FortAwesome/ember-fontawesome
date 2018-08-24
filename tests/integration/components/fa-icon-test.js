@@ -75,3 +75,14 @@ test('it optionally renders fa-spin class', function(assert){
   this.set('isSpinning', true)
   assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should include fa-spin class')
 })
+
+test('it binds title', function (assert) {
+  assert.expect(1);
+  const title = 'awesome is as awesome does';
+  this.set('title', title);
+  this.set('faCoffee', faCoffee);
+
+  this.render(hbs`{{fa-icon icon=faCoffee title=title}}`);
+
+  assert.equal(this.$('svg').attr('title'), title, 'Should include fa-spin class')
+});
