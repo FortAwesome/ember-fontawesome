@@ -74,7 +74,6 @@ const IconComponent = Component.extend({
     'xmlns',
     'viewBox',
     'safeStyle:style',
-    'title',
   ],
   html: computed('children', function() {
     const children = this.get('children')
@@ -102,12 +101,13 @@ const IconComponent = Component.extend({
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
     const symbol = this.getWithDefault('symbol', false)
+    const title = this.getWithDefault('title', null)
 
     const o = assign({},
       classes,
       transform,
       mask,
-      {symbol: symbol}
+      { symbol, title }
     )
 
     const renderedIcon = icon(iconLookup, o)

@@ -77,12 +77,22 @@ test('it optionally renders fa-spin class', function(assert){
 })
 
 test('it binds title', function (assert) {
-  assert.expect(1);
+  assert.expect(2);
   const title = 'awesome is as awesome does';
   this.set('title', title);
   this.set('faCoffee', faCoffee);
 
   this.render(hbs`{{fa-icon icon=faCoffee title=title}}`);
 
-  assert.equal(this.$('svg').attr('title'), title, 'Should include fa-spin class')
+  assert.equal(this.$('svg title').length, 1, 'has title element');
+  assert.equal(this.$('svg title').text().trim(), title, 'title is correct');
+});
+
+test('no title attribute gives no title element', function (assert) {
+  assert.expect(1);
+  this.set('faCoffee', faCoffee);
+
+  this.render(hbs`{{fa-icon icon=faCoffee}}`);
+
+  assert.equal(this.$('svg title').length, 0, 'has not title element');
 });
