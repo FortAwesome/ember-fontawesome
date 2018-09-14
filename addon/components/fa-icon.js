@@ -101,7 +101,10 @@ const IconComponent = Component.extend({
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
     const symbol = this.getWithDefault('symbol', false)
-    const title = this.getWithDefault('title', null)
+    let title = this.getWithDefault('title', null)
+    if (title) {
+      title = `${title}`;
+    }
 
     const o = assign({},
       classes,
