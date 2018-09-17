@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit'
 import hbs from 'htmlbars-inline-precompile'
+import { htmlSafe } from '@ember/string';
 
 const faCoffee = {
   prefix: 'fas',
@@ -95,4 +96,16 @@ test('no title attribute gives no title element', function (assert) {
   this.render(hbs`{{fa-icon icon=faCoffee}}`);
 
   assert.equal(this.$('svg title').length, 0, 'has not title element');
+});
+
+test('title from string like object', function (assert) {
+  assert.expect(2);
+  const title = 'awesome is as awesome does';
+  this.set('title', htmlSafe(title));
+  this.set('faCoffee', faCoffee);
+
+  this.render(hbs`{{fa-icon icon=faCoffee title=title}}`);
+
+  assert.equal(this.$('svg title').length, 1, 'has title element');
+  assert.equal(this.$('svg title').text().trim(), title, 'title is correct');
 });
