@@ -5,10 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.7](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.7) - 2018-09-17
+
+### Fixed
+* Bind string like objects to title #74
+
 ## [0.1.6](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.6) - 2018-09-13
 
 ### Fixed
-*  Put title in the right place #72
+* Put title in the right place #72
 * Remove old export #73
 
 ## [0.1.5](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.5) - 2018-08-23
