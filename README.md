@@ -262,7 +262,7 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 ```html
 <span class="fa-layers fa-lg">
   {{fa-icon 'circle'}}
-  {{fa-icon class='fa-inverse' 'check' transform='shrink-6'}}
+  {{fa-icon class='fa-inverse check' transform='shrink-6'}}
 </span>
 ```
 
