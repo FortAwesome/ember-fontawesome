@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.8](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.8) - 2018-10-02
+
+### Fixed
+* Removed dev dependencies from regular dependencies #76
+
+---
 ## [0.1.7](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.7) - 2018-09-17
 
 ### Fixed
