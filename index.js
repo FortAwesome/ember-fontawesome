@@ -12,7 +12,7 @@ var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
 
 module.exports = {
-  name: '@fortawesome/ember-fontawesome',
+  name: require('./package').name,
   fontawesomeConfig: null,
 
   treeForVendor(vendorTree) {
