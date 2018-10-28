@@ -1,52 +1,53 @@
 <h3>Basic Usage</h3>
-{{fa-icon 'coffee'}} (with icon name, after adding icon object to the library)<br/>
-{{fa-icon icon='coffee' class='foo'}} (explictly using icon attribute, and with additional class name)
+{{fa-icon "coffee"}} (with icon name, after adding icon object to the library)<br>
+{{fa-icon icon="coffee" class="foo"}} (explictly using icon attribute, and with additional class name)
 <h3>Mask with Transform</h3>
 <p>(expected: black square with white dot inside, pushed to the right side)</p>
-{{fa-icon icon='circle' transform="shrink-9 right-4" mask='square'}}
+{{fa-icon icon="circle" transform="shrink-9 right-4" mask="square"}}
 <h3>Default fas prefix versus specifying a different prefix for the same icon name</h3>
-{{fa-icon icon='square'}}
-{{fa-icon prefix='far' icon='square'}}
+{{fa-icon icon="square"}}
+{{fa-icon prefix="far" icon="square"}}
 <h3>Missing Icon</h3>
-<p>Expecting no icon between these bars |{{fa-icon icon='unfindable-icon'}}| (and a warning log in the console)</p>
+<p>Expecting no icon between these bars |{{fa-icon icon="unfindable-icon"}}| (and a warning log in the console)</p>
 <h3>Dynamic with Bound Attribute</h3>
 <div>
   <p>Drag the slider to spin the magic.</p>
-  {{input type='range' value=magic}}
+  {{input type="range" value=magic}}
+  {{! template-lint-disable no-inline-styles}}
   <div style="padding:2em;">
-    {{fa-icon icon='magic' transform=(concat 'rotate-' magic)}}
+    {{fa-icon icon="magic" transform=(concat "rotate-" magic)}}
   </div>
 </div>
 <h3>Pro Icon</h3>
-<p>(If you have pro-light-svg-icons installed, this should show the 'adjust' icon in the light style)</p>
-{{fa-icon prefix='fal' icon='adjust'}}
+<p>(If you have pro-light-svg-icons installed, this should show the "adjust" icon in the light style)</p>
+{{fa-icon prefix="fal" icon="adjust"}}
 <h3>Fixed Width</h3>
 <style type="text/css">
   .MistyRose {
     background-color: mistyrose;
   }
 </style>
-<div>{{fa-icon icon='home' fixedWidth=true class="MistyRose"}} Home</div>
-<div>{{fa-icon icon='info' fixedWidth=true class="MistyRose"}} Info</div>
-<div>{{fa-icon icon='book' fixedWidth=true class="MistyRose"}} Library</div>
-<div>{{fa-icon icon='pencil-alt' fixedWidth=true class="MistyRose"}} Applications</div>
-<div>{{fa-icon icon='cog' fixedWidth=true class="MistyRose"}} Settings</div>
-<div>{{fa-icon icon='fax' fixedWidth=true class="MistyRose"}} Contact</div>
+<div>{{fa-icon icon="home" fixedWidth=true class="MistyRose"}} Home</div>
+<div>{{fa-icon icon="info" fixedWidth=true class="MistyRose"}} Info</div>
+<div>{{fa-icon icon="book" fixedWidth=true class="MistyRose"}} Library</div>
+<div>{{fa-icon icon="pencil-alt" fixedWidth=true class="MistyRose"}} Applications</div>
+<div>{{fa-icon icon="cog" fixedWidth=true class="MistyRose"}} Settings</div>
+<div>{{fa-icon icon="fax" fixedWidth=true class="MistyRose"}} Contact</div>
 
 <h3>List Icons</h3>
 <ul class="fa-ul">
-  <li><span class="fa-li">{{fa-icon icon='check-square'}}</span>List icons can</li>
-  <li><span class="fa-li">{{fa-icon icon='check-square'}}</span>be used to</li>
-  <li><span class="fa-li">{{fa-icon icon='spinner' pulse=true}}</span>replace bullets</li>
-  <li><span class="fa-li">{{fa-icon icon='square'}}</span>in lists</li>
+  <li><span class="fa-li">{{fa-icon icon="check-square"}}</span>List icons can</li>
+  <li><span class="fa-li">{{fa-icon icon="check-square"}}</span>be used to</li>
+  <li><span class="fa-li">{{fa-icon icon="spinner" pulse=true}}</span>replace bullets</li>
+  <li><span class="fa-li">{{fa-icon icon="square"}}</span>in lists</li>
 </ul>
 
 <h3>Animation (Spin)</h3>
-{{fa-icon icon='sync' spin=true}}<br/>
-{{fa-icon icon='sync' spin=isSpinning}} {{input type="checkbox" checked=isSpinning}} Spin it
+{{fa-icon icon="sync" spin=true}}<br>
+{{fa-icon icon="sync" spin=isSpinning}} {{input type="checkbox" checked=isSpinning}} Spin it
 
 <h3>Animation (Pulse)</h3>
-{{fa-icon icon='cog' pulse=true}}<br/>
-{{fa-icon icon='cog' pulse=isPulsing}} {{input type="checkbox" checked=isPulsing}} Pulse it
+{{fa-icon icon="cog" pulse=true}}<br>
+{{fa-icon icon="cog" pulse=isPulsing}} {{input type="checkbox" checked=isPulsing}} Pulse it
 
 {{outlet}}
