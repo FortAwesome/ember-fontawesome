@@ -1,4 +1,6 @@
-import { moduleForComponent, test } from 'ember-qunit'
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile'
 import { htmlSafe } from '@ember/string';
 
@@ -14,93 +16,93 @@ const faCoffee = {
   ]
 }
 
-moduleForComponent('fa-icon', 'Integration | Component | fa icon', {
-  integration: true
-})
+module('Integration | Component | fa icon', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders coffee', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-  this.set('faCoffee', faCoffee)
+  test('it renders coffee', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    this.set('faCoffee', faCoffee)
 
-  this.render(hbs`{{fa-icon icon=faCoffee}}`)
+    await render(hbs`{{fa-icon icon=faCoffee}}`)
 
-  assert.equal(this.$().text().trim(), '')
-  assert.equal(this.$('svg').attr('data-icon'), 'coffee')
-  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-coffee'))
-  assert.equal(this.$('svg path').attr('d'), faCoffee.icon[4])
-})
+    assert.dom('*').hasText('')
+    assert.dom('svg').hasAttribute('data-icon', 'coffee')
+    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('fa-coffee'))
+    assert.dom('svg path').hasAttribute('d', faCoffee.icon[4])
+  })
 
-test('it renders framework style', function(assert){
-  this.set('faCoffee', faCoffee)
-  this.render(hbs`{{fa-icon icon=faCoffee transform="rotate-42"}}`)
-  assert.ok(this.$('svg').attr('style').split(/:/).includes('transform-origin'))
-})
+  test('it renders framework style', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    await render(hbs`{{fa-icon icon=faCoffee transform="rotate-42"}}`)
+    assert.ok(find('svg').getAttribute('style').split(/:/).includes('transform-origin'))
+  })
 
-test('it renders extra classes', function(assert){
-  this.set('faCoffee', faCoffee)
-  this.set('class', 'foo-xyz')
-  this.render(hbs`{{fa-icon icon=faCoffee class=class}}`)
-  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('foo-xyz'))
-  this.set('class', 'foo-new-class')
-  assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('foo-xyz'))
-  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('foo-new-class'))
-})
+  test('it renders extra classes', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    this.set('class', 'foo-xyz')
+    await render(hbs`{{fa-icon icon=faCoffee class=class}}`)
+    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('foo-xyz'))
+    this.set('class', 'foo-new-class')
+    assert.notOk(find('svg').getAttribute('class').split(/\s+/).includes('foo-xyz'))
+    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('foo-new-class'))
+  })
 
-test('it renders coffee positional', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-  this.set('faCoffee', faCoffee)
+  test('it renders coffee positional', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+    this.set('faCoffee', faCoffee)
 
-  this.render(hbs`{{fa-icon faCoffee}}`)
+    await render(hbs`{{fa-icon faCoffee}}`)
 
-  assert.equal(this.$().text().trim(), '')
-  assert.equal(this.$('svg').attr('data-icon'), 'coffee')
-  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-coffee'))
-  assert.equal(this.$('svg path').attr('d'), faCoffee.icon[4])
-})
+    assert.dom('*').hasText('')
+    assert.dom('svg').hasAttribute('data-icon', 'coffee')
+    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('fa-coffee'))
+    assert.dom('svg path').hasAttribute('d', faCoffee.icon[4])
+  })
 
-test('it optionally renders fa-spin class', function(assert){
-  assert.expect(2)
-  this.set('faCoffee', faCoffee)
-  this.set('isSpinning', false)
+  test('it optionally renders fa-spin class', async function(assert) {
+    assert.expect(2)
+    this.set('faCoffee', faCoffee)
+    this.set('isSpinning', false)
 
-  this.render(hbs`{{fa-icon icon=faCoffee spin=isSpinning}}`)
+    await render(hbs`{{fa-icon icon=faCoffee spin=isSpinning}}`)
 
-  assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should not include fa-spin class')
-  this.set('isSpinning', true)
-  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('fa-spin'), 'Should include fa-spin class')
-})
+    assert.notOk(find('svg').getAttribute('class').split(/\s+/).includes('fa-spin'), 'Should not include fa-spin class')
+    this.set('isSpinning', true)
+    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('fa-spin'), 'Should include fa-spin class')
+  })
 
-test('it binds title', function (assert) {
-  assert.expect(2);
-  const title = 'awesome is as awesome does';
-  this.set('title', title);
-  this.set('faCoffee', faCoffee);
+  test('it binds title', async function(assert) {
+    assert.expect(2);
+    const title = 'awesome is as awesome does';
+    this.set('title', title);
+    this.set('faCoffee', faCoffee);
 
-  this.render(hbs`{{fa-icon icon=faCoffee title=title}}`);
+    await render(hbs`{{fa-icon icon=faCoffee title=title}}`);
 
-  assert.equal(this.$('svg title').length, 1, 'has title element');
-  assert.equal(this.$('svg title').text().trim(), title, 'title is correct');
-});
+    assert.dom('svg title').exists({ count: 1 }, 'has title element');
+    assert.dom('svg title').hasText(title, 'title is correct');
+  });
 
-test('no title attribute gives no title element', function (assert) {
-  assert.expect(1);
-  this.set('faCoffee', faCoffee);
+  test('no title attribute gives no title element', async function(assert) {
+    assert.expect(1);
+    this.set('faCoffee', faCoffee);
 
-  this.render(hbs`{{fa-icon icon=faCoffee}}`);
+    await render(hbs`{{fa-icon icon=faCoffee}}`);
 
-  assert.equal(this.$('svg title').length, 0, 'has not title element');
-});
+    assert.dom('svg title').doesNotExist('has not title element');
+  });
 
-test('title from string like object', function (assert) {
-  assert.expect(2);
-  const title = 'awesome is as awesome does';
-  this.set('title', htmlSafe(title));
-  this.set('faCoffee', faCoffee);
+  test('title from string like object', async function(assert) {
+    assert.expect(2);
+    const title = 'awesome is as awesome does';
+    this.set('title', htmlSafe(title));
+    this.set('faCoffee', faCoffee);
 
-  this.render(hbs`{{fa-icon icon=faCoffee title=title}}`);
+    await render(hbs`{{fa-icon icon=faCoffee title=title}}`);
 
-  assert.equal(this.$('svg title').length, 1, 'has title element');
-  assert.equal(this.$('svg title').text().trim(), title, 'title is correct');
+    assert.dom('svg title').exists({ count: 1 }, 'has title element');
+    assert.dom('svg title').hasText(title, 'title is correct');
+  });
 });
