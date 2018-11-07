@@ -58,7 +58,7 @@ function normalizeIconArgs (prefix, icon) {
 const IconComponent = Component.extend({
   layout,
   tagName: 'svg',
-  classNameBindings: ['class'],
+  classNameBindings: ['allClasses'],
   attributeBindings: [
     // attributes watched for mutation
     'data-prefix',
@@ -75,26 +75,41 @@ const IconComponent = Component.extend({
     'viewBox',
     'safeStyle:style',
   ],
-  html: computed('children', function() {
-    const children = this.get('children')
-    let newHtml
-    if(!children){
+  html: computed('abstractIcon.children.[]', function() {
+    const abstractIcon = this.get('abstractIcon');
+    let newHtml;
+    if(!abstractIcon){
       newHtml = htmlSafe('')
     } else {
-      newHtml = htmlSafe(children.reduce((acc,cur) => {
+      newHtml = htmlSafe(abstractIcon.children.reduce((acc,cur) => {
         return `${acc}${toHtml(cur)}`
       },''))
     }
     return newHtml
   }),
-  safeStyle: computed('_frameworkStyle', function() {
-    const frameworkStyle = this.get('_frameworkStyle')
-    return frameworkStyle ? htmlSafe(`${this.get('_frameworkStyle')}`) : undefined
+  safeStyle: computed('attributes', function() {
+    const attributes = this.get('attributes');
+    const style = getWithDefault(attributes, 'style');
+    return style ? htmlSafe(`${style}`) : undefined;
   }),
-  didReceiveAttrs(){
-    this._super(...arguments)
-    /* eslint ember/no-attrs-in-components: 0 */
-    if('_frameworkStyle' in this.attrs) throw new Error('_frameworkStyle attribute is reserved for internal use and may not be set from a template')
+  abstractIcon: computed(
+    'prefix',
+    'class',
+    'icon',
+    'transform',
+    'mask',
+    'symbol',
+    'title',
+    'spin',
+    'pulse',
+    'fixedWidth',
+    'listItem',
+    'border',
+    'flip',
+    'size',
+    'rotation',
+    'pull',
+    function () {
     const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
     const classes = objectWithKey('classes', [...classList.bind(this)(this.getWithDefault('class', '').split(' '))])
     const transformProp = this.get('transform')
@@ -113,24 +128,73 @@ const IconComponent = Component.extend({
       { symbol, title }
     )
 
-    const renderedIcon = icon(iconLookup, o)
-
-    if (renderedIcon) {
-      const abstract = renderedIcon.abstract[0]
-      this.set('children', abstract.children)
-      abstract.attributes && Object.keys(abstract.attributes).forEach(attr => {
-        if ( attr === 'style' ) {
-          this.set('_frameworkStyle', abstract.attributes[attr])
-        } else {
-          this.set(attr, abstract.attributes[attr])
-        }
-      })
-    } else {
+    const renderedIcon = icon(iconLookup, o);
+    if (!renderedIcon) {
       console.warn(`Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}`)
-      this.set('class', config.replacementClass)
-      this.set('viewBox', '0 0 448 512')
+      return null;
     }
-  }
+
+    return renderedIcon.abstract[0];
+  }),
+  attributes: computed('abstractIcon.attributes', function() {
+    const abstractIcon = this.get('abstractIcon');
+    return abstractIcon ? abstractIcon.attributes : {};
+  }),
+  allClasses: computed('abstractIcon', 'attributes.class', 'class', function () {
+    const abstractIcon = this.get('abstractIcon');
+    const attributes = this.get('attributes');
+    const classes = this.get('class');
+    const iconClasses = getWithDefault(attributes, 'class');
+    if (!abstractIcon) {
+      return config.replacementClass;
+    }
+
+    return `${iconClasses} ${classes}`;
+  }),
+  'data-prefix': computed('attributes.data-prefix', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'data-prefix');
+  }),
+  'data-icon': computed('attributes.data-icon', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'data-icon');
+  }),
+  'data-fa-transform': computed('attributes.data-fa-transform', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'data-fa-transform');
+  }),
+  'data-fa-mask': computed('attributes.data-fa-mask', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'data-fa-mask');
+  }),
+  'data-fa-processed': computed('attributes.data-fa-processed', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'data-fa-processed');
+  }),
+  'aria-hidden': computed('attributes.aria-hidden', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'aria-hidden');
+  }),
+  'aria-labelledby': computed('attributes.aria-labelledby', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'aria-labelledby');
+  }),
+  'role': computed('attributes.role', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'role');
+  }),
+  'xmlns': computed('attributes.xmlns', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'xmlns');
+  }),
+  'viewBox': computed('attributes.viewBox', function () {
+    const abstractIcon = this.get('abstractIcon');
+    if (!abstractIcon) {
+      return '0 0 448 512';
+    }
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'viewBox');
+  }),
 });
 
 // Enables {{fa-icon 'iconnamehere'}} syntax, while still allowing {{fa-icon icon='iconnamehere'}}
