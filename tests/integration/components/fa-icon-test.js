@@ -31,15 +31,6 @@ test('it renders coffee', function(assert) {
   assert.equal(this.$('svg path').attr('d'), faCoffee.icon[4])
 })
 
-test('it throws error when _frameworkStyle attribute is specified', function(assert) {
-  this.set('faCoffee', faCoffee)
-  assert.throws(
-    () => { this.render(hbs`{{fa-icon icon=faCoffee _frameworkStyle="foo" }}`) },
-    /_frameworkStyle/,
-    'throws an Error'
-  )
-})
-
 test('it renders framework style', function(assert){
   this.set('faCoffee', faCoffee)
   this.render(hbs`{{fa-icon icon=faCoffee transform="rotate-42"}}`)
@@ -48,8 +39,12 @@ test('it renders framework style', function(assert){
 
 test('it renders extra classes', function(assert){
   this.set('faCoffee', faCoffee)
-  this.render(hbs`{{fa-icon icon=faCoffee class="foo-xyz"}}`)
+  this.set('class', 'foo-xyz')
+  this.render(hbs`{{fa-icon icon=faCoffee class=class}}`)
   assert.ok(this.$('svg').attr('class').split(/\s+/).includes('foo-xyz'))
+  this.set('class', 'foo-new-class')
+  assert.notOk(this.$('svg').attr('class').split(/\s+/).includes('foo-xyz'))
+  assert.ok(this.$('svg').attr('class').split(/\s+/).includes('foo-new-class'))
 })
 
 test('it renders coffee positional', function(assert) {
