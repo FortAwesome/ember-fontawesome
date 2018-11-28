@@ -125,7 +125,7 @@ module.exports = {
         }, this.fontawesomeConfig);
     }
 
-    if(Object.keys(this.fontawesomeConfig.icons).length === 0) {
+    if(Object.keys(this.fontawesomeConfig.icons).length === 0 && this.fontawesomeConfig.warnIfNoIconsIncluded !== false) {
       this.ui.writeWarnLine(
         'No icons are included in your build configuration.\n'+
         'Any icon packs you install under node_modules will be bundled into vendor.js\n'+

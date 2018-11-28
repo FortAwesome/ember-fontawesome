@@ -140,6 +140,20 @@ module.exports = function(environment) {
 };
 ```
 
+By default, `ember-fontawesome` will warn if no icons are being included
+in the build. To disable this behavior (e.g. if icons are being added by
+some other means), set `warnIfNoIconsIncluded` to `false`.
+
+
+```js
+let ENV = {
+  fontawesome: {
+    warnIfNoIconsIncluded: false,
+    // ...
+  }
+};
+```
+
 ## Usage
 
 ### Configuration
