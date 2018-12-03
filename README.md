@@ -305,6 +305,9 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 * `npm test` (Runs `ember try:each` to test addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
+* `npm run lint:hbs`
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
 
 ### Building
 
