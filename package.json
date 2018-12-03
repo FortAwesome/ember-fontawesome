@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -24,7 +24,8 @@
     "Julien Guimont <julien.guimont@gmail.com>",
     "Xaser Acheron <github.com/XaserAcheron>",
     "samcic <github.com/samcic>",
-    "Josemar Luedke <github.com/josemarluedke>"
+    "Josemar Luedke <github.com/josemarluedke>",
+    "Dan Freeman <github.com/dfreeman>"
   ],
   "homepage": "https://github.com/FortAwesome/ember-fontawesome",
   "scripts": {

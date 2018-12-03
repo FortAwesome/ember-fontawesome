@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.9](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.9) - 2018-12-03
+
+### Added
+* Allow users to opt out of the no-icons warning #84
+
+### Fixed
+* Remove this.attrs check #78
+* Update ember-cli and blueprints to 3.4.3 #83
+
+---
 ## [0.1.8](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.8) - 2018-10-02
 
 ### Fixed
