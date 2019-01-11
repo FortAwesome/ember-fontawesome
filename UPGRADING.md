@@ -69,7 +69,21 @@ If you were previously relying on Font Awesome to replace any `<i>` tags in
 your page or app with `<svg>` you'll need to explicitly control that now.
 
 ```javascript
-import { watch } from '@fortawesome/fontawesome-svg-core'
+import Component from '@ember/component';
+import { dom } from '@fortawesome/fontawesome-svg-core';
+import { next } from '@ember/runloop';
 
-watch() // This will kick of the replacement of i tags and configure a MutationObserver
+export default Component.extend({
+  /**
+   * Convert `<i>` into SVG icons
+   * Uses: https://fontawesome.com/how-to-use/with-the-api/methods/dom-i2svg
+   */
+  didRender() {
+    this._super(...arguments);
+
+    next(() => {
+      dom.i2svg({ node: this.element });
+    });
+  }
+});
 ```
