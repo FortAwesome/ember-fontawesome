@@ -6,6 +6,12 @@
 
 [![npm](https://img.shields.io/npm/v/@fortawesome/ember-fontawesome.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/ember-fontawesome)
 
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
 > Font Awesome 5 Ember component using SVG with JS
 
 <!-- toc -->
@@ -289,32 +295,6 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 </span>
 ```
 
-## Contributing to Development
-
-* `git clone <repository-url>` this repository
-* `cd ember-fontawesome`
-* `npm install`
-
-### Running
-
-* `ember serve`
-* View the demo app at [http://localhost:4200](http://localhost:4200).
-
-### Running Tests
-
-* `npm test` (Runs `ember try:each` to test addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
-
 ## How to Help
 
 Review the following docs before diving in:
@@ -328,7 +308,7 @@ And then:
 
 ## Contributors
 
-The following contributors have either hepled to start this project, have contributed
+The following contributors have either helped to start this project, have contributed
 code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
@@ -356,3 +336,8 @@ The Font Awesome team:
 ## Releasing this project (only project owners can do this)
 
 See [DEVELOPMENT.md](DEVELOPMENT.md#release)
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
