@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.10](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.10) - 2019-02-18
+
+### Added
+* Improved automatic replacement documentation #88
+
+### Fixed
+* Add yarn workspace support #92
+* Updated dependencies #89
+
+---
 ## [0.1.9](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.9) - 2018-12-03
 
 ### Added
