@@ -55,6 +55,7 @@
     "ember-cli-babel": "^7.1.2",
     "ember-cli-htmlbars": "^3.0.0",
     "ember-get-config": "^0.2.4",
+    "find-yarn-workspace-root": "^1.2.1",
     "glob": "^7.1.2",
     "rollup-plugin-node-resolve": "^4.0.0"
   },
