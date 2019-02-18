@@ -10,18 +10,22 @@ var glob = require('glob')
 var buildAstTransform = require('./lib/ast-transform');
 var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
+const path = require('path');
+const findWorkspaceRoot = require('find-yarn-workspace-root');
 
 module.exports = {
   name: require('./package').name,
   fontawesomeConfig: null,
+  nodeModulesPath: null,
 
   treeForVendor(vendorTree) {
     const iconRollups = []
+    const pathToCore = path.join(this.nodeModulesPath, '@fortawesome', 'fontawesome-svg-core');
 
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
       const iconExportsFile = `exports-${pack}.js`
       const iconPackTree = new FontAwesomePack(
-        [new UnwatchedDir('node_modules/@fortawesome/fontawesome-svg-core')],
+        [new UnwatchedDir(pathToCore)],
         {
           pack,
           icons: this.fontawesomeConfig.icons[pack],
@@ -44,12 +48,13 @@ module.exports = {
             resolve()
           ]
         },
+        nodeModulesPath: this.nodeModulesPath,
         name: `${pack}-rollup`
       })
       iconRollups.push(rollupNode)
     })
 
-    const fontawesomeRollup = new Rollup(new UnwatchedDir('node_modules/@fortawesome/fontawesome-svg-core'), {
+    const fontawesomeRollup = new Rollup(new UnwatchedDir(pathToCore), {
       rollup: {
         input: 'index.es.js',
         output: {
@@ -64,6 +69,7 @@ module.exports = {
           resolve()
         ]
       },
+      nodeModulesPath: this.nodeModulesPath,
       name: 'fontawesome-svg-core'
     })
 
@@ -117,7 +123,8 @@ module.exports = {
     // 2. If no icons are defined, automatically configure whatever is there under node_modules
     // @TODO: look for any addons contributing config. maybe enumerated in this.app.options.addons
     if (Object.keys(this.fontawesomeConfig.icons).length === 0) {
-      glob.sync('node_modules/@fortawesome/@(free|pro)-*-svg-icons')
+      const iconPattern = path.join(this.nodeModulesPath, '@fortawesome', '@(free|pro)-*-svg-icons');
+      glob.sync(iconPattern)
         .map(i => i.split('/').pop())
         .reduce((acc, cur) => {
           acc.icons[cur] = 'all'
@@ -163,6 +170,11 @@ module.exports = {
     } while (current.parent.parent && (current = current.parent));
 
     this.app = app;
+
+    const workspaceRoot = findWorkspaceRoot(this.app.project.root);
+    const root = workspaceRoot || this.app.project.root;
+    this.nodeModulesPath = path.join(root, 'node_modules');
+
     this.readConfig();
     this.includeIconPackages();
 
