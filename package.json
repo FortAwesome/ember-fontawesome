@@ -99,5 +99,20 @@
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "defaultBlueprint": "ember-fontawesome"
-  }
+  },
+  "files": [
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "LICENSE.md",
+    "UPGRADING.md",
+    "ember-cli-build.js",
+    "index.js",
+    "addon/",
+    "app/",
+    "blueprints/",
+    "config/",
+    "lib/",
+    "vendor/"
+  ]
 }
