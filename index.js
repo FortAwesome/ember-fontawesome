@@ -8,6 +8,7 @@ var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
 var glob = require('glob')
 var buildAstTransform = require('./lib/ast-transform');
+const { discoverConfiguredIcons, combineIconSets } = require('./lib/discover-configured-icons');
 var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
 const path = require('path');
@@ -114,8 +115,11 @@ module.exports = {
       `);
       buildConfig = addonOptions.fontawesome;
     }
+    const mergedConfig = Object.assign(configDefaults, buildConfig, appConfig);
+    const configuredIcons = discoverConfiguredIcons(this.app.project);
+    mergedConfig.icons = combineIconSets(mergedConfig.icons, configuredIcons);
 
-    this.fontawesomeConfig = Object.assign(configDefaults, buildConfig, appConfig);
+    this.fontawesomeConfig = mergedConfig;
   },
 
   includeIconPackages() {
