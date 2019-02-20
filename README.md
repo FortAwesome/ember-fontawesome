@@ -122,7 +122,7 @@ Using the Pro packages requires [additional configuration](https://fontawesome.c
 If you want to include only a subset of icons from an icon pack, add a
 `fontawesome` configuration object to your applications options in
 `environment.js`. The following example declares that all icons in
-`free-solid-svg-icons` should be included in the `vendor.js` bundle add
+`free-solid-svg-icons` should be included in the `vendor.js` bundle and
 added to the library, and for `pro-light-svg-icons`, only `adjust`,
 `ambulance`, and `pencil-alt` are to be included in the bundle and added to the library.
 
@@ -159,6 +159,28 @@ let ENV = {
   }
 };
 ```
+
+### Using within an addon
+
+If you want to use icons in your addon there are a few steps to take. 
+
+First ensure `@fortawesome/ember-fontawesome` and any icon packs are in 
+the `dependencies` section of your `package.json`. This makes them available
+to the apps that use your addon. 
+
+Second you need to declare what icons you are using so apps that subset icons 
+will know what to include. You do this in `config/icons.js`. The format is:
+
+```js
+module.exports = function() {
+  return {
+    'free-solid-svg-icons': ['bacon', 'pencil'],
+    'free-brands-svg-icons': ['font-awesome-flag'],
+  };
+};
+```
+
+You should avoid listing any Font Awesome Pro packages as dependencies unless you are confident that whoever is using your addon has access to those.
 
 ## Usage
 
