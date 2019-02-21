@@ -24,19 +24,17 @@ Compatibility
 - [Installation](#installation)
   * [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
   * [Subsetting icons](#subsetting-icons)
+  * [Using within an addon](#using-within-an-addon)
 - [Usage](#usage)
   * [Configuration](#configuration)
   * [Template](#template)
 - [Features](#features)
   * [Basic](#basic)
   * [Advanced](#advanced)
-- [Contributing to Development](#contributing-to-development)
-  * [Running](#running)
-  * [Running Tests](#running-tests)
-  * [Building](#building)
 - [How to Help](#how-to-help)
 - [Contributors](#contributors)
 - [Releasing this project (only project owners can do this)](#releasing-this-project-only-project-owners-can-do-this)
+- [License](#license)
 
 <!-- tocstop -->
 
@@ -343,6 +341,7 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 | <img src="https://github.com/XaserAcheron.png?size=72" />  | Xaser Acheron    | [@XaserAcheron](https://github.com/XaserAcheron)   |
 |                                                            | samcic           | [@samcic](https://github.com/samcic)               |
 | <img src="https://github.com/josemarluedke.png?size=72" /> | Josemar Luedke   | [@josemarluedke](https://github.com/josemarluedke) |
+| <img src="https://github.com/robclancy.png?size=72" />     | Robert Clancy    | [@robclancy](https://github.com/robclancy)         |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
 

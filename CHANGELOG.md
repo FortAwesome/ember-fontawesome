@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.13](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.13) - 2019-02-21
+
+### Fixed
+* Error when an addon doesn't have a root #95
+
+---
 ## [0.1.12](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.12) - 2019-02-20
 
 ### Added
