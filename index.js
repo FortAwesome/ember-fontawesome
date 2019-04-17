@@ -17,11 +17,11 @@ const findWorkspaceRoot = require('find-yarn-workspace-root');
 module.exports = {
   name: require('./package').name,
   fontawesomeConfig: null,
-  nodeModulesPath: null,
+  _nodeModulesPath: null,
 
   treeForVendor(vendorTree) {
     const iconRollups = []
-    const pathToCore = path.join(this.nodeModulesPath, '@fortawesome', 'fontawesome-svg-core');
+    const pathToCore = path.join(this._nodeModulesPath, '@fortawesome', 'fontawesome-svg-core');
 
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
       const iconExportsFile = `exports-${pack}.js`
@@ -49,7 +49,7 @@ module.exports = {
             resolve()
           ]
         },
-        nodeModulesPath: this.nodeModulesPath,
+        _nodeModulesPath: this._nodeModulesPath,
         name: `${pack}-rollup`
       })
       iconRollups.push(rollupNode)
@@ -70,7 +70,7 @@ module.exports = {
           resolve()
         ]
       },
-      nodeModulesPath: this.nodeModulesPath,
+      _nodeModulesPath: this._nodeModulesPath,
       name: 'fontawesome-svg-core'
     })
 
@@ -127,7 +127,7 @@ module.exports = {
     // 2. If no icons are defined, automatically configure whatever is there under node_modules
     // @TODO: look for any addons contributing config. maybe enumerated in this.app.options.addons
     if (Object.keys(this.fontawesomeConfig.icons).length === 0) {
-      const iconPattern = path.join(this.nodeModulesPath, '@fortawesome', '@(free|pro)-*-svg-icons');
+      const iconPattern = path.join(this._nodeModulesPath, '@fortawesome', '@(free|pro)-*-svg-icons');
       glob.sync(iconPattern)
         .map(i => i.split('/').pop())
         .reduce((acc, cur) => {
@@ -177,7 +177,7 @@ module.exports = {
 
     const workspaceRoot = findWorkspaceRoot(this.app.project.root);
     const root = workspaceRoot || this.app.project.root;
-    this.nodeModulesPath = path.join(root, 'node_modules');
+    this._nodeModulesPath = path.join(root, 'node_modules');
 
     this.readConfig();
     this.includeIconPackages();
