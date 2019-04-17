@@ -49,7 +49,7 @@ module.exports = {
             resolve()
           ]
         },
-        _nodeModulesPath: this._nodeModulesPath,
+        nodeModulesPath: this._nodeModulesPath,
         name: `${pack}-rollup`
       })
       iconRollups.push(rollupNode)
@@ -70,7 +70,7 @@ module.exports = {
           resolve()
         ]
       },
-      _nodeModulesPath: this._nodeModulesPath,
+      nodeModulesPath: this._nodeModulesPath,
       name: 'fontawesome-svg-core'
     })
 
