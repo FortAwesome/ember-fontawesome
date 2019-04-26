@@ -130,7 +130,7 @@ module.exports = function(environment) {
     // Add options here
     fontawesome: {
       icons: {
-        'free-solid-svg-icons': 'all'
+        'free-solid-svg-icons': 'all',
         'pro-light-svg-icons': [
           'adjust',
           'ambulance',
@@ -160,13 +160,13 @@ let ENV = {
 
 ### Using within an addon
 
-If you want to use icons in your addon there are a few steps to take. 
+If you want to use icons in your addon there are a few steps to take.
 
-First ensure `@fortawesome/ember-fontawesome` and any icon packs are in 
+First ensure `@fortawesome/ember-fontawesome` and any icon packs are in
 the `dependencies` section of your `package.json`. This makes them available
-to the apps that use your addon. 
+to the apps that use your addon.
 
-Second you need to declare what icons you are using so apps that subset icons 
+Second you need to declare what icons you are using so apps that subset icons
 will know what to include. You do this in `config/icons.js`. The format is:
 
 ```js
