@@ -74,6 +74,10 @@ const IconComponent = Component.extend({
     'xmlns',
     'viewBox',
     'safeStyle:style',
+    'width',
+    'height',
+    'x',
+    'y',
   ],
   html: computed('abstractIcon.children.[]', function() {
     const abstractIcon = this.get('abstractIcon');
