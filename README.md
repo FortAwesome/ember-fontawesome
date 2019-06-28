@@ -11,6 +11,7 @@ Compatibility
 
 * Ember.js v2.18 or above
 * Ember CLI v2.13 or above
+* Node.js v8 or above
 
 > Font Awesome 5 Ember component using SVG with JS
 
@@ -357,6 +358,12 @@ The Font Awesome team:
 ## Releasing this project (only project owners can do this)
 
 See [DEVELOPMENT.md](DEVELOPMENT.md#release)
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
 
 License
 ------------------------------------------------------------------------------
