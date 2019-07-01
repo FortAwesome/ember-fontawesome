@@ -113,6 +113,7 @@ $ npm i --save-dev @fortawesome/pro-solid-svg-icons
 $ npm i --save-dev @fortawesome/pro-regular-svg-icons
 $ npm i --save-dev @fortawesome/pro-light-svg-icons
 ```
+**Duotone icons are currently in pre-release and are coming soon to this component.**
 
 Using the Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
 
