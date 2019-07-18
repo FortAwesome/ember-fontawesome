@@ -35,6 +35,7 @@ Compatibility
 - [How to Help](#how-to-help)
 - [Contributors](#contributors)
 - [Releasing this project (only project owners can do this)](#releasing-this-project-only-project-owners-can-do-this)
+- [Contributing](#contributing)
 - [License](#license)
 
 <!-- tocstop -->
@@ -208,22 +209,28 @@ for any style other than Solid, so this setting is recommended only for Pro subs
 
 ### Template
 
-This is what it can look like in your template:
+This is what it would look like in your template:
 
 ```hbs
-{{fa-icon 'coffee'}}
+<FaIcon @icon="coffee" />
 ```
+All examples use angle bracket invocation available in Ember 3.4+. Using Ember's classic component invocation the example above would be:
+
+```hbs
+{{fa-icon "coffee"}}
+```
+For details see [Angle Bracket Syntax](https://guides.emberjs.com/release/reference/syntax-conversion-guide/#toc_angle-bracket-syntax) in the Ember documentation.
 
 Without a prefix specified, the default specified in `environment.js` (or `fas`, if none set) is assumed:
 
 ```hbs
-{{fa-icon 'square'}}
+<FaIcon @icon="square" />
 ```
 
 If you want to use an icon from any style other than the default, use `prefix=`.
 
 ```hbs
-{{fa-icon 'square' prefix='far'}}
+<FaIcon @icon="square" @prefix="far" />
 ```
 
 ## Features
@@ -235,48 +242,48 @@ The following features are available as part of Font Awesome. Note that the synt
 [Size](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons):
 
 ```hbs
-{{fa-icon 'coffee' size='4x'}}
+<FaIcon @icon="coffee" @size="4x" />
 ```
 
 [Fixed width](https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons):
 
 ```hbs
-{{fa-icon 'coffee' fixedWidth=true}}
+<FaIcon @icon="coffee" @fixedWidth={{true}} />
 ```
 
 [Rotate](https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons):
 
 ```hbs
-{{fa-icon 'coffee' rotation=90}}
-{{fa-icon 'coffee' rotation=180}}
-{{fa-icon 'coffee' rotation=270}}
+<FaIcon @icon="coffee" @rotation={{90}} />
+<FaIcon @icon="coffee" @rotation={{180}} />
+<FaIcon @icon="coffee" @rotation={{270}} />
 ```
 
 Flip horizontally, vertically, or both:
 
 ```hbs
-{{fa-icon 'coffee' flip='horizontal'}}
-{{fa-icon 'coffee' flip='vertical'}}
-{{fa-icon 'coffee' flip='both'}}
+<FaIcon @icon="coffee" @flip="horizontal" />
+<FaIcon @icon="coffee" @flip="vertical" />
+<FaIcon @icon="coffee" @flip="both" />
 ```
 
 Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons):
 
 ```hbs
-{{fa-icon 'coffee' spin=true}}
+<FaIcon @icon="coffee" @spin={{true}} />
 ```
 
 [Border](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons):
 
 ```hbs
-{{fa-icon 'coffee' border=true}}
+<FaIcon @icon="coffee" @border={{true}} />
 ```
 
 [Pull left or right](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons):
 
 ```hbs
-{{fa-icon 'coffee' pull='left'}}
-{{fa-icon 'coffee' pull='right'}}
+<FaIcon @icon="coffee" @pull="left" />
+<FaIcon @icon="coffee" @pull="right" />
 ```
 
 ### Advanced
@@ -284,27 +291,27 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 [Power Transforms]((https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)):
 
 ```hbs
-{{fa-icon 'coffee' transform='shrink-6 rotate-30'}}
+<FaIcon @icon="coffee" @transform="shrink-6 rotate-30" />
 ```
 
 [Masking](https://fontawesome.com/how-to-use/on-the-web/styling/masking):
 
 ```hbs
-{{fa-icon 'coffee' transform='shrink-6' mask='circle'}}
+<FaIcon @icon="coffee" @transform="shrink-6"  @mask="circle" />
 ```
 
 [Symbols](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-symbols):
 
 ```hbs
-{{fa-icon 'coffee' symbol=true}}
+<FaIcon @icon="coffee" @symbol={{true}} />
 ```
 
 [Layers](https://fontawesome.com/how-to-use/on-the-web/styling/layering):
 
 ```html
 <span class="fa-layers fa-lg">
-  {{fa-icon 'circle'}}
-  {{fa-icon class='fa-inverse check' transform='shrink-6'}}
+  <FaIcon @icon="circle" />
+  <FaIcon @icon="check" class="fa-inverse" @transform="shrink-6" />
 </span>
 ```
 
@@ -312,7 +319,7 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 
 ```html
 <span class="fa-layers fa-lg">
-  {{fa-icon 'circle'}}
+  <FaIcon @icon="circle" />
   <span class="fa-layers-text">8</span>
 </span>
 ```

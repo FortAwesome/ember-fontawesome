@@ -1,4 +1,4 @@
-This is the repository for the _official_ Font Awesome Angular component, _initialized_ by the team behind Font Awesome,
+This is the repository for the _official_ Font Awesome Ember component, _initialized_ by the team behind Font Awesome,
 but intended to evolve over time with _community_ contributions.
 
 # Ways to Contribute
@@ -31,12 +31,12 @@ Add tests if you add code.
 
 1. Achieve and maintain feature parity with Font Awesome's [SVG with JavaScript](https://fontawesome.com/how-to-use/svg-with-js) method.
 
-1. Keep with best practices in the Angular development community.
+1. Keep with best practices in the Ember development community.
 
-1. Stay current with major developments in Angular and Angular-CLI
+1. Stay current with major developments in Ember and Ember-CLI
 
 1. Maintain a reasonable level of consistency between this component and the other Font Awesome official JavaScript
-framework components ([Vue](https://github.com/FortAwesome/vue-fontawesome), [React](https://github.com/FortAwesome/react-fontawesome), [Ember](https://github.com/FortAwesome/ember-fontawesome))
+framework components ([Vue](https://github.com/FortAwesome/vue-fontawesome), [React](https://github.com/FortAwesome/react-fontawesome), [Angular](https://github.com/FortAwesome/angular-fontawesome))
 
 1. Sharing responsibility: The Font Awesome team will continue to be involved in ongoing development, hoping to _propel_
 the project's momentum as we make _our_ contributions, while minimizing any bottle-necking that may happen as we balance
