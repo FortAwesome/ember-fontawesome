@@ -24,7 +24,7 @@ module('Integration | Component | fa icon', function(hooks) {
     // Handle any actions with this.on('myAction', function(val) { ... });
     this.set('faCoffee', faCoffee)
 
-    await render(hbs`{{fa-icon icon=faCoffee}}`)
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`)
 
     assert.dom('*').hasText('')
     assert.dom('svg').hasAttribute('data-icon', 'coffee')
@@ -34,14 +34,14 @@ module('Integration | Component | fa icon', function(hooks) {
 
   test('it renders framework style', async function(assert) {
     this.set('faCoffee', faCoffee)
-    await render(hbs`{{fa-icon icon=faCoffee transform="rotate-42"}}`)
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} @transform="rotate-42" />`)
     assert.ok(find('svg').getAttribute('style').split(/:/).includes('transform-origin'))
   })
 
   test('it renders extra classes', async function(assert) {
     this.set('faCoffee', faCoffee)
     this.set('class', 'foo-xyz')
-    await render(hbs`{{fa-icon icon=faCoffee class=class}}`)
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} class={{this.class}} />`)
     assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('foo-xyz'))
     this.set('class', 'foo-new-class')
     assert.notOk(find('svg').getAttribute('class').split(/\s+/).includes('foo-xyz'))
@@ -79,7 +79,7 @@ module('Integration | Component | fa icon', function(hooks) {
     this.set('title', title);
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`{{fa-icon icon=faCoffee title=title}}`);
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
 
     assert.dom('svg title').exists({ count: 1 }, 'has title element');
     assert.dom('svg title').hasText(title, 'title is correct');
@@ -89,7 +89,7 @@ module('Integration | Component | fa icon', function(hooks) {
     assert.expect(1);
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`{{fa-icon icon=faCoffee}}`);
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
 
     assert.dom('svg title').doesNotExist('has not title element');
   });
@@ -100,7 +100,7 @@ module('Integration | Component | fa icon', function(hooks) {
     this.set('title', htmlSafe(title));
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`{{fa-icon icon=faCoffee title=title}}`);
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
 
     assert.dom('svg title').exists({ count: 1 }, 'has title element');
     assert.dom('svg title').hasText(title, 'title is correct');
