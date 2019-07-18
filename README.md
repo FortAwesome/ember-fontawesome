@@ -9,8 +9,9 @@
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
+* Ember.js v3.4 or above
 * Ember CLI v2.13 or above
+* Node.js v8 or above
 
 > Font Awesome 5 Ember component using SVG with JS
 
@@ -112,6 +113,7 @@ $ npm i --save-dev @fortawesome/pro-solid-svg-icons
 $ npm i --save-dev @fortawesome/pro-regular-svg-icons
 $ npm i --save-dev @fortawesome/pro-light-svg-icons
 ```
+**Duotone icons are currently in pre-release and are coming soon to this component.**
 
 Using the Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
 
@@ -357,6 +359,12 @@ The Font Awesome team:
 ## Releasing this project (only project owners can do this)
 
 See [DEVELOPMENT.md](DEVELOPMENT.md#release)
+
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
 
 License
 ------------------------------------------------------------------------------

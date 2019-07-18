@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.1.14](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.14) - 2019-06-28
+
+### Changed
+* Update to ember-cli 3.10
+* Minimum Node requirement changed to version >= 8
+
+---
 ## [0.1.13](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.13) - 2019-02-21
 
 ### Fixed
