@@ -74,7 +74,7 @@ module.exports = {
       name: 'fontawesome-svg-core'
     })
 
-    const autoLibraryNode = new FontAwesomeAutoLibrary({
+    const autoLibraryNode = new FontAwesomeAutoLibrary([], {
       icons: this.fontawesomeConfig.icons,
       output: 'autoLibrary.js'
     })
