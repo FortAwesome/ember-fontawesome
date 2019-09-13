@@ -69,6 +69,7 @@ const IconComponent = Component.extend({
     // accessibility attributes
     'aria-hidden',
     'aria-labelledby',
+    'focusable',
     // svg attributes
     'role',
     'xmlns',
@@ -178,6 +179,10 @@ const IconComponent = Component.extend({
   'aria-labelledby': computed('attributes.aria-labelledby', function () {
     const attributes = this.get('attributes');
     return getWithDefault(attributes, 'aria-labelledby');
+  }),
+  'focusable': computed('attributes.focusable', function () {
+    const attributes = this.get('attributes');
+    return getWithDefault(attributes, 'focusable');
   }),
   'role': computed('attributes.role', function () {
     const attributes = this.get('attributes');
