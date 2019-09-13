@@ -201,6 +201,9 @@ module.exports = {
    */
   setupPreprocessorRegistryAfterConfiguration(type, registry) {
     if (this.fontawesomeConfig.enableExperimentalBuildTimeTransform) {
+      this.ui.writeWarnLine(`The "enableExperimentalBuildTimeTransform" option may be removed soon.
+      Please see https://github.com/FortAwesome/ember-fontawesome/issues/117 for details and comments.
+      `);
       registry.add('htmlbars-ast-plugin', {
         name: 'font-awesome-static-transform',
         plugin: buildAstTransform(this),
