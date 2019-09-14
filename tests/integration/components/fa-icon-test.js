@@ -123,4 +123,38 @@ module('Integration | Component | fa icon', function(hooks) {
 
     assert.dom('svg').hasAttribute('focusable', 'true');
   });
+
+  test('it defaults to ariaHidden', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`)
+    assert.dom('svg').hasAttribute('aria-hidden', 'true')
+  })
+
+  test('it binds ariaHidden', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    this.set('ariaHidden', 'true')
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} aria-hidden={{this.ariaHidden}} />`)
+    assert.dom('svg').hasAttribute('aria-hidden', 'true')
+    this.set('ariaHidden', 'false')
+    assert.dom('svg').hasAttribute('aria-hidden', 'false')
+    this.set('ariaHidden', false)
+    assert.dom('svg').doesNotHaveAttribute('aria-hidden')
+  })
+
+  test('role defaults to img', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`)
+    assert.dom('svg').hasAttribute('role', 'img')
+  })
+
+  test('it binds role', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    this.set('role', 'img')
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} role={{this.role}} />`)
+    assert.dom('svg').hasAttribute('role', 'img')
+    this.set('role', 'presentation')
+    assert.dom('svg').hasAttribute('role', 'presentation')
+    this.set('role', false)
+    assert.dom('svg').doesNotHaveAttribute('role')
+  })
 });
