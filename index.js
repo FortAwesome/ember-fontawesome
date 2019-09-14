@@ -115,6 +115,14 @@ module.exports = {
       `);
       buildConfig = addonOptions.fontawesome;
     }
+    if ('icons' in appConfig) {
+      this.ui.writeWarnLine(`Configuring icons in config/environment.js is no longer recommended
+      and will be removed in a future version.
+
+      Move icon list to config/icons.js for better performance.
+      See https://github.com/FortAwesome/ember-fontawesome#subsetting-icons for instructions.
+      `);
+    }
     const mergedConfig = Object.assign(configDefaults, buildConfig, appConfig);
     const configuredIcons = discoverConfiguredIcons(this.app.project);
     mergedConfig.icons = combineIconSets(mergedConfig.icons, configuredIcons);

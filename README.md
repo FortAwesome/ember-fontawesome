@@ -121,29 +121,22 @@ Using the Pro packages requires [additional configuration](https://fontawesome.c
 ### Subsetting icons
 
 If you want to include only a subset of icons from an icon pack, add a
-`fontawesome` configuration object to your applications options in
-`environment.js`. The following example declares that all icons in
-`free-solid-svg-icons` should be included in the `vendor.js` bundle and
-added to the library, and for `pro-light-svg-icons`, only `adjust`,
-`ambulance`, and `pencil-alt` are to be included in the bundle and added to the library.
+`config/icons.js` file listing the icons you want to include.
+The following example declares that all icons in
+`free-solid-svg-icons` should be included build, 
+and, only `adjust`, `ambulance`, and `pencil-alt` from `pro-light-svg-icons`
+are to be included.
 
 ```js
-module.exports = function(environment) {
-  let ENV = {
-    // Add options here
-    fontawesome: {
-      icons: {
-        'free-solid-svg-icons': 'all',
-        'pro-light-svg-icons': [
-          'adjust',
-          'ambulance',
-          'pencil-alt'
-        ]
-      }
-    }
+module.exports = function() {
+  return {
+    'free-solid-svg-icons': 'all',
+    'pro-light-svg-icons': [
+      'adjust',
+      'ambulance',
+      'pencil-alt'
+    ]
   };
-  // ...
-  return ENV;
 };
 ```
 

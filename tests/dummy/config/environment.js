@@ -18,25 +18,7 @@ module.exports = function(environment) {
     },
     fontawesome: {
       defaultPrefix: 'fas',
-      enableExperimentalBuildTimeTransform: true,
-      icons: {
-        'free-solid-svg-icons': [
-          'coffee',
-          'magic',
-          'circle',
-          'square',
-          'home',
-          'info',
-          'book',
-          'pencil-alt',
-          'cog',
-          'spinner',
-          'checkSquare',
-          'fax',
-          'sync'
-        ],
-        'free-regular-svg-icons': 'all',
-      }
+      enableExperimentalBuildTimeTransform: false,
     },
 
     APP: {
