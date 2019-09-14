@@ -15,7 +15,7 @@ function objectWithKey (key, value) {
   return ((Array.isArray(value) && value.length > 0) || (!Array.isArray(value) && value)) ? {[key]: value} : {}
 }
 
-function classList (previousClasses) {
+function classList () {
   let classes = {
     'fa-spin': this.get('spin'),
     'fa-pulse': this.get('pulse'),
@@ -32,7 +32,6 @@ function classList (previousClasses) {
   return Object.keys(classes)
     .map(key => classes[key] ? key : null)
     .filter(key => key)
-    .concat(previousClasses.filter(c => !c.match(/^fa-/)))
 }
 
 function normalizeIconArgs (prefix, icon) {
@@ -95,7 +94,6 @@ const IconComponent = Component.extend({
   }),
   abstractIcon: computed(
     'prefix',
-    'class',
     'icon',
     'transform',
     'mask',
@@ -112,7 +110,7 @@ const IconComponent = Component.extend({
     'pull',
     function () {
     const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
-    const classes = objectWithKey('classes', [...classList.bind(this)(this.getWithDefault('class', '').split(' '))])
+    const classes = objectWithKey('classes', [...classList.bind(this)()])
     const transformProp = this.get('transform')
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
@@ -143,14 +141,13 @@ const IconComponent = Component.extend({
   }),
   allClasses: computed('abstractIcon', 'attributes.class', 'class', function () {
     const abstractIcon = this.get('abstractIcon');
-    const attributes = this.get('attributes');
-    const classes = this.get('class');
-    const iconClasses = getWithDefault(attributes, 'class');
     if (!abstractIcon) {
       return config.replacementClass;
     }
+    const attributes = this.get('attributes');
+    const iconClasses = getWithDefault(attributes, 'class');
 
-    return `${iconClasses} ${classes}`;
+    return iconClasses;
   }),
   'data-prefix': computed('attributes.data-prefix', function () {
     const attributes = this.get('attributes');

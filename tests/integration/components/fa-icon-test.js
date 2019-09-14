@@ -42,10 +42,30 @@ module('Integration | Component | fa icon', function(hooks) {
     this.set('faCoffee', faCoffee)
     this.set('class', 'foo-xyz')
     await render(hbs`<FaIcon @icon={{this.faCoffee}} class={{this.class}} />`)
-    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('foo-xyz'))
+    assert.dom('svg').hasClass('foo-xyz')
     this.set('class', 'foo-new-class')
-    assert.notOk(find('svg').getAttribute('class').split(/\s+/).includes('foo-xyz'))
-    assert.ok(find('svg').getAttribute('class').split(/\s+/).includes('foo-new-class'))
+    assert.dom('svg').doesNotHaveClass('foo-xyz')
+    assert.dom('svg').hasClass('foo-new-class')
+  })
+
+  test('it renders extra classes only once #98 in classic invocation', async function(assert) {
+    const extraClass = 'foo-xyz';
+    this.set('faCoffee', faCoffee)
+    this.set('class', extraClass)
+    await render(hbs`{{fa-icon icon=this.faCoffee class=this.class}}`)
+    assert.dom('svg').hasClass(extraClass)
+    const list = find('svg').getAttribute('class').split(' ')
+    const instances = list.filter(val => val === extraClass);
+    assert.equal(instances.length, 1, 'class appears only once')
+  })
+
+  test('it does not render "undefined" classes', async function(assert) {
+    this.set('faCoffee', faCoffee)
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} class='test' />`)
+    assert.dom('svg').hasClass('test')
+    const list = find('svg').getAttribute('class').split(' ')
+    const instances = list.filter(val => val === 'undefined');
+    assert.equal(instances.length, 0)
   })
 
   test('it renders coffee positional', async function(assert) {
