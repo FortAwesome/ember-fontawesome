@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.2.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.2.0) - 2019-09-15
+
+### Changed
+* Convert docs to Angle bracket examples #109
+* Add RFC warning see #117
+* [BREAKING] Add focusable attribute which defaults to false #113
+
+### Fixed
+* Custom icon classes inserted 3 times #98
+* Styles are duplicated #97
+
+---
 ## [0.1.14](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.1.14) - 2019-06-28
 
 ### Changed
