@@ -189,6 +189,7 @@ module.exports = {
       app.import(`vendor/${pack}.js`)
     })
     app.import('vendor/autoLibrary.js')
+    app.import('vendor/configure-fontawesome-styles.js')
 
     config.autoAddCss = false;
     app.import('vendor/fontawesome.css');
