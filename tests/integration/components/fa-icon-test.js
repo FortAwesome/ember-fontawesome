@@ -177,4 +177,34 @@ module('Integration | Component | fa icon', function(hooks) {
     this.set('role', false)
     assert.dom('svg').doesNotHaveAttribute('role')
   })
+
+  test('it binds attributes', async function(assert) {
+    assert.expect(8);
+    this.set('height', '5px');
+    this.set('width', '6px');
+    this.set('x', '19');
+    this.set('y', '81');
+    this.set('faCoffee', faCoffee);
+
+    await render(hbs`<FaIcon
+      @icon={{this.faCoffee}}
+      height={{this.height}}
+      width={{this.width}}
+      x={{this.x}}
+      y={{this.y}}
+    />`);
+
+    assert.dom('svg').hasAttribute('height', '5px');
+    assert.dom('svg').hasAttribute('width', '6px');
+    assert.dom('svg').hasAttribute('x', '19');
+    assert.dom('svg').hasAttribute('y', '81');
+    this.set('height', '10rem');
+    this.set('width', '10rem');
+    this.set('x', '2');
+    this.set('y', '2');
+    assert.dom('svg').hasAttribute('height', '10rem');
+    assert.dom('svg').hasAttribute('width', '10rem');
+    assert.dom('svg').hasAttribute('x', '2');
+    assert.dom('svg').hasAttribute('y', '2');
+  })
 });
