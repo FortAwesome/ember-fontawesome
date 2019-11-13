@@ -169,17 +169,35 @@ const IconComponent = Component.extend({
     const attributes = this.get('attributes');
     return getWithDefault(attributes, 'data-fa-processed');
   }),
-  'aria-hidden': computed('attributes.aria-hidden', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'aria-hidden');
+  'aria-hidden': computed('attributes.aria-hidden', {
+    get() {
+      if (this._ariaHiddenOverride) {
+        return this._ariaHiddenOverride;
+      }
+      const attributes = this.get('attributes');
+      return getWithDefault(attributes, 'aria-hidden');
+    },
+    set(key, value) {
+      this._ariaHiddenOverride = value;
+      return value;
+    }
   }),
   'aria-labelledby': computed('attributes.aria-labelledby', function () {
     const attributes = this.get('attributes');
     return getWithDefault(attributes, 'aria-labelledby');
   }),
-  'focusable': computed('attributes.focusable', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'focusable');
+  'focusable': computed("attributes.focusable", {
+    get() {
+      if (this._focusableOverride) {
+        return this._focusableOverride;
+      }
+      const attributes = this.get("attributes");
+      return getWithDefault(attributes, "focusable");
+    },
+    set(key, value) {
+      this._focusableOverride = value;
+      return value;
+    }
   }),
   'role': computed('attributes.role', function () {
     const attributes = this.get('attributes');
