@@ -6,6 +6,7 @@ import { htmlSafe } from '@ember/string'
 import { computed, getWithDefault } from '@ember/object'
 import { assign } from '@ember/polyfills';
 import appConfig from 'ember-get-config';
+import { deprecate } from '@ember/debug';
 
 function getConfigOption (key, defaultValue) {
   return getWithDefault(appConfig, `fontawesome.${key}`, defaultValue);
@@ -55,6 +56,20 @@ function normalizeIconArgs (prefix, icon) {
 }
 
 const IconComponent = Component.extend({
+  init() {
+    this._super(...arguments);
+    if (this.params && this.params.length) {
+      deprecate(
+        'Passing the icon as a position param is deprecated and will be removed in v1.0.0.',
+        false,
+        {
+          id: '@fortawesome/ember-fontawesome.no-positional-params',
+          until: '1.0.0',
+          url: 'https://github.com/FortAwesome/ember-fontawesome#template'
+        }
+      );
+    }
+  },
   layout,
   tagName: 'svg',
   classNameBindings: ['allClasses'],
@@ -92,6 +107,16 @@ const IconComponent = Component.extend({
     const style = getWithDefault(attributes, 'style');
     return style ? htmlSafe(`${style}`) : undefined;
   }),
+  iconOrPositionalParam: computed('icon', 'params.[]', function () {
+    if (this.icon) {
+      return this.icon;
+    }
+    if (this.params && this.params.length) {
+      return this.params[0];
+    }
+
+    return null;
+  }),
   abstractIcon: computed(
     'prefix',
     'icon',
@@ -109,7 +134,7 @@ const IconComponent = Component.extend({
     'rotation',
     'pull',
     function () {
-    const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('icon'))
+    const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('iconOrPositionalParam'))
     const classes = objectWithKey('classes', [...classList.bind(this)()])
     const transformProp = this.get('transform')
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
@@ -201,7 +226,7 @@ const IconComponent = Component.extend({
 
 // Enables {{fa-icon 'iconnamehere'}} syntax, while still allowing {{fa-icon icon='iconnamehere'}}
 IconComponent.reopenClass({
-  positionalParams: ['icon']
+  positionalParams: 'params'
 });
 
 export default IconComponent;
