@@ -49,4 +49,17 @@
 <FaIcon @icon="cog" @pulse={{true}} /><br>
 <FaIcon @icon="cog" @pulse={{this.isPulsing}} /> {{input type="checkbox" checked=this.isPulsing}} Pulse it
 
+<h2>Static Sprites</h2>
+<FaStaticSprite @icon="coffee" />
+
+<h3>Next to component icons for comparison</h3>
+<p>
+  <FaStaticSprite @icon="square" /><FaIcon @icon="square" /><FaStaticSprite @icon="square" /> <br>
+  <FaIcon @icon="square" /><FaStaticSprite @icon="square" /><FaIcon @icon="square" />
+</p>
+<p>
+  <FaStaticSprite @icon="coffee" /><FaIcon @icon="coffee" /><FaStaticSprite @icon="coffee" /> <br>
+  <FaIcon @icon="coffee" /><FaStaticSprite @icon="coffee" /><FaIcon @icon="coffee" />
+</p>
+
 {{outlet}}

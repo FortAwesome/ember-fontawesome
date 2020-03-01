@@ -15,7 +15,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'img');
     assert.dom('svg').hasAttribute('focusable', 'false');
     assert.dom('svg').hasAttribute('aria-hidden', 'true');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-coffee');
+    assert.dom('svg').hasClass('fa-w-20');
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#coffee');
   });
@@ -27,7 +29,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'img');
     assert.dom('svg').hasAttribute('focusable', 'false');
     assert.dom('svg').hasAttribute('aria-hidden', 'true');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-coffee');
+    assert.dom('svg').hasClass('fa-w-20');
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#coffee');
   });
@@ -40,7 +44,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'img');
     assert.dom('svg').hasAttribute('focusable', 'false');
     assert.dom('svg').hasAttribute('aria-hidden', 'true');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-atom');
+    assert.dom('svg').hasClass('fa-w-14');
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#atom');
   });
@@ -53,7 +59,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'img');
     assert.dom('svg').hasAttribute('focusable', 'false');
     assert.dom('svg').hasAttribute('aria-hidden', 'true');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-fort-awesome');
+    assert.dom('svg').hasClass('fa-w-16');
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/brands.svg#fort-awesome');
   });
@@ -67,7 +75,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'img');
     assert.dom('svg').hasAttribute('focusable', 'true');
     assert.dom('svg').hasAttribute('aria-hidden', 'false');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-coffee');
+    assert.dom('svg').hasClass('fa-w-20');
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#coffee');
     assert.dom('svg title').exists();
@@ -83,7 +93,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'img');
     assert.dom('svg').hasAttribute('focusable', 'false');
     assert.dom('svg').hasAttribute('aria-hidden', 'true');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-coffee');
+    assert.dom('svg').hasClass('fa-w-20');
     assert.dom('svg').hasClass('foo');
     assert.dom('svg').hasClass('bar');
     assert.dom('svg').hasClass('foo-bar-baz');
@@ -102,7 +114,9 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg').hasAttribute('role', 'button');
     assert.dom('svg').hasAttribute('focusable', 'true');
     assert.dom('svg').hasAttribute('aria-hidden', 'false');
-    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg').hasClass('svg-inline--fa');
+    assert.dom('svg').hasClass('fa-coffee');
+    assert.dom('svg').hasClass('fa-w-20');
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#coffee');
   });
