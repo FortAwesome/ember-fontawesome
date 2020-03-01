@@ -1,6 +1,7 @@
 'use strict';
 var broccoliSource = require('broccoli-source')
 var UnwatchedDir = broccoliSource.UnwatchedDir
+const Funnel = require('broccoli-funnel');
 var MergeTrees = require('broccoli-merge-trees')
 var Rollup = require('broccoli-rollup')
 var resolve = require('rollup-plugin-node-resolve')
@@ -201,6 +202,26 @@ module.exports = {
 
     config.autoAddCss = false;
     app.import('vendor/fontawesome.css');
+  },
+
+  treeForPublic: function(parentTree) {
+    const tree = new Funnel(this._nodeModulesPath, {
+      include: [
+        '@fortawesome/fontawesome-free/sprites/*.svg',
+        '@fortawesome/fontawesome-pro/sprites/*.svg',
+      ],
+      destDir: 'assets/fa-sprites/',
+      allowEmpty: true,
+      getDestinationPath: function (relativePath) {
+        return path.basename(relativePath);
+      }
+    });
+    const trees = [tree];
+    if (parentTree) {
+      trees.push(parentTree);
+    }
+
+    return MergeTrees(trees);
   },
 
   /**
