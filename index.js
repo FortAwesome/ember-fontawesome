@@ -14,6 +14,7 @@ var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
 const path = require('path');
 const findWorkspaceRoot = require('find-yarn-workspace-root');
+const FaStaticSpriteTransformPlugin = require('./lib/fa-static-sprite-transform');
 
 module.exports = {
   name: require('./package').name,
@@ -244,4 +245,9 @@ module.exports = {
     }
   },
 
+  setupPreprocessorRegistry(type, registry) {
+    registry.add('htmlbars-ast-plugin', FaStaticSpriteTransformPlugin.instantiate({
+      options: {},
+    }));
+  },
 }
