@@ -29,6 +29,7 @@ Compatibility
 - [Usage](#usage)
   * [Configuration](#configuration)
   * [Template](#template)
+  * [Static SVG Sprites](#static-svg-sprites)
 - [Features](#features)
   * [Basic](#basic)
   * [Advanced](#advanced)
@@ -224,6 +225,24 @@ If you want to use an icon from any style other than the default, use `prefix=`.
 
 ```hbs
 <FaIcon @icon="square" @prefix="far" />
+```
+
+### Static SVG Sprites
+
+In situations where many icons are rendered to the page you can substantially improve performance by rendering
+a [static sprite](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-sprites) instead of the full icon component. Any
+additional attributes you pass will be included in the `<svg>` element of the output.
+
+```hbs
+<FaStaticSprite @icon="coffee" />
+<FaStaticSprite @icon="coffee" @prefix="fal" />
+<FaStaticSprite @icon="coffee" class="my-custom-class" />
+```
+
+Because this transformation happens at build time some invocations will *not work*:
+```hbs
+{{!-- does not work --}} <FaStaticSprite @icon={{this.iconName}} />
+{{!-- does not work --}} {{component 'FaStaticSprite'}}
 ```
 
 ## Features
