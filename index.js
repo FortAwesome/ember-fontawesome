@@ -243,11 +243,11 @@ module.exports = {
         },
       });
     }
-  },
 
-  setupPreprocessorRegistry(type, registry) {
     registry.add('htmlbars-ast-plugin', FaStaticSpriteTransformPlugin.instantiate({
-      options: {},
+      options: {
+        defaultPrefix: this.fontawesomeConfig.defaultPrefix,
+      },
     }));
   },
 }

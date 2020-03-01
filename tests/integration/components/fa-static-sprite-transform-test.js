@@ -19,6 +19,18 @@ module('Integration | Transform | <FaStaticSprite>', function(hooks) {
     assert.dom('svg use').exists();
     assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#coffee');
   });
+  test('it renders solid coffee as the default prefix', async function (assert) {
+    await render(hbs`<FaStaticSprite
+      @icon="coffee"
+    />`);
+
+    assert.dom('svg').hasAttribute('role', 'img');
+    assert.dom('svg').hasAttribute('focusable', 'false');
+    assert.dom('svg').hasAttribute('aria-hidden', 'true');
+    assert.dom('svg').hasClass('fa-static-sprite');
+    assert.dom('svg use').exists();
+    assert.dom('svg use').hasAttribute('xlink:href', 'assets/fa-sprites/solid.svg#coffee');
+  });
   test('it renders solid atom', async function (assert) {
     await render(hbs`<FaStaticSprite
       @icon="atom"
