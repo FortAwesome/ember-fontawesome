@@ -1,6 +1,7 @@
 'use strict';
 var broccoliSource = require('broccoli-source')
 var UnwatchedDir = broccoliSource.UnwatchedDir
+const Funnel = require('broccoli-funnel');
 var MergeTrees = require('broccoli-merge-trees')
 var Rollup = require('broccoli-rollup')
 var resolve = require('rollup-plugin-node-resolve')
@@ -13,6 +14,7 @@ var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
 const path = require('path');
 const findWorkspaceRoot = require('find-yarn-workspace-root');
+const FaStaticSpriteTransformPlugin = require('./lib/fa-static-sprite-transform');
 
 module.exports = {
   name: require('./package').name,
@@ -203,6 +205,26 @@ module.exports = {
     app.import('vendor/fontawesome.css');
   },
 
+  treeForPublic: function(parentTree) {
+    const tree = new Funnel(this._nodeModulesPath, {
+      include: [
+        '@fortawesome/fontawesome-free/sprites/*.svg',
+        '@fortawesome/fontawesome-pro/sprites/*.svg',
+      ],
+      destDir: 'assets/fa-sprites/',
+      allowEmpty: true,
+      getDestinationPath: function (relativePath) {
+        return path.basename(relativePath);
+      }
+    });
+    const trees = [tree];
+    if (parentTree) {
+      trees.push(parentTree);
+    }
+
+    return MergeTrees(trees);
+  },
+
   /**
    * setupPreprocessorRegistry is called before included
    * see https://github.com/ember-cli/ember-cli/issues/3701
@@ -221,6 +243,11 @@ module.exports = {
         },
       });
     }
-  },
 
+    registry.add('htmlbars-ast-plugin', FaStaticSpriteTransformPlugin.instantiate({
+      options: {
+        defaultPrefix: this.fontawesomeConfig.defaultPrefix,
+      },
+    }));
+  },
 }

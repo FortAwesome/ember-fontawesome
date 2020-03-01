@@ -48,8 +48,10 @@
     ]
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.0",
     "broccoli-file-creator": "^2.1.1",
+    "broccoli-funnel": "^3.0.2",
     "broccoli-merge-trees": "^3.0.2",
     "broccoli-plugin": "^3.0.0",
     "broccoli-rollup": "^4.1.1",
