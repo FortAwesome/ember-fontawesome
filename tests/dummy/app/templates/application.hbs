@@ -11,10 +11,10 @@
 <h3>Dynamic with Bound Attribute</h3>
 <div>
   <p>Drag the slider to spin the magic.</p>
-  {{input type="range" value=magic}}
+  <Input type="range" @value={{this.magic}} />
   {{! template-lint-disable no-inline-styles}}
   <div style="padding:2em;">
-    <FaIcon @icon="magic" @transform={{concat "rotate-" magic}} />
+    <FaIcon @icon="magic" @transform={{concat "rotate-" this.magic}} />
   </div>
 </div>
 <h3>Pro Icon</h3>
@@ -43,10 +43,12 @@
 
 <h3>Animation (Spin)</h3>
 <FaIcon @icon="sync" @spin={{true}} /><br>
-<FaIcon @icon="sync" @spin={{this.isSpinning}} /> {{input type="checkbox" checked=this.isSpinning}} Spin it
+<FaIcon @icon="sync" @spin={{this.isSpinning}} />
+<input type="checkbox" checked={{this.isSpinning}} {{on "click" this.toggleSpinning}} /> Spin it
 
 <h3>Animation (Pulse)</h3>
 <FaIcon @icon="cog" @pulse={{true}} /><br>
-<FaIcon @icon="cog" @pulse={{this.isPulsing}} /> {{input type="checkbox" checked=this.isPulsing}} Pulse it
+<FaIcon @icon="cog" @pulse={{this.isPulsing}} />
+<input type="checkbox" checked={{this.isPulsing}} {{on "click" this.togglePulsing}} /> Pulse it
 
 {{outlet}}
