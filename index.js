@@ -21,7 +21,7 @@ module.exports = {
 
   treeForVendor(vendorTree) {
     const iconRollups = []
-    const pathToCore = path.dirname(require.resolve('@fortawesome/fontawesome-svg-core'));
+    const pathToCore = path.dirname(require.resolve('@fortawesome/fontawesome-svg-core/package.json'));
 
     Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
       const iconExportsFile = `exports-${pack}.js`
