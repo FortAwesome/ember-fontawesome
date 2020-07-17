@@ -3,10 +3,18 @@ import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/string'
-import { computed, getWithDefault } from '@ember/object'
+import { computed, get } from '@ember/object'
 import { assign } from '@ember/polyfills';
 import appConfig from 'ember-get-config';
 import { deprecate } from '@ember/debug';
+
+function getWithDefault (object, key, defaultValue) {
+  let value = get(object, key);
+  if (value === undefined) {
+    return defaultValue;
+  }
+  return value;
+}
 
 function getConfigOption (key, defaultValue) {
   return getWithDefault(appConfig, `fontawesome.${key}`, defaultValue);
@@ -25,9 +33,9 @@ function classList () {
     'fa-li': this.get('listItem'),
     'fa-flip-horizontal': this.get('flip') === 'horizontal' || this.get('flip') === 'both',
     'fa-flip-vertical': this.get('flip') === 'vertical' || this.get('flip') === 'both',
-    [`fa-${this.get('size')}`]: this.getWithDefault('size', null) !== null,
-    [`fa-rotate-${this.get('rotation')}`]: this.getWithDefault('rotation', null) !== null,
-    [`fa-pull-${this.get('pull')}`]: this.getWithDefault('pull', null) !== null
+    [`fa-${this.get('size')}`]: getWithDefault(this, 'size', null) !== null,
+    [`fa-rotate-${this.get('rotation')}`]: getWithDefault(this, 'rotation', null) !== null,
+    [`fa-pull-${this.get('pull')}`]: getWithDefault(this, 'pull', null) !== null
   }
 
   return Object.keys(classes)
@@ -139,8 +147,8 @@ const IconComponent = Component.extend({
     const transformProp = this.get('transform')
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
-    const symbol = this.getWithDefault('symbol', false)
-    let title = this.getWithDefault('title', null)
+    const symbol = getWithDefault(this, 'symbol', false)
+    let title = getWithDefault(this, 'title', null)
     if (title) {
       title = `${title}`;
     }
