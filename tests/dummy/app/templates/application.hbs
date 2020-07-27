@@ -44,11 +44,11 @@
 <h3>Animation (Spin)</h3>
 <FaIcon @icon="sync" @spin={{true}} /><br>
 <FaIcon @icon="sync" @spin={{this.isSpinning}} />
-<input type="checkbox" checked={{this.isSpinning}} {{on "click" this.toggleSpinning}} /> Spin it
+<input type="checkbox" checked={{this.isSpinning}} {{on "click" this.toggleSpinning}} > Spin it
 
 <h3>Animation (Pulse)</h3>
 <FaIcon @icon="cog" @pulse={{true}} /><br>
 <FaIcon @icon="cog" @pulse={{this.isPulsing}} />
-<input type="checkbox" checked={{this.isPulsing}} {{on "click" this.togglePulsing}} /> Pulse it
+<input type="checkbox" checked={{this.isPulsing}} {{on "click" this.togglePulsing}} > Pulse it
 
 {{outlet}}
