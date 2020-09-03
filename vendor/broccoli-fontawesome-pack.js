@@ -3,7 +3,7 @@
 var Plugin = require('broccoli-plugin')
 var path = require('path')
 var fs = require('fs')
-var camelCase = require('camel-case')
+var { camelCase } = require('camel-case')
 var { config } = require('@fortawesome/fontawesome-svg-core');
 
 class FontAwesomePack extends Plugin {
