@@ -26,16 +26,16 @@ function objectWithKey (key, value) {
 
 function classList () {
   let classes = {
-    'fa-spin': this.get('spin'),
-    'fa-pulse': this.get('pulse'),
-    'fa-fw': this.get('fixedWidth'),
-    'fa-border': this.get('border'),
-    'fa-li': this.get('listItem'),
-    'fa-flip-horizontal': this.get('flip') === 'horizontal' || this.get('flip') === 'both',
-    'fa-flip-vertical': this.get('flip') === 'vertical' || this.get('flip') === 'both',
-    [`fa-${this.get('size')}`]: getWithDefault(this, 'size', null) !== null,
-    [`fa-rotate-${this.get('rotation')}`]: getWithDefault(this, 'rotation', null) !== null,
-    [`fa-pull-${this.get('pull')}`]: getWithDefault(this, 'pull', null) !== null
+    'fa-spin': this.spin,
+    'fa-pulse': this.pulse,
+    'fa-fw': this.fixedWidth,
+    'fa-border': this.border,
+    'fa-li': this.listItem,
+    'fa-flip-horizontal': this.flip === 'horizontal' || this.flip === 'both',
+    'fa-flip-vertical': this.flip === 'vertical' || this.flip === 'both',
+    [`fa-${this.size}`]: getWithDefault(this, 'size', null) !== null,
+    [`fa-rotate-${this.rotation}`]: getWithDefault(this, 'rotation', null) !== null,
+    [`fa-pull-${this.pull}`]: getWithDefault(this, 'pull', null) !== null
   }
 
   return Object.keys(classes)
@@ -99,7 +99,7 @@ const IconComponent = Component.extend({
     'safeStyle:style',
   ],
   html: computed('abstractIcon.children.[]', function() {
-    const abstractIcon = this.get('abstractIcon');
+    const abstractIcon = this.abstractIcon;
     let newHtml;
     if(!abstractIcon){
       newHtml = htmlSafe('')
@@ -111,7 +111,7 @@ const IconComponent = Component.extend({
     return newHtml
   }),
   safeStyle: computed('attributes', function() {
-    const attributes = this.get('attributes');
+    const attributes = this.attributes;
     const style = getWithDefault(attributes, 'style');
     return style ? htmlSafe(`${style}`) : undefined;
   }),
@@ -126,27 +126,28 @@ const IconComponent = Component.extend({
     return null;
   }),
   abstractIcon: computed(
-    'prefix',
+    'border',
+    'fixedWidth',
+    'flip',
     'icon',
-    'transform',
+    'iconOrPositionalParam',
+    'listItem',
     'mask',
+    'prefix',
+    'pull',
+    'pulse',
+    'rotation',
+    'size',
+    'spin',
     'symbol',
     'title',
-    'spin',
-    'pulse',
-    'fixedWidth',
-    'listItem',
-    'border',
-    'flip',
-    'size',
-    'rotation',
-    'pull',
+    'transform',
     function () {
-    const iconLookup = normalizeIconArgs(this.get('prefix'), this.get('iconOrPositionalParam'))
+    const iconLookup = normalizeIconArgs(this.prefix, this.iconOrPositionalParam)
     const classes = objectWithKey('classes', [...classList.bind(this)()])
-    const transformProp = this.get('transform')
+    const transformProp = this.transform
     const transform = objectWithKey('transform', (typeof transformProp === 'string') ? parse.transform(transformProp) : transformProp)
-    const mask = objectWithKey('mask', normalizeIconArgs(null, this.get('mask')))
+    const mask = objectWithKey('mask', normalizeIconArgs(null, this.mask))
     const symbol = getWithDefault(this, 'symbol', false)
     let title = getWithDefault(this, 'title', null)
     if (title) {
@@ -169,66 +170,55 @@ const IconComponent = Component.extend({
     return renderedIcon.abstract[0];
   }),
   attributes: computed('abstractIcon.attributes', function() {
-    const abstractIcon = this.get('abstractIcon');
+    const abstractIcon = this.abstractIcon;
     return abstractIcon ? abstractIcon.attributes : {};
   }),
   allClasses: computed('abstractIcon', 'attributes.class', 'class', function () {
-    const abstractIcon = this.get('abstractIcon');
+    const abstractIcon = this.abstractIcon;
     if (!abstractIcon) {
       return config.replacementClass;
     }
-    const attributes = this.get('attributes');
+    const attributes = this.attributes;
     const iconClasses = getWithDefault(attributes, 'class');
 
     return iconClasses;
   }),
   'data-prefix': computed('attributes.data-prefix', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'data-prefix');
+    return getWithDefault(this.attributes, 'data-prefix');
   }),
   'data-icon': computed('attributes.data-icon', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'data-icon');
+    return getWithDefault(this.attributes, 'data-icon');
   }),
   'data-fa-transform': computed('attributes.data-fa-transform', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'data-fa-transform');
+    return getWithDefault(this.attributes, 'data-fa-transform');
   }),
   'data-fa-mask': computed('attributes.data-fa-mask', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'data-fa-mask');
+    return getWithDefault(this.attributes, 'data-fa-mask');
   }),
   'data-fa-processed': computed('attributes.data-fa-processed', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'data-fa-processed');
+    return getWithDefault(this.attributes, 'data-fa-processed');
   }),
   'aria-hidden': computed('attributes.aria-hidden', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'aria-hidden');
+    return getWithDefault(this.attributes, 'aria-hidden');
   }),
   'aria-labelledby': computed('attributes.aria-labelledby', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'aria-labelledby');
+    return getWithDefault(this.attributes, 'aria-labelledby');
   }),
   'focusable': computed('attributes.focusable', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'focusable');
+    return getWithDefault(this.attributes, 'focusable');
   }),
   'role': computed('attributes.role', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'role');
+    return getWithDefault(this.attributes, 'role');
   }),
   'xmlns': computed('attributes.xmlns', function () {
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'xmlns');
+    return getWithDefault(this.attributes, 'xmlns');
   }),
-  'viewBox': computed('attributes.viewBox', function () {
-    const abstractIcon = this.get('abstractIcon');
+  'viewBox': computed('abstractIcon', 'attributes.viewBox', function () {
+    const abstractIcon = this.abstractIcon;
     if (!abstractIcon) {
       return '0 0 448 512';
     }
-    const attributes = this.get('attributes');
-    return getWithDefault(attributes, 'viewBox');
+    return getWithDefault(this.attributes, 'viewBox');
   }),
 });
 
