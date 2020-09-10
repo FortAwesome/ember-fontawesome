@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.2.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.2.2) - 2020-09-10
+
+### Changed
+* Dropping support for Node version 8 (version 10 or greater required) #139
+* Passing the icon as a position param is deprecated and will be removed in v1.0.0 #130
+* Prefer icons.js for subsetting icons #121
+
+### Fixed
+* Removed usage of getWithDefault() #155
+
+---
 ## [0.2.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.2.1) - 2019-09-19
 
 ### Fixed
