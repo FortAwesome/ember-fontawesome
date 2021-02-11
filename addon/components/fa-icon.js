@@ -2,7 +2,7 @@
 import Component from '@ember/component'
 import layout from '../templates/components/fa-icon'
 import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
-import { htmlSafe } from '@ember/string'
+import { htmlSafe } from '@ember/template'
 import { computed, get } from '@ember/object'
 import { assign } from '@ember/polyfills';
 import appConfig from 'ember-get-config';
