@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.2.3](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.2.3) - 2021-02-16
+
+### Fixed
+* Package dependency upgrades #161 #162 #163
+* Fix deprecated htmlSafe #165
+
+---
 ## [0.2.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.2.2) - 2020-09-10
 
 ### Changed
