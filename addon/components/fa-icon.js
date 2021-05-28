@@ -5,7 +5,7 @@ import { icon, parse, toHtml, config } from '@fortawesome/fontawesome-svg-core'
 import { htmlSafe } from '@ember/template'
 import { computed, get } from '@ember/object'
 import { assign } from '@ember/polyfills';
-import appConfig from 'ember-get-config';
+import { getGlobalConfig } from '@embroider/macros';
 import { deprecate } from '@ember/debug';
 
 function getWithDefault (object, key, defaultValue) {
@@ -17,7 +17,7 @@ function getWithDefault (object, key, defaultValue) {
 }
 
 function getConfigOption (key, defaultValue) {
-  return getWithDefault(appConfig, `fontawesome.${key}`, defaultValue);
+  return getWithDefault(getGlobalConfig(), `fontawesome.${key}`, defaultValue);
 }
 
 function objectWithKey (key, value) {
