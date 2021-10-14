@@ -1,14 +1,17 @@
 'use strict';
-var broccoliSource = require('broccoli-source')
-var UnwatchedDir = broccoliSource.UnwatchedDir
-var MergeTrees = require('broccoli-merge-trees')
-var Rollup = require('broccoli-rollup')
-var resolve = require('rollup-plugin-node-resolve')
-var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack')
-var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library')
-var glob = require('glob')
+var broccoliSource = require('broccoli-source');
+var UnwatchedDir = broccoliSource.UnwatchedDir;
+var MergeTrees = require('broccoli-merge-trees');
+var Rollup = require('broccoli-rollup');
+var resolve = require('rollup-plugin-node-resolve');
+var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack');
+var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library');
+var glob = require('glob');
 var buildAstTransform = require('./lib/ast-transform');
-const { discoverConfiguredIcons, combineIconSets } = require('./lib/discover-configured-icons');
+const {
+  discoverConfiguredIcons,
+  combineIconSets,
+} = require('./lib/discover-configured-icons');
 var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
 const path = require('path');
@@ -20,20 +23,21 @@ module.exports = {
   _nodeModulesPath: null,
 
   treeForVendor(vendorTree) {
-    const iconRollups = []
-    const pathToCore = path.join(this._nodeModulesPath, '@fortawesome', 'fontawesome-svg-core');
+    const iconRollups = [];
+    const pathToCore = path.join(
+      this._nodeModulesPath,
+      '@fortawesome',
+      'fontawesome-svg-core'
+    );
 
-    Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
-      const iconExportsFile = `exports-${pack}.js`
-      const iconPackTree = new FontAwesomePack(
-        [new UnwatchedDir(pathToCore)],
-        {
-          pack,
-          icons: this.fontawesomeConfig.icons[pack],
-          output: iconExportsFile
-        }
-      )
-      const rolledIconPackFile = `${pack}.js`
+    Object.keys(this.fontawesomeConfig.icons).forEach((pack) => {
+      const iconExportsFile = `exports-${pack}.js`;
+      const iconPackTree = new FontAwesomePack([new UnwatchedDir(pathToCore)], {
+        pack,
+        icons: this.fontawesomeConfig.icons[pack],
+        output: iconExportsFile,
+      });
+      const rolledIconPackFile = `${pack}.js`;
       const rollupNode = new Rollup(iconPackTree, {
         rollup: {
           input: iconExportsFile,
@@ -42,18 +46,16 @@ module.exports = {
             format: 'amd',
             interop: false,
             amd: {
-              id:`@fortawesome/${pack}`
-            }
+              id: `@fortawesome/${pack}`,
+            },
           },
-          plugins: [
-            resolve()
-          ]
+          plugins: [resolve()],
         },
         nodeModulesPath: this._nodeModulesPath,
-        name: `${pack}-rollup`
-      })
-      iconRollups.push(rollupNode)
-    })
+        name: `${pack}-rollup`,
+      });
+      iconRollups.push(rollupNode);
+    });
 
     const fontawesomeRollup = new Rollup(new UnwatchedDir(pathToCore), {
       rollup: {
@@ -63,21 +65,19 @@ module.exports = {
           exports: 'named',
           format: 'amd',
           amd: {
-            id:'@fortawesome/fontawesome-svg-core'
-          }
+            id: '@fortawesome/fontawesome-svg-core',
+          },
         },
-        plugins: [
-          resolve()
-        ]
+        plugins: [resolve()],
       },
       nodeModulesPath: this._nodeModulesPath,
-      name: 'fontawesome-svg-core'
-    })
+      name: 'fontawesome-svg-core',
+    });
 
     const autoLibraryNode = new FontAwesomeAutoLibrary([], {
       icons: this.fontawesomeConfig.icons,
-      output: 'autoLibrary.js'
-    })
+      output: 'autoLibrary.js',
+    });
 
     const fontawesomeStyles = writeFile('fontawesome.css', dom.css());
 
@@ -86,7 +86,7 @@ module.exports = {
       fontawesomeRollup,
       autoLibraryNode,
       ...iconRollups,
-      fontawesomeStyles
+      fontawesomeStyles,
     ]);
   },
 
@@ -107,16 +107,21 @@ module.exports = {
     };
     let buildConfig = {};
 
-    let addonOptions = (this.parent && this.parent.options) || (this.app && this.app.options) || {};
+    let addonOptions =
+      (this.parent && this.parent.options) ||
+      (this.app && this.app.options) ||
+      {};
     if ('fontawesome' in addonOptions) {
-      this.ui.writeWarnLine(`fontawesome is no longer configured in 'ember-cli-build.js'.
+      this.ui
+        .writeWarnLine(`fontawesome is no longer configured in 'ember-cli-build.js'.
       All configuration should be moved to 'environment.js'.
       See https://github.com/FortAwesome/ember-fontawesome#subsetting-icons for details.
       `);
       buildConfig = addonOptions.fontawesome;
     }
     if ('icons' in appConfig) {
-      this.ui.writeWarnLine(`Configuring icons in config/environment.js is no longer recommended
+      this.ui
+        .writeWarnLine(`Configuring icons in config/environment.js is no longer recommended
       and will be removed in a future version.
 
       Move icon list to config/icons.js for better performance.
@@ -135,44 +140,52 @@ module.exports = {
     // 2. If no icons are defined, automatically configure whatever is there under node_modules
     // @TODO: look for any addons contributing config. maybe enumerated in this.app.options.addons
     if (Object.keys(this.fontawesomeConfig.icons).length === 0) {
-      const iconPattern = path.join(this._nodeModulesPath, '@fortawesome', '@(free|pro)-*-svg-icons');
-      glob.sync(iconPattern)
-        .map(i => i.split('/').pop())
+      const iconPattern = path.join(
+        this._nodeModulesPath,
+        '@fortawesome',
+        '@(free|pro)-*-svg-icons'
+      );
+      glob
+        .sync(iconPattern)
+        .map((i) => i.split('/').pop())
         .reduce((acc, cur) => {
-          acc.icons[cur] = 'all'
-          return acc
+          acc.icons[cur] = 'all';
+          return acc;
         }, this.fontawesomeConfig);
     }
 
-    if(Object.keys(this.fontawesomeConfig.icons).length === 0 && this.fontawesomeConfig.warnIfNoIconsIncluded !== false) {
+    if (
+      Object.keys(this.fontawesomeConfig.icons).length === 0 &&
+      this.fontawesomeConfig.warnIfNoIconsIncluded !== false
+    ) {
       this.ui.writeWarnLine(
-        'No icons are included in your build configuration.\n'+
-        'Any icon packs you install under node_modules will be bundled into vendor.js\n'+
-        'and added to the icon library by default.\n\n'+
-        "For example, 'npm install --save-dev @fortawesome/free-solid-svg-icons' would add all of the icons in that pack.\n\n"+
-        'To declare a subset of icons, after adding some icon packs as shown above,\n'+
-        'modify your ember-cli-build.js and add a fontawesome config object.\n'+
-        'The following example declares that all icons in free-solid-svg-icons should be\n'+
-        'included in the vendor.js bundle add added to the library,\n'+
-        'and for pro-light-svg-icons, only faAdjust and faAmbulance are to be included in the\n'+
-        'bundle and added to the library.\n'+
-        '// ...\n'+
-        'let app = new EmberApp(defaults, {\n'+
-        '  // Add options here\n'+
-        '  fontawesome: {\n'+
-        '    icons: {\n'+
-        "      'free-solid-svg-icons': 'all'\n"+
-        "      'pro-light-svg-icons': [\n"+
-        "        'adjust',\n"+
-        "        'ambulance'\n"+
-        '       ]\n'+
-        '    }\n'+
-        '});'
-      )
+        'No icons are included in your build configuration.\n' +
+          'Any icon packs you install under node_modules will be bundled into vendor.js\n' +
+          'and added to the icon library by default.\n\n' +
+          "For example, 'npm install --save-dev @fortawesome/free-solid-svg-icons' would add all of the icons in that pack.\n\n" +
+          'To declare a subset of icons, after adding some icon packs as shown above,\n' +
+          'modify your ember-cli-build.js and add a fontawesome config object.\n' +
+          'The following example declares that all icons in free-solid-svg-icons should be\n' +
+          'included in the vendor.js bundle add added to the library,\n' +
+          'and for pro-light-svg-icons, only faAdjust and faAmbulance are to be included in the\n' +
+          'bundle and added to the library.\n' +
+          '// ...\n' +
+          'let app = new EmberApp(defaults, {\n' +
+          '  // Add options here\n' +
+          '  fontawesome: {\n' +
+          '    icons: {\n' +
+          "      'free-solid-svg-icons': 'all'\n" +
+          "      'pro-light-svg-icons': [\n" +
+          "        'adjust',\n" +
+          "        'ambulance'\n" +
+          '       ]\n' +
+          '    }\n' +
+          '});'
+      );
     }
   },
   included(app) {
-    this._super.included.apply(this, arguments)
+    this._super.included.apply(this, arguments);
     const originalApp = app;
     let current = this;
     // Keep iterating upward until we don't have a grandparent.
@@ -190,14 +203,17 @@ module.exports = {
     this.readConfig();
     this.includeIconPackages();
 
-    this.setupPreprocessorRegistryAfterConfiguration('parent', originalApp.registry);
+    this.setupPreprocessorRegistryAfterConfiguration(
+      'parent',
+      originalApp.registry
+    );
 
-    app.import('vendor/fontawesome.js')
-    Object.keys(this.fontawesomeConfig.icons).forEach(pack => {
-      app.import(`vendor/${pack}.js`)
-    })
-    app.import('vendor/autoLibrary.js')
-    app.import('vendor/configure-fontawesome-styles.js')
+    app.import('vendor/fontawesome.js');
+    Object.keys(this.fontawesomeConfig.icons).forEach((pack) => {
+      app.import(`vendor/${pack}.js`);
+    });
+    app.import('vendor/autoLibrary.js');
+    app.import('vendor/configure-fontawesome-styles.js');
 
     config.autoAddCss = false;
     app.import('vendor/fontawesome.css');
@@ -210,7 +226,8 @@ module.exports = {
    */
   setupPreprocessorRegistryAfterConfiguration(type, registry) {
     if (this.fontawesomeConfig.enableExperimentalBuildTimeTransform) {
-      this.ui.writeWarnLine(`The "enableExperimentalBuildTimeTransform" option may be removed soon.
+      this.ui
+        .writeWarnLine(`The "enableExperimentalBuildTimeTransform" option may be removed soon.
       Please see https://github.com/FortAwesome/ember-fontawesome/issues/117 for details and comments.
       `);
       registry.add('htmlbars-ast-plugin', {
@@ -222,5 +239,4 @@ module.exports = {
       });
     }
   },
-
-}
+};

@@ -54,8 +54,8 @@ module.exports = async function () {
       {
         name: 'ember-default',
         npm: {
-          devDependencies: {}
-        }
+          devDependencies: {},
+        },
       },
       {
         name: 'ember-default-with-jquery',
