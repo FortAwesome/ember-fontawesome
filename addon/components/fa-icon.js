@@ -1,3 +1,6 @@
+/* eslint-disable ember/require-tagless-components */
+/* eslint-disable ember/no-classic-classes */
+/* eslint-disable ember/no-classic-components */
 /*eslint no-console: ["error", { allow: ["warn"] }] */
 import Component from '@ember/component';
 import layout from '../templates/components/fa-icon';
