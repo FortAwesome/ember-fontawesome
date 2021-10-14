@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function () {
   return {
     'free-solid-svg-icons': [
       'coffee',
@@ -13,7 +13,7 @@ module.exports = function() {
       'spinner',
       'checkSquare',
       'fax',
-      'sync'
+      'sync',
     ],
     'free-regular-svg-icons': 'all',
   };

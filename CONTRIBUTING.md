@@ -67,9 +67,8 @@ We're seeking core contributors to help drive this project. Core contributors:
 
 ## Linting
 
-* `yarn lint:hbs`
-* `yarn lint:js`
-* `yarn lint:js -- --fix`
+* `yarn lint`
+* `yarn lint:fix`
 
 ## Running tests
 
