@@ -54,17 +54,6 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('svg').hasClass('foo-new-class');
   });
 
-  test('it renders extra classes only once #98 in classic invocation', async function (assert) {
-    const extraClass = 'foo-xyz';
-    this.set('faCoffee', faCoffee);
-    this.set('class', extraClass);
-    await render(hbs`{{fa-icon icon=this.faCoffee class=this.class}}`);
-    assert.dom('svg').hasClass(extraClass);
-    const list = find('svg').getAttribute('class').split(' ');
-    const instances = list.filter((val) => val === extraClass);
-    assert.equal(instances.length, 1, 'class appears only once');
-  });
-
   test('it does not render "undefined" classes', async function (assert) {
     this.set('faCoffee', faCoffee);
     await render(hbs`<FaIcon @icon={{this.faCoffee}} class='test' />`);
@@ -74,27 +63,14 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.equal(instances.length, 0);
   });
 
-  test('it renders coffee positional', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.on('myAction', function(val) { ... });
-    this.set('faCoffee', faCoffee);
-
-    await render(hbs`{{fa-icon faCoffee}}`);
-
-    assert.dom('*').hasText('');
-    assert.dom('svg').hasAttribute('data-icon', 'coffee');
-    assert.ok(
-      find('svg').getAttribute('class').split(/\s+/).includes('fa-coffee')
-    );
-    assert.dom('svg path').hasAttribute('d', faCoffee.icon[4]);
-  });
-
   test('it optionally renders fa-spin class', async function (assert) {
     assert.expect(2);
     this.set('faCoffee', faCoffee);
     this.set('isSpinning', false);
 
-    await render(hbs`{{fa-icon icon=faCoffee spin=isSpinning}}`);
+    await render(
+      hbs`<FaIcon @icon={{this.faCoffee}} @spin={{this.isSpinning}} />`
+    );
 
     assert.notOk(
       find('svg').getAttribute('class').split(/\s+/).includes('fa-spin'),
@@ -153,7 +129,7 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.expect(1);
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} @focusable={{'true'}} />`);
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} focusable={{'true'}} />`);
 
     assert.dom('svg').hasAttribute('focusable', 'true');
   });

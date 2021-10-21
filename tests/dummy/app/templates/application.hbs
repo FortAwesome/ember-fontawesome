@@ -49,4 +49,36 @@
 <FaIcon @icon="cog" @pulse={{this.isPulsing}} />
 <input id="pulse-it" type="checkbox" checked={{this.isPulsing}} {{on "click" this.togglePulsing}} > <label for="pulse-it">Pulse it</label>
 
+<h3>Sizes</h3>
+1x <FaIcon @icon="coffee" /><br>
+2x <FaIcon @icon="coffee" @size="2x" /><br>
+4x <FaIcon @icon="coffee" @size="4x" /><br>
+8x <FaIcon @icon="coffee" @size="8x" /><br>
+
+<h3>Rotation</h3>
+0 <FaIcon @icon="coffee" /><br>
+90 <FaIcon @icon="coffee" @rotation="90" /><br>
+180 <FaIcon @icon="coffee" @rotation="180" /><br>
+270 <FaIcon @icon="coffee" @rotation="270" /><br>
+
+<h3>Flip</h3>
+<FaIcon @icon="coffee" @flip="horizontal" />
+<FaIcon @icon="coffee" @flip="vertical" />
+<FaIcon @icon="coffee" @flip="both" />
+
+<h3>Border</h3>
+<FaIcon @icon="coffee" @border={{true}} />
+
+<h3>Power Transforms</h3>
+<FaIcon @icon="coffee" @transform="shrink-6 rotate-30" />
+
+<h3>Masking</h3>
+<FaIcon @icon="coffee" @transform="shrink-6"  @mask="circle" />
+
+<h3>Layers</h3>
+<span class="fa-layers fa-lg">
+  <FaIcon @icon="circle" />
+  <FaIcon @icon="check" class="fa-inverse" @transform="shrink-6" />
+</span>
+
 {{outlet}}

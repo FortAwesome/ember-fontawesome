@@ -4,6 +4,7 @@ module.exports = function () {
       'coffee',
       'magic',
       'circle',
+      'check',
       'square',
       'home',
       'info',
