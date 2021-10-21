@@ -6,6 +6,13 @@ This guide is useful to figure out what you need to do between breaking changes.
 
 As always, [submit issues](https://github.com/FortAwesome/ember-fontawesome/issues/new) that you run into with this guide or with these upgrades to us.
 
+## 0.2.x to 0.3.0
+
+Dropped support for classic `{{fa-icon "coffee"}}` invocation, you must now use `<FaIcon @icon="coffee">`
+
+All attributes passed to component will now end up on the output.
+e.g. `<FaIcon @icon="coffee" title="foo" aria-labbeledby="bar">`. In past versions only some attributres were accounted for and may have required an `@` sign.
+
 ## 0.0.x to 0.1.0
 
 ### Renamed packages

@@ -21,7 +21,7 @@ Compatibility
   * [Upgrading Font Awesome?](#upgrading-font-awesome)
   * [Get started](#get-started)
   * [Learn about our new SVG implementation](#learn-about-our-new-svg-implementation)
-  * [Going from 0.0.x to 0.1.0](#going-from-00x-to-010)
+  * [Upgrading From Previous Versions](#upgrading-from-previous-versions)
 - [Installation](#installation)
   * [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
   * [Subsetting icons](#subsetting-icons)
@@ -65,7 +65,7 @@ the web fonts implementation that was used in version 4 and older of Font Awesom
 
 > https://fontawesome.com/how-to-use/on-the-web/advanced/svg-javascript-core
 
-### Going from 0.0.x to 0.1.0
+### Upgrading From Previous Versions
 
 See [UPGRADING.md](./UPGRADING.md).
 
@@ -207,12 +207,6 @@ This is what it would look like in your template:
 ```hbs
 <FaIcon @icon="coffee" />
 ```
-All examples use angle bracket invocation available in Ember 3.4+. Using Ember's classic component invocation the example above would be:
-
-```hbs
-{{fa-icon "coffee"}}
-```
-For details see [Angle Bracket Syntax](https://guides.emberjs.com/release/reference/syntax-conversion-guide/#toc_angle-bracket-syntax) in the Ember documentation.
 
 Without a prefix specified, the default specified in `environment.js` (or `fas`, if none set) is assumed:
 
