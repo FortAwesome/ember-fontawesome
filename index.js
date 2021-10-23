@@ -7,7 +7,7 @@ var resolve = require('rollup-plugin-node-resolve');
 var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack');
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library');
 var glob = require('glob');
-var buildAstTransform = require('./lib/ast-transform');
+
 const {
   discoverConfiguredIcons,
   combineIconSets,
@@ -101,12 +101,10 @@ module.exports = {
     const config = this.app.project.config();
     const appConfig = config['fontawesome'] || {};
     const configDefaults = {
-      enableExperimentalBuildTimeTransform: false,
       icons: {},
       defaultPrefix: 'fas',
     };
     let buildConfig = {};
-
     let addonOptions =
       (this.parent && this.parent.options) ||
       (this.app && this.app.options) ||
@@ -123,7 +121,7 @@ module.exports = {
       this.ui
         .writeWarnLine(`Configuring icons in config/environment.js is no longer recommended
       and will be removed in a future version.
-
+ 
       Move icon list to config/icons.js for better performance.
       See https://github.com/FortAwesome/ember-fontawesome#subsetting-icons for instructions.
       `);
@@ -186,7 +184,6 @@ module.exports = {
   },
   included(app) {
     this._super.included.apply(this, arguments);
-    const originalApp = app;
     let current = this;
     // Keep iterating upward until we don't have a grandparent.
     // Has to do this grandparent check because at some point we hit the project.
@@ -203,11 +200,6 @@ module.exports = {
     this.readConfig();
     this.includeIconPackages();
 
-    this.setupPreprocessorRegistryAfterConfiguration(
-      'parent',
-      originalApp.registry
-    );
-
     app.import('vendor/fontawesome.js');
     Object.keys(this.fontawesomeConfig.icons).forEach((pack) => {
       app.import(`vendor/${pack}.js`);
@@ -217,26 +209,5 @@ module.exports = {
 
     config.autoAddCss = false;
     app.import('vendor/fontawesome.css');
-  },
-
-  /**
-   * setupPreprocessorRegistry is called before included
-   * see https://github.com/ember-cli/ember-cli/issues/3701
-   * as a workaround we ignore that hook and call this method from included
-   */
-  setupPreprocessorRegistryAfterConfiguration(type, registry) {
-    if (this.fontawesomeConfig.enableExperimentalBuildTimeTransform) {
-      this.ui
-        .writeWarnLine(`The "enableExperimentalBuildTimeTransform" option may be removed soon.
-      Please see https://github.com/FortAwesome/ember-fontawesome/issues/117 for details and comments.
-      `);
-      registry.add('htmlbars-ast-plugin', {
-        name: 'font-awesome-static-transform',
-        plugin: buildAstTransform(this),
-        baseDir() {
-          return __dirname;
-        },
-      });
-    }
   },
 };
