@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 import { icon, parse, toHtml } from '@fortawesome/fontawesome-svg-core';
 import { htmlSafe } from '@ember/template';
-import { assign } from '@ember/polyfills';
 import appConfig from 'ember-get-config';
 
 function objectWithKey(key, value) {
@@ -89,7 +88,7 @@ export default class FaIconComponent extends Component {
     const symbol = this.args.symbol ?? false;
     let title = this.args.title ? `${this.args.title}` : null;
 
-    const o = assign({}, classes, transform, mask, { symbol, title });
+    const o = Object.assign({}, classes, transform, mask, { symbol, title });
 
     const renderedIcon = icon(iconLookup, o);
     if (!renderedIcon) {
