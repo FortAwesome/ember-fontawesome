@@ -49,21 +49,21 @@ Hey there! We're glad you're here...
 If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/v6.0/docs/web/setup/upgrading/
+> https://fontawesome.com/v6/docs/web/setup/upgrading/
 
 ### Get started
 
 This package is for integrating with Ember.js. If you aren't using Ember then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/v6.0/docs/web/setup/quick-start
+> https://fontawesome.com/v6/docs/web/setup/quick-start
 
 ### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/v6.0/docs/web/dig-deeper/svg-core
+> https://fontawesome.com/v6/docs/web/dig-deeper/svg-core
 
 ### Upgrading From Previous Versions
 
@@ -116,7 +116,7 @@ $ npm i --save-dev @fortawesome/pro-light-svg-icons
 $ npm i --save-dev @fortawesome/pro-duotone-svg-icons
 ```
 
-Using the Pro packages requires [additional configuration](https://fontawesome.com/v6.0/docs/web/setup/upgrading/packages).
+Using the Pro packages requires [additional configuration](https://fontawesome.com/v6/docs/web/setup/upgrading/packages).
 
 ### Subsetting icons
 
@@ -226,19 +226,19 @@ The following features are available as part of Font Awesome. Note that the synt
 
 ### Basic
 
-[Size](https://fontawesome.com/v6.0/docs/web/style/size):
+[Size](https://fontawesome.com/v6/docs/web/style/size):
 
 ```hbs
 <FaIcon @icon="coffee" @size="4x" />
 ```
 
-[Fixed width](https://fontawesome.com/v6.0/docs/web/style/fixed-width):
+[Fixed width](https://fontawesome.com/v6/docs/web/style/fixed-width):
 
 ```hbs
 <FaIcon @icon="coffee" @fixedWidth={{true}} />
 ```
 
-[Rotate](https://fontawesome.com/v6.0/docs/web/style/rotate):
+[Rotate](https://fontawesome.com/v6/docs/web/style/rotate):
 
 ```hbs
 <FaIcon @icon="coffee" @rotation={{90}} />
@@ -254,19 +254,19 @@ Flip horizontally, vertically, or both:
 <FaIcon @icon="coffee" @flip="both" />
 ```
 
-Spin and pulse [animation](https://fontawesome.com/v6.0/docs/web/style/animate):
+Spin and pulse [animation](https://fontawesome.com/v6/docs/web/style/animate):
 
 ```hbs
 <FaIcon @icon="coffee" @spin={{true}} />
 ```
 
-[Border](https://fontawesome.com/v6.0/docs/web/style/pull#bordered-and-pulled-classes):
+[Border](https://fontawesome.com/v6/docs/web/style/pull#bordered-and-pulled-classes):
 
 ```hbs
 <FaIcon @icon="coffee" @border={{true}} />
 ```
 
-[Pull left or right](https://fontawesome.com/v6.0/docs/web/style/pull):
+[Pull left or right](https://fontawesome.com/v6/docs/web/style/pull):
 
 ```hbs
 <FaIcon @icon="coffee" @pull="left" />
@@ -275,25 +275,25 @@ Spin and pulse [animation](https://fontawesome.com/v6.0/docs/web/style/animate):
 
 ### Advanced
 
-[Power Transforms](https://fontawesome.com/v6.0/docs/web/style/power-transform):
+[Power Transforms](https://fontawesome.com/v6/docs/web/style/power-transform):
 
 ```hbs
 <FaIcon @icon="coffee" @transform="shrink-6 rotate-30" />
 ```
 
-[Masking](https://fontawesome.com/v6.0/docs/web/style/mask):
+[Masking](https://fontawesome.com/v6/docs/web/style/mask):
 
 ```hbs
 <FaIcon @icon="coffee" @transform="shrink-6"  @mask="circle" />
 ```
 
-[Symbols](https://fontawesome.com/v6.0/docs/web/add-icons/svg-symbols):
+[Symbols](https://fontawesome.com/v6/docs/web/add-icons/svg-symbols):
 
 ```hbs
 <FaIcon @icon="coffee" @symbol={{true}} />
 ```
 
-[Layers](https://fontawesome.com/v6.0/docs/web/style/layer):
+[Layers](https://fontawesome.com/v6/docs/web/style/layer):
 
 ```html
 <span class="fa-layers fa-lg">
@@ -302,7 +302,7 @@ Spin and pulse [animation](https://fontawesome.com/v6.0/docs/web/style/animate):
 </span>
 ```
 
-[Layers text](https://fontawesome.com/v6.0/docs/web/style/layer):
+[Layers text](https://fontawesome.com/v6/docs/web/style/layer):
 
 ```html
 <span class="fa-layers fa-lg">
