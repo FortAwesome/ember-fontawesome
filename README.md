@@ -338,8 +338,10 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 |                                                            | samcic           | [@samcic](https://github.com/samcic)               |
 | <img src="https://github.com/josemarluedke.png?size=72" /> | Josemar Luedke   | [@josemarluedke](https://github.com/josemarluedke) |
 | <img src="https://github.com/robclancy.png?size=72" />     | Robert Clancy    | [@robclancy](https://github.com/robclancy)         |
-| <img src="https://github.com/maxwondercorn.png?size=72" /> | maxwondercorn    | [@maxwondercorn](https://github.com/maxwondercorn)         |
-| <img src="https://github.com/dnstld.png?size=72" />        | Denis Toledo     | [@dnstld](https://github.com/dnstld)         |
+| <img src="https://github.com/maxwondercorn.png?size=72" /> | maxwondercorn    | [@maxwondercorn](https://github.com/maxwondercorn) |
+| <img src="https://github.com/dnstld.png?size=72" />        | Denis Toledo     | [@dnstld](https://github.com/dnstld)               |
+| <img src="https://github.com/mkszepp.png?size=72" />       | mkszepp          | [@mkszepp](https://github.com/mkszepp)             |
+| <img src="https://github.com/davideferre.png?size=72" />   | davideferre      | [@davideferre](https://github.com/davideferre)     |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
 

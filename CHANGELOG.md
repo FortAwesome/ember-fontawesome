@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.3.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.3.0) - 2022-01-18
+
+### Added
+* Embroider support
+
+### Changed
+* Update Ember CLI to 3.28.2
+* Update ember-get-config to 1.0.0
+* Update to webpack 5
+* Octaneify FaIcon Component
+
+### Fixed
+* Remove deprecation warning for `assign`
+
+---
 ## [0.2.3](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.2.3) - 2021-02-16
 
 ### Fixed
