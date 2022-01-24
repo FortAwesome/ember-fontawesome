@@ -134,6 +134,6 @@ export default class FaIconComponent extends Component {
   }
 
   get viewBox() {
-    return this.abstractIcon?.viewBox ?? '0 0 448 512';
+    return this.abstractIcon?.attributes?.viewBox ?? '0 0 448 512';
   }
 }
