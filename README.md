@@ -342,6 +342,7 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 | <img src="https://github.com/dnstld.png?size=72" />        | Denis Toledo     | [@dnstld](https://github.com/dnstld)               |
 | <img src="https://github.com/mkszepp.png?size=72" />       | mkszepp          | [@mkszepp](https://github.com/mkszepp)             |
 | <img src="https://github.com/davideferre.png?size=72" />   | davideferre      | [@davideferre](https://github.com/davideferre)     |
+| <img src="https://github.com/st-h.png?size=72" />          | st-h             | [@st-h](https://github.com/st-h)                   |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
 
