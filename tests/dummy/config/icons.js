@@ -15,6 +15,7 @@ module.exports = function () {
       'checkSquare',
       'fax',
       'sync',
+      'stopwatch-20',
     ],
     'free-regular-svg-icons': 'all',
   };
