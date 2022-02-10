@@ -343,17 +343,9 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 | <img src="https://github.com/mkszepp.png?size=72" />       | mkszepp          | [@mkszepp](https://github.com/mkszepp)             |
 | <img src="https://github.com/davideferre.png?size=72" />   | davideferre      | [@davideferre](https://github.com/davideferre)     |
 | <img src="https://github.com/st-h.png?size=72" />          | st-h             | [@st-h](https://github.com/st-h)                   |
+| <img src="https://github.com/stopfstedt.png?size=72" />    | stopfstedt       | [@st-h](https://github.com/stopfstedt)             |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
-
-The Font Awesome team:
-
-|                                                            | Name           | GitHub                                             |
-| :--------------------------------------------------------: | -------------- | -------------------------------------------------- |
-| <img src="https://github.com/supercodepoet.png?size=72" /> | Travis Chase   | [@supercodepoet](https://github.com/supercodepoet) |
-| <img src="https://github.com/robmadole.png?size=72" />     | Rob Madole     | [@robmadole](https://github.com/robmadole)         |
-| <img src="https://github.com/mlwilkerson.png?size=72" />   | Mike Wilkerson | [@mlwilkerson](https://github.com/mlwilkerson)     |
-| <img src="https://github.com/talbs.png?size=72" />         | Brian Talbot   | [@talbs](https://github.com/talbs)                 |
 
 ## Releasing this project (only project owners can do this)
 
@@ -363,7 +355,6 @@ Contributing
 ------------------------------------------------------------------------------
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
-
 
 License
 ------------------------------------------------------------------------------

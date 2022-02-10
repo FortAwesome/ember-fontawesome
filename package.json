@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -32,7 +32,8 @@
     "Robert Clancy <github.com/dnstld>",
     "mkszepp <github.com/mkszepp>",
     "Davide Ferrero <github.com/davideferre>",
-    "Steve <github.com/st-h>"
+    "Steve <github.com/st-h>",
+    "Stefan Topfstedt <github.com/stopfstedt>"
   ],
   "homepage": "https://github.com/FortAwesome/ember-fontawesome",
   "scripts": {
