@@ -199,4 +199,11 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('svg').hasAttribute('x', '2');
     assert.dom('svg').hasAttribute('y', '2');
   });
+
+  test('it renders no surrounding whitespace', async function (assert) {
+    this.set('faCoffee', faCoffee);
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
+    assert.ok(this.element.innerHTML.startsWith('<svg '));
+    assert.ok(this.element.innerHTML.endsWith('</svg>'));
+  });
 });
