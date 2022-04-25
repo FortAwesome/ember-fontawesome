@@ -22,11 +22,11 @@ function normalizeIconArgs(prefix, icon) {
   }
 
   if (typeof prefix === 'string' && typeof icon === 'string') {
-    return { prefix: prefix, iconName: icon };
+    return parse.icon({ prefix: prefix, iconName: icon });
   }
 
   if (typeof icon === 'string') {
-    return { prefix: defaultPrefix, iconName: icon };
+    return parse.icon({ prefix: defaultPrefix, iconName: icon });
   }
 }
 
