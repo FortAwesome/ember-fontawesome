@@ -344,6 +344,8 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 | <img src="https://github.com/davideferre.png?size=72" />   | davideferre      | [@davideferre](https://github.com/davideferre)     |
 | <img src="https://github.com/st-h.png?size=72" />          | st-h             | [@st-h](https://github.com/st-h)                   |
 | <img src="https://github.com/stopfstedt.png?size=72" />    | stopfstedt       | [@st-h](https://github.com/stopfstedt)             |
+| <img src="https://github.com/rykov.png?size=72" />         | Michael Rykov    | [@rykov](https://github.com/rykov)                 |
+| <img src="https://github.com/mansona.png?size=72" />       | Chris Manson     | [@mansona](https://github.com/mansona)             |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
 
