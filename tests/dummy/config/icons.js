@@ -16,6 +16,7 @@ module.exports = function () {
       'fax',
       'sync',
       'stopwatch-20',
+      'trash-alt',
     ],
     'free-regular-svg-icons': 'all',
   };
