@@ -46,24 +46,24 @@ Hey there! We're glad you're here...
 
 ### Upgrading Font Awesome?
 
-If you've used Font Awesome in the past (version 4 or older) there are some
+If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/how-to-use/on-the-web/setup/upgrading-from-version-4
+> https://fontawesome.com/v6/docs/web/setup/upgrading/
 
 ### Get started
 
 This package is for integrating with Ember.js. If you aren't using Ember then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/how-to-use/on-the-web/setup/getting-started
+> https://fontawesome.com/v6/docs/web/setup/quick-start
 
 ### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/how-to-use/on-the-web/advanced/svg-javascript-core
+> https://fontawesome.com/v6/docs/web/dig-deeper/svg-core
 
 ### Upgrading From Previous Versions
 
@@ -116,14 +116,14 @@ $ npm i --save-dev @fortawesome/pro-light-svg-icons
 $ npm i --save-dev @fortawesome/pro-duotone-svg-icons
 ```
 
-Using the Pro packages requires [additional configuration](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers).
+Using the Pro packages requires [additional configuration](https://fontawesome.com/v6/docs/web/setup/upgrading/packages).
 
 ### Subsetting icons
 
 If you want to include only a subset of icons from an icon pack, add a
 `config/icons.js` file listing the icons you want to include.
 The following example declares that all icons in
-`free-solid-svg-icons` should be included build, 
+`free-solid-svg-icons` should be included build,
 and, only `adjust`, `ambulance`, and `pencil-alt` from `pro-light-svg-icons`
 are to be included.
 
@@ -226,19 +226,19 @@ The following features are available as part of Font Awesome. Note that the synt
 
 ### Basic
 
-[Size](https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons):
+[Size](https://fontawesome.com/v6/docs/web/style/size):
 
 ```hbs
 <FaIcon @icon="coffee" @size="4x" />
 ```
 
-[Fixed width](https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons):
+[Fixed width](https://fontawesome.com/v6/docs/web/style/fixed-width):
 
 ```hbs
 <FaIcon @icon="coffee" @fixedWidth={{true}} />
 ```
 
-[Rotate](https://fontawesome.com/how-to-use/on-the-web/styling/rotating-icons):
+[Rotate](https://fontawesome.com/v6/docs/web/style/rotate):
 
 ```hbs
 <FaIcon @icon="coffee" @rotation={{90}} />
@@ -254,19 +254,19 @@ Flip horizontally, vertically, or both:
 <FaIcon @icon="coffee" @flip="both" />
 ```
 
-Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling/animating-icons):
+Spin and pulse [animation](https://fontawesome.com/v6/docs/web/style/animate):
 
 ```hbs
 <FaIcon @icon="coffee" @spin={{true}} />
 ```
 
-[Border](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons):
+[Border](https://fontawesome.com/v6/docs/web/style/pull#bordered-and-pulled-classes):
 
 ```hbs
 <FaIcon @icon="coffee" @border={{true}} />
 ```
 
-[Pull left or right](https://fontawesome.com/how-to-use/on-the-web/styling/bordered-pulled-icons):
+[Pull left or right](https://fontawesome.com/v6/docs/web/style/pull):
 
 ```hbs
 <FaIcon @icon="coffee" @pull="left" />
@@ -275,25 +275,25 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 
 ### Advanced
 
-[Power Transforms]((https://fontawesome.com/how-to-use/on-the-web/styling/power-transforms)):
+[Power Transforms](https://fontawesome.com/v6/docs/web/style/power-transform):
 
 ```hbs
 <FaIcon @icon="coffee" @transform="shrink-6 rotate-30" />
 ```
 
-[Masking](https://fontawesome.com/how-to-use/on-the-web/styling/masking):
+[Masking](https://fontawesome.com/v6/docs/web/style/mask):
 
 ```hbs
 <FaIcon @icon="coffee" @transform="shrink-6"  @mask="circle" />
 ```
 
-[Symbols](https://fontawesome.com/how-to-use/on-the-web/advanced/svg-symbols):
+[Symbols](https://fontawesome.com/v6/docs/web/add-icons/svg-symbols):
 
 ```hbs
 <FaIcon @icon="coffee" @symbol={{true}} />
 ```
 
-[Layers](https://fontawesome.com/how-to-use/on-the-web/styling/layering):
+[Layers](https://fontawesome.com/v6/docs/web/style/layer):
 
 ```html
 <span class="fa-layers fa-lg">
@@ -302,7 +302,7 @@ Spin and pulse [animation](https://fontawesome.com/how-to-use/on-the-web/styling
 </span>
 ```
 
-[Layers text](https://fontawesome.com/how-to-use/on-the-web/styling/layering):
+[Layers text](https://fontawesome.com/v6/docs/web/style/layer):
 
 ```html
 <span class="fa-layers fa-lg">
@@ -328,22 +328,25 @@ The following contributors have either helped to start this project, have contri
 code, are actively maintaining it (including documentation), or in other ways
 being awesome contributors to this project. **We'd like to take a moment to recognize them.**
 
-|                                                            | Name             | GitHub                                             |
-| :--------------------------------------------------------: | ---------------- | -------------------------------------------------- |
-| <img src="https://github.com/knownasilya.png?size=72" />   | Ilya Radchenko   | [@knownasilya](https://github.com/knownasilya)     |
-| <img src="https://github.com/jrjohnson.png?size=72" />     | Jonathan Johnson | [@jrjohnson](https://github.com/jrjohnson)         |
-| <img src="https://github.com/ember-tomster.png?size=72" /> | ember-tomster    | [@ember-tomster](https://github.com/ember-tomster) |
-| <img src="https://github.com/juggy.png?size=72" />         | Julien Guimont   | [@juggy](https://github.com/juggy)                 |
-| <img src="https://github.com/XaserAcheron.png?size=72" />  | Xaser Acheron    | [@XaserAcheron](https://github.com/XaserAcheron)   |
-|                                                            | samcic           | [@samcic](https://github.com/samcic)               |
-| <img src="https://github.com/josemarluedke.png?size=72" /> | Josemar Luedke   | [@josemarluedke](https://github.com/josemarluedke) |
-| <img src="https://github.com/robclancy.png?size=72" />     | Robert Clancy    | [@robclancy](https://github.com/robclancy)         |
-| <img src="https://github.com/maxwondercorn.png?size=72" /> | maxwondercorn    | [@maxwondercorn](https://github.com/maxwondercorn) |
-| <img src="https://github.com/dnstld.png?size=72" />        | Denis Toledo     | [@dnstld](https://github.com/dnstld)               |
-| <img src="https://github.com/mkszepp.png?size=72" />       | mkszepp          | [@mkszepp](https://github.com/mkszepp)             |
-| <img src="https://github.com/davideferre.png?size=72" />   | davideferre      | [@davideferre](https://github.com/davideferre)     |
-| <img src="https://github.com/st-h.png?size=72" />          | st-h             | [@st-h](https://github.com/st-h)                   |
-| <img src="https://github.com/stopfstedt.png?size=72" />    | stopfstedt       | [@st-h](https://github.com/stopfstedt)             |
+| Name              | GitHub                                                     |
+| ----------------- | ---------------------------------------------------------- |
+| Ilya Radchenko    | [@knownasilya](https://github.com/knownasilya)             |
+| Jonathan Johnson  | [@jrjohnson](https://github.com/jrjohnson)                 |
+| ember-tomster     | [@ember-tomster](https://github.com/ember-tomster)         |
+| Julien Guimont    | [@juggy](https://github.com/juggy)                         |
+| Xaser Acheron     | [@XaserAcheron](https://github.com/XaserAcheron)           |
+| samcic            | [@samcic](https://github.com/samcic)                       |
+| Josemar Luedke    | [@josemarluedke](https://github.com/josemarluedke)         |
+| Robert Clancy     | [@robclancy](https://github.com/robclancy)                 |
+| maxwondercorn     | [@maxwondercorn](https://github.com/maxwondercorn)         |
+| Denis Toledo      | [@dnstld](https://github.com/dnstld)                       |
+| mkszepp           | [@mkszepp](https://github.com/mkszepp)                     |
+| davideferre       | [@davideferre](https://github.com/davideferre)             |
+| st-h              | [@st-h](https://github.com/st-h)                           |
+| stopfstedt        | [@st-h](https://github.com/stopfstedt)                     |
+| Michael Rykov     | [@rykov](https://github.com/rykov)                         |
+| Chris Manson      | [@mansona](https://github.com/mansona)                     |
+| Font Awesome Team | [@FortAwesome](https://github.com/orgs/FortAwesome/people) |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
 
