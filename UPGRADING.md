@@ -6,6 +6,10 @@ This guide is useful to figure out what you need to do between breaking changes.
 
 As always, [submit issues](https://github.com/FortAwesome/ember-fontawesome/issues/new) that you run into with this guide or with these upgrades to us.
 
+## 0.3.x to 0.4.0
+
+0.4.0 now depends on ember-get-config@2.x. If you have other dependencies that use the 1.x version you'll need to stick with the 0.3.x version of @fortawesome/ember-fontawesome.
+
 ## 0.2.x to 0.3.0
 
 Dropped support for classic `{{fa-icon "coffee"}}` invocation, you must now use `<FaIcon @icon="coffee">`
