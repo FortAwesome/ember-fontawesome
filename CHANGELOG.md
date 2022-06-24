@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.3.4](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.3.4) - 2022-06-24
+
+### Fixed
+* Removes forced dependency on ember-get-config@2.x which reverses breaking changes introduced in 0.3.3
+
+---
+## [0.3.3](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.3.3) - 2022-05-20
+
+**This release has been deprecated as it introduced breaking changes that were not intentional.**
+
+---
 ## [0.3.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.3.2) - 2022-02-10
 
 ### Fixed
