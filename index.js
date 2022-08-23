@@ -59,7 +59,7 @@ module.exports = {
 
     const fontawesomeRollup = new Rollup(new UnwatchedDir(pathToCore), {
       rollup: {
-        input: 'index.es.js',
+        input: 'index.mjs',
         output: {
           file: 'fontawesome.js',
           exports: 'named',

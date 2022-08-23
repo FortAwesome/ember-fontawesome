@@ -61,7 +61,7 @@ class FontAwesomePack extends Plugin {
     const packageContents = `
       export {
         ${ selectedIcons.join(',') }
-      }  from '@fortawesome/${this.options.pack}/index.es.js'
+      }  from '@fortawesome/${this.options.pack}/index.mjs'
     `
     const _thisPlugin = this
     return new Promise(function(resolve, reject) {
