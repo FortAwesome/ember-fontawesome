@@ -63,11 +63,11 @@ module.exports = {
 
     const entryFileCheck = function () {
       const files = fs.readdirSync(moduleDir);
-      const entryFile = files.find((file) => file === 'index.mjs');
+      let entryFile = files.find((file) => file === 'index.mjs');
       if (entryFile === 'index.mjs') {
         return entryFile;
       } else {
-        entryFile === 'index.es.js';
+        entryFile = 'index.es.js';
         return entryFile;
       }
     };
