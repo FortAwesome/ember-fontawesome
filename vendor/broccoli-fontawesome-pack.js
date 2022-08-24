@@ -6,6 +6,7 @@ var fs = require('fs')
 var { camelCase, camelCaseTransformMerge } = require('camel-case')
 var { config } = require('@fortawesome/fontawesome-svg-core');
 
+
 class FontAwesomePack extends Plugin {
   constructor(inputNodes, options = {}) {
     const {
@@ -58,14 +59,30 @@ class FontAwesomePack extends Plugin {
       });
     }
 
-    const packageContents = `
+    
+
+    const packageContents = () => {
+      const pathToModule = require.resolve(`@fortawesome/${this.options.pack}`)
+      const moduleDir = path.dirname(pathToModule);
+      const files = fs.readdirSync(moduleDir);
+      const entryFile = files.find((file) => file === 'index.mjs');
+      if (entryFile === 'index.mjs') {
+       return `
       export {
-        ${ selectedIcons.join(',') }
+        ${selectedIcons.join(',')}
       }  from '@fortawesome/${this.options.pack}/index.mjs'
     `
+      } else {
+       return `
+      export {
+        ${selectedIcons.join(',')}
+      }  from '@fortawesome/${this.options.pack}/index.es.js'
+    `
+      }
+      }
     const _thisPlugin = this
     return new Promise(function(resolve, reject) {
-      fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), packageContents, (err) => {
+      fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), packageContents(), (err) => {
         if (err) reject(err)
         else {
           _thisPlugin._isBuilt = true
