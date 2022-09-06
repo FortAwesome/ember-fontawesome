@@ -19,5 +19,6 @@ module.exports = function () {
       'trash-alt',
     ],
     'free-regular-svg-icons': 'all',
+    'free-brands-svg-icons': 'all',
   };
 };

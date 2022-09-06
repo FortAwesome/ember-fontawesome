@@ -14,8 +14,12 @@ const {
 } = require('./lib/discover-configured-icons');
 var writeFile = require('broccoli-file-creator');
 const { config, dom } = require('@fortawesome/fontawesome-svg-core');
+const pathToModule = require.resolve('@fortawesome/fontawesome-svg-core');
 const path = require('path');
+const fs = require('fs');
 const findWorkspaceRoot = require('find-yarn-workspace-root');
+
+const moduleDir = path.dirname(pathToModule);
 
 module.exports = {
   name: require('./package').name,
@@ -57,9 +61,20 @@ module.exports = {
       iconRollups.push(rollupNode);
     });
 
+    const entryFileCheck = function () {
+      const files = fs.readdirSync(moduleDir);
+      let entryFile = files.find((file) => file === 'index.mjs');
+      if (entryFile === 'index.mjs') {
+        return entryFile;
+      } else {
+        entryFile = 'index.es.js';
+        return entryFile;
+      }
+    };
+
     const fontawesomeRollup = new Rollup(new UnwatchedDir(pathToCore), {
       rollup: {
-        input: 'index.es.js',
+        input: entryFileCheck(),
         output: {
           file: 'fontawesome.js',
           exports: 'named',
