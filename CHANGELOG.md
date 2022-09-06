@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.4.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.1) - 2022-09-06
+
+### Added
+* Support new features for Font Awesome Sharp Solid 6.2.0
+
+### Changed
+* Re-worked some of the module loading to support renames of ES modules from *.es.js to *.mjs
+
+---
 ## [0.4.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.0) - 2022-06-24
 
 ### Added
