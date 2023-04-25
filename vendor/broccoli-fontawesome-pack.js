@@ -70,7 +70,7 @@ class FontAwesomePack extends Plugin {
        return `
       export {
         ${selectedIcons.join(',')}
-      }  from '@fortawesome/${this.options.pack}/index.mjs'
+      }  from '@fortawesome/${this.options.pack}/index'
     `
       } else {
        return `
