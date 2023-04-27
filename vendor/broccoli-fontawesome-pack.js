@@ -62,24 +62,12 @@ class FontAwesomePack extends Plugin {
     
 
     const packageContents = () => {
-      const pathToModule = require.resolve(`@fortawesome/${this.options.pack}`)
-      const moduleDir = path.dirname(pathToModule);
-      const files = fs.readdirSync(moduleDir);
-      const entryFile = files.find((file) => file === 'index.mjs');
-      if (entryFile === 'index.mjs') {
-       return `
+      return `
       export {
         ${selectedIcons.join(',')}
       }  from '@fortawesome/${this.options.pack}/index'
-    `
-      } else {
-       return `
-      export {
-        ${selectedIcons.join(',')}
-      }  from '@fortawesome/${this.options.pack}/index.es.js'
-    `
-      }
-      }
+      `;
+    }
     const _thisPlugin = this
     return new Promise(function(resolve, reject) {
       fs.writeFile(path.join(_thisPlugin.outputPath, _thisPlugin.options.output), packageContents(), (err) => {
