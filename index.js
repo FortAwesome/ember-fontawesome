@@ -3,7 +3,7 @@ var broccoliSource = require('broccoli-source');
 var UnwatchedDir = broccoliSource.UnwatchedDir;
 var MergeTrees = require('broccoli-merge-trees');
 var Rollup = require('broccoli-rollup');
-var resolve = require('rollup-plugin-node-resolve');
+var { nodeResolve } = require('@rollup/plugin-node-resolve');
 var FontAwesomePack = require('./vendor/broccoli-fontawesome-pack');
 var FontAwesomeAutoLibrary = require('./vendor/broccoli-fontawesome-auto-library');
 var glob = require('glob');
@@ -53,7 +53,7 @@ module.exports = {
               id: `@fortawesome/${pack}`,
             },
           },
-          plugins: [resolve()],
+          plugins: [nodeResolve()],
         },
         nodeModulesPath: this._nodeModulesPath,
         name: `${pack}-rollup`,
@@ -83,7 +83,7 @@ module.exports = {
             id: '@fortawesome/fontawesome-svg-core',
           },
         },
-        plugins: [resolve()],
+        plugins: [nodeResolve()],
       },
       nodeModulesPath: this._nodeModulesPath,
       name: 'fontawesome-svg-core',
