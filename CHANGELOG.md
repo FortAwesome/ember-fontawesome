@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [0.4.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.2) - 2023-05-22
+
+### Changed
+* Update brocolli-rollup to 5.0.0
+
+---
 ## [0.4.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.1) - 2022-09-06
 
 ### Added
