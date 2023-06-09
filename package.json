@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "1.0.0",
+  "version": "0.4.3",
   "keywords": [
     "ember-addon",
     "fontawesome"

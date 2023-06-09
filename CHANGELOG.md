@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
-## [1.0.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/1.0.0) - 2023-05-22
+## [0.4.3](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.3) - 2023-06-09
 
-**No Changes. We are marking this project as stable in anticipation of future Ember releases**
+### Fixed
+* Update brocolli-rollup to 5.0.0
 
 ---
 ## [0.4.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.2) - 2023-05-22
 
-### Changed
-* Update brocolli-rollup to 5.0.0
+**This version failed to publish the changes to brocolli-rollup as intended; see 0.4.3 for actual updates.**
 
 ---
 ## [0.4.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/0.4.1) - 2022-09-06
