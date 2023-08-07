@@ -347,6 +347,7 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 | Michael Rykov     | [@rykov](https://github.com/rykov)                         |
 | Chris Manson      | [@mansona](https://github.com/mansona)                     |
 | François de Metz  | [@francois2metz](https://github.com/francois2metz)         |
+| NullVoxPopuli     | [@NullVoxPopuli](https://github.com/NullVoxPopuli)         |
 | Font Awesome Team | [@FortAwesome](https://github.com/orgs/FortAwesome/people) |
 
 If we've missed someone (which is quite likely) submit a Pull Request to us and we'll get it resolved.
