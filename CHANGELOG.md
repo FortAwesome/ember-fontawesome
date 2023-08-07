@@ -7,7 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ---
 ## [1.0.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/1.0.1) - 2023-08-07
 
-Add ember-auto-import to dependencies #232
+### Fixed
+* Add ember-auto-import to dependencies #232
 
 ---
 ## [1.0.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/1.0.0) - 2023-05-22
