@@ -74,8 +74,8 @@ module.exports = async function () {
           devDependencies: {
             'ember-source': '~4.12.0',
             '@fortawesome/free-brands-svg-icons': '^5.15.4',
-            '@fortawesome/pro-light-svg-icons': '^5.15.4',
-            '@fortawesome/pro-regular-svg-icons': '^5.15.4',
+            '@fortawesome/free-regular-svg-icons': '^5.15.4',
+            '@fortawesome/free-solid-svg-icons': '^5.15.4',
           },
         },
       },
