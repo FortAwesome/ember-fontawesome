@@ -7,11 +7,11 @@ module('Acceptance | styles', function (hooks) {
 
   test('fontawesome styles are not injected into the document', async function (assert) {
     await visit('/');
-    assert.equal(currentURL(), '/');
+    assert.strictEqual(currentURL(), '/');
     const styleTags = document.getElementsByTagName('style');
     const faStyles = Array.from(styleTags).filter((el) =>
-      el.textContent.includes('.fa')
+      el.textContent.includes('.fa'),
     );
-    assert.equal(faStyles.length, 0);
+    assert.strictEqual(faStyles.length, 0);
   });
 });

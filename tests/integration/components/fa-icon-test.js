@@ -30,7 +30,7 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('*').hasText('');
     assert.dom('svg').hasAttribute('data-icon', 'coffee');
     assert.ok(
-      find('svg').getAttribute('class').split(/\s+/).includes('fa-coffee')
+      find('svg').getAttribute('class').split(/\s+/).includes('fa-coffee'),
     );
     assert.dom('svg path').hasAttribute('d', faCoffee.icon[4]);
   });
@@ -38,10 +38,10 @@ module('Integration | Component | fa icon', function (hooks) {
   test('it renders framework style', async function (assert) {
     this.set('faCoffee', faCoffee);
     await render(
-      hbs`<FaIcon @icon={{this.faCoffee}} @transform="rotate-42" />`
+      hbs`<FaIcon @icon={{this.faCoffee}} @transform="rotate-42" />`,
     );
     assert.ok(
-      find('svg').getAttribute('style').split(/:/).includes('transform-origin')
+      find('svg').getAttribute('style').split(/:/).includes('transform-origin'),
     );
   });
 
@@ -61,31 +61,29 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('svg').hasClass('test');
     const list = find('svg').getAttribute('class').split(' ');
     const instances = list.filter((val) => val === 'undefined');
-    assert.equal(instances.length, 0);
+    assert.strictEqual(instances.length, 0);
   });
 
   test('it optionally renders fa-spin class', async function (assert) {
-    assert.expect(2);
     this.set('faCoffee', faCoffee);
     this.set('isSpinning', false);
 
     await render(
-      hbs`<FaIcon @icon={{this.faCoffee}} @spin={{this.isSpinning}} />`
+      hbs`<FaIcon @icon={{this.faCoffee}} @spin={{this.isSpinning}} />`,
     );
 
     assert.notOk(
       find('svg').getAttribute('class').split(/\s+/).includes('fa-spin'),
-      'Should not include fa-spin class'
+      'Should not include fa-spin class',
     );
     this.set('isSpinning', true);
     assert.ok(
       find('svg').getAttribute('class').split(/\s+/).includes('fa-spin'),
-      'Should include fa-spin class'
+      'Should include fa-spin class',
     );
   });
 
   test('it binds title', async function (assert) {
-    assert.expect(2);
     const title = 'awesome is as awesome does';
     this.set('title', title);
     this.set('faCoffee', faCoffee);
@@ -97,7 +95,6 @@ module('Integration | Component | fa icon', function (hooks) {
   });
 
   test('no title attribute gives no title element', async function (assert) {
-    assert.expect(1);
     this.set('faCoffee', faCoffee);
 
     await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
@@ -106,7 +103,6 @@ module('Integration | Component | fa icon', function (hooks) {
   });
 
   test('title from string like object', async function (assert) {
-    assert.expect(2);
     const title = 'awesome is as awesome does';
     this.set('title', htmlSafe(title));
     this.set('faCoffee', faCoffee);
@@ -118,7 +114,6 @@ module('Integration | Component | fa icon', function (hooks) {
   });
 
   test('it renders with the default focusable attribute as false', async function (assert) {
-    assert.expect(1);
     this.set('faCoffee', faCoffee);
 
     await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
@@ -127,7 +122,6 @@ module('Integration | Component | fa icon', function (hooks) {
   });
 
   test('it should change the focusable attribute to true', async function (assert) {
-    assert.expect(1);
     this.set('faCoffee', faCoffee);
 
     await render(hbs`<FaIcon @icon={{this.faCoffee}} focusable={{'true'}} />`);
@@ -145,7 +139,7 @@ module('Integration | Component | fa icon', function (hooks) {
     this.set('faCoffee', faCoffee);
     this.set('ariaHidden', 'true');
     await render(
-      hbs`<FaIcon @icon={{this.faCoffee}} aria-hidden={{this.ariaHidden}} />`
+      hbs`<FaIcon @icon={{this.faCoffee}} aria-hidden={{this.ariaHidden}} />`,
     );
     assert.dom('svg').hasAttribute('aria-hidden', 'true');
     this.set('ariaHidden', 'false');
@@ -172,7 +166,6 @@ module('Integration | Component | fa icon', function (hooks) {
   });
 
   test('it binds attributes', async function (assert) {
-    assert.expect(8);
     this.set('height', '5px');
     this.set('width', '6px');
     this.set('x', '19');
@@ -224,7 +217,7 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('*').hasText('');
     assert.dom('svg').hasAttribute('data-icon', icon);
     assert.ok(
-      find('svg').getAttribute('class').split(/\s+/).includes(`fa-${icon}`)
+      find('svg').getAttribute('class').split(/\s+/).includes(`fa-${icon}`),
     );
     assert.dom('svg path').hasAttribute('d', path);
   });
