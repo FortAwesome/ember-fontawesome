@@ -69,6 +69,17 @@ module.exports = async function () {
         },
       },
       {
+        name: 'ember-lts-4.12-with-fa5',
+        npm: {
+          devDependencies: {
+            'ember-source': '~4.12.0',
+            '@fortawesome/free-brands-svg-icons': '^5.15.4',
+            '@fortawesome/free-regular-svg-icons': '^5.15.4',
+            '@fortawesome/free-solid-svg-icons': '^5.15.4',
+          },
+        },
+      },
+      {
         name: 'ember-release',
         npm: {
           devDependencies: {
