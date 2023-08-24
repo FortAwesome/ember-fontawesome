@@ -133,6 +133,9 @@
   "ember": {
     "edition": "octane"
   },
+  "overrides": {
+    "ember-source": "$ember-source"
+  },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "defaultBlueprint": "ember-fontawesome"
