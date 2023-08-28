@@ -3,6 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { htmlSafe } from '@ember/template';
+import { gte } from 'ember-compatibility-helpers';
 
 const faCoffee = {
   prefix: 'fas',
@@ -203,16 +204,21 @@ module('Integration | Component | fa icon', function (hooks) {
   test('it renders trash-alt (alias) ', async function (assert) {
     await render(hbs`<FaIcon @icon="trash-alt" />`);
 
+    let icon = 'trash-can';
+    let path =
+      'M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z';
+
+    if (!gte('@fortawesome/free-brands-svg-icons', '6.0.0')) {
+      icon = 'trash-alt';
+      path =
+        'M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z';
+    }
+
     assert.dom('*').hasText('');
-    assert.dom('svg').hasAttribute('data-icon', 'trash-can');
+    assert.dom('svg').hasAttribute('data-icon', icon);
     assert.ok(
-      find('svg').getAttribute('class').split(/\s+/).includes('fa-trash-can'),
+      find('svg').getAttribute('class').split(/\s+/).includes(`fa-${icon}`),
     );
-    assert
-      .dom('svg path')
-      .hasAttribute(
-        'd',
-        'M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z',
-      );
+    assert.dom('svg path').hasAttribute('d', path);
   });
 });
