@@ -6,6 +6,9 @@ const { embroiderSafe, embroiderOptimized } = require('@embroider/test-setup');
 module.exports = async function () {
   return {
     useNpm: true,
+    buildManagerOptions() {
+      return ['--force'];
+    },
     scenarios: [
       {
         name: 'ember-lts-4.4',
