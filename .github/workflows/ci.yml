@@ -52,6 +52,7 @@ jobs:
         try-scenario:
           - ember-lts-3.20
           - ember-lts-3.24
+          - ember-lts-3.24-with-fa5
           - ember-release
           - ember-classic
           - ember-default-with-jquery
