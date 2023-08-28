@@ -224,7 +224,7 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('*').hasText('');
     assert.dom('svg').hasAttribute('data-icon', icon);
     assert.ok(
-      find('svg').getAttribute('class').split(/\s+/).includes(`fa-${icon}`),
+      find('svg').getAttribute('class').split(/\s+/).includes(`fa-${icon}`)
     );
     assert.dom('svg path').hasAttribute('d', path);
   });
