@@ -20,7 +20,7 @@ test:all | Test all supported versions as specified in `config/ember-try.js`
 1. Edit `package.json` and update the version number
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
-1. `npm run build` and `npm run test`
+1. `npm install` and `npm run build` and `npm run test`
 1. `npm publish`
 1. `npm publish --registry https://npm.fontawesome.com` (publish to Pro registry)
 1. `git add . && git commit -m 'Release VERSION'`

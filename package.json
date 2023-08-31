@@ -1,7 +1,7 @@
 {
   "name": "@fortawesome/ember-fontawesome",
   "description": "Official Ember component for Font Awesome 5",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "ember-addon",
     "fontawesome"
@@ -101,7 +101,7 @@
     "ember-page-title": "^6.2.2",
     "ember-qunit": "^5.1.4",
     "ember-resolver": "^8.0.2",
-    "ember-source": "~3.28.0",
+    "ember-source": "https://s3.amazonaws.com/builds.emberjs.com/release/shas/cb3ca2ec9f23f1c763c3d6c8d624fa6b7b5c33a3.tgz",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^3.6.0",
     "ember-try": "^1.4.0",
