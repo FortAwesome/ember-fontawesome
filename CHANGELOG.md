@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
+## [1.0.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/1.0.3) - 2023-09-05
+
+### Fixed
+* Source for ember-source was incorrectly pointing at an S3 URL
+
+---
 ## [1.0.2](https://github.com/FortAwesome/ember-fontawesome/releases/tag/1.0.2) - 2023-08-31
 
 ### Fixed
