@@ -7,17 +7,22 @@ on:
       - master
   pull_request: {}
 
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     name: "Tests"
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16.x
           cache: npm
       - name: Install Dependencies
         run: npm ci
@@ -29,69 +34,48 @@ jobs:
   floating:
     name: "Floating Dependencies"
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16.x
           cache: npm
       - name: Install Dependencies
         run: npm install --no-shrinkwrap
       - name: Run Tests
         run: npm run test:ember
 
-  mandatory-try-scenarios:
+  try-scenarios:
     name: ${{ matrix.try-scenario }}
     runs-on: ubuntu-latest
-    needs: 'test'
+    needs: "test"
+    timeout-minutes: 10
 
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         try-scenario:
-          - ember-lts-3.20
-          - ember-lts-3.24
-          - ember-lts-3.24-with-fa5
+          - ember-lts-4.4
+          - ember-lts-4.8
+          - ember-lts-4.12
+          - ember-lts-4.12-with-fa5
+          - ember-5.0
           - ember-release
-          - ember-classic
-          - ember-default-with-jquery
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 12.x
-          cache: npm
-      - name: Install Dependencies
-        run: npm ci
-      - name: Run Tests
-        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
-
-  optional-try-scenarios:
-    name: ${{ matrix.try-scenario }}
-    runs-on: ubuntu-latest
-    needs: 'test'
-
-    strategy:
-      fail-fast: true
-      matrix:
-        try-scenario:
           - ember-beta
           - ember-canary
           - embroider-safe
           - embroider-optimized
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 12.x
+          node-version: 16.x
           cache: npm
       - name: Install Dependencies
         run: npm ci
       - name: Run Tests
-        continue-on-error: true
-        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}
+        run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }} --skip-cleanup

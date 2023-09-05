@@ -31,7 +31,7 @@ module.exports = {
     const pathToCore = path.join(
       this._nodeModulesPath,
       '@fortawesome',
-      'fontawesome-svg-core'
+      'fontawesome-svg-core',
     );
 
     Object.keys(this.fontawesomeConfig.icons).forEach((pack) => {
@@ -158,7 +158,7 @@ module.exports = {
       const iconPattern = path.join(
         this._nodeModulesPath,
         '@fortawesome',
-        '@(free|pro)-*-svg-icons'
+        '@(free|pro)-*-svg-icons',
       );
       glob
         .sync(iconPattern)
@@ -195,7 +195,7 @@ module.exports = {
           "        'ambulance'\n" +
           '       ]\n' +
           '    }\n' +
-          '});'
+          '});',
       );
     }
   },
@@ -220,7 +220,7 @@ module.exports = {
 
     this.setupPreprocessorRegistryAfterConfiguration(
       'parent',
-      originalApp.registry
+      originalApp.registry,
     );
 
     app.import('vendor/fontawesome.js');

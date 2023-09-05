@@ -92,7 +92,7 @@ export default class FaIconComponent extends Component {
       'transform',
       typeof this.args.transform === 'string'
         ? parse.transform(this.args.transform)
-        : this.args.transform
+        : this.args.transform,
     );
     const mask = objectWithKey('mask', normalizeIconArgs(null, this.args.mask));
     const symbol = this.args.symbol ?? false;
@@ -103,7 +103,7 @@ export default class FaIconComponent extends Component {
     const renderedIcon = icon(iconLookup, o);
     if (!renderedIcon) {
       console.warn(
-        `Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}. You may need to add it to your icons.js.`
+        `Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}. You may need to add it to your icons.js.`,
       );
       return null;
     }

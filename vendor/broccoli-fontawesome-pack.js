@@ -6,7 +6,6 @@ var fs = require('fs')
 var { camelCase, camelCaseTransformMerge } = require('camel-case')
 var { config } = require('@fortawesome/fontawesome-svg-core');
 
-
 class FontAwesomePack extends Plugin {
   constructor(inputNodes, options = {}) {
     const {
@@ -58,8 +57,6 @@ class FontAwesomePack extends Plugin {
         return camelCase(iconName, { transform: camelCaseTransformMerge });
       });
     }
-
-    
 
     const packageContents = () => {
       const pathToModule = require.resolve(`@fortawesome/${this.options.pack}`)
