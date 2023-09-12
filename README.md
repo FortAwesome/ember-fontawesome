@@ -2,7 +2,7 @@
   <img align="right" width="100" height="100" alt="Official Javascript Component" src="https://img.fortawesome.com/349cfdf6/official-javascript-component.svg">
 </a>
 
-# ember-fontawesome
+# ember-fontawesome (2.x)
 
 [![npm](https://img.shields.io/npm/v/@fortawesome/ember-fontawesome.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/ember-fontawesome)
 
@@ -12,6 +12,10 @@ Compatibility
 * Ember.js v4.4 or above
 * Ember CLI v4.4 or above
 * Node.js v14 or above
+
+If you are using an older version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
+
+------------------------------------------------------------------------------
 
 > Font Awesome 5 Ember component using SVG with JS
 
