@@ -21,8 +21,8 @@ test:all | Test all supported versions as specified in `config/ember-try.js`
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
 1. `npm install` and `npm run build` and `npm run test`
-1. `npm publish`
-1. `npm publish --registry https://npm.fontawesome.com` (publish to Pro registry)
+1. `npm publish --tag latest-1`
+1. `npm publish --tag latest-1 --registry https://npm.fontawesome.com` (publish to Pro registry)
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`
 1. Create a [new release](https://github.com/FortAwesome/ember-fontawesome/releases/new) with `CHANGELOG` details
