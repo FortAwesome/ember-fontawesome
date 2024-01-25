@@ -120,7 +120,7 @@ $ npm i --save-dev @fortawesome/pro-light-svg-icons
 $ npm i --save-dev @fortawesome/pro-duotone-svg-icons
 ```
 
-Using the Pro packages requires [additional configuration](https://fontawesome.com/v6/docs/web/setup/upgrading/packages).
+Using the Pro packages requires [additional configuration](https://fontawesome.com/docs/web/setup/packages).
 
 ### Subsetting icons
 
