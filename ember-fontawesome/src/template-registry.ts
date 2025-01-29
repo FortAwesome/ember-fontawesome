@@ -4,8 +4,6 @@
 
 import type FaIconComponent from './components/fa-icon';
 
-// Remove this once entries have been added! 👇
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export default interface Registry {
   'fa-icon': typeof FaIconComponent;
   FaIcon: typeof FaIconComponent;

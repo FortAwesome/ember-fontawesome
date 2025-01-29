@@ -1,20 +1,20 @@
 {{~#if this.iconExists~}}
-    <svg
-        style={{this.safeStyle}}
-        class={{get this.iconAttributes 'class'}}
-        data-prefix={{this.dataPrefix}}
-        data-icon={{this.dataIcon}}
-        data-fa-transform={{this.dataFaTransform}}
-        data-fa-mask={{this.dataFaMask}}
-        data-fa-processed={{this.dataFaProcessed}}
-        aria-hidden={{this.ariaHidden}}
-        aria-labelledby={{this.ariaLabelledBy}}
-        focusable={{get this.iconAttributes 'focusable'}}
-        role={{get this.iconAttributes 'role'}}
-        xmlns={{get this.iconAttributes 'xmlns'}}
-        viewBox={{this.viewBox}}
-        ...attributes
-    >
-        {{this.content}}
-    </svg>
+  <svg
+    style={{this.safeStyle}}
+    class={{get this.iconAttributes "class"}}
+    data-prefix={{this.dataPrefix}}
+    data-icon={{this.dataIcon}}
+    data-fa-transform={{this.dataFaTransform}}
+    data-fa-mask={{this.dataFaMask}}
+    data-fa-processed={{this.dataFaProcessed}}
+    aria-hidden={{this.ariaHidden}}
+    aria-labelledby={{this.ariaLabelledBy}}
+    focusable={{get this.iconAttributes "focusable"}}
+    role={{get this.iconAttributes "role"}}
+    xmlns={{get this.iconAttributes "xmlns"}}
+    viewBox={{this.viewBox}}
+    ...attributes
+  >
+    {{this.content}}
+  </svg>
 {{~/if~}}

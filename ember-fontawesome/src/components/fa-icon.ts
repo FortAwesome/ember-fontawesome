@@ -8,6 +8,7 @@ import {
   type FlipProp,
   type IconLookup,
   type IconName,
+  type IconParams,
   type IconPrefix,
   type PullProp,
   type RotateProp,
@@ -117,7 +118,10 @@ export default class FaIconComponent extends Component<FaIconSignature> {
     const symbol = this.args.symbol ?? false;
     const title = this.args.title ? `${this.args.title}` : null;
 
-    const o = Object.assign({}, classes, transform, mask, { symbol, title });
+    const o = Object.assign({}, classes, transform, mask, {
+      symbol,
+      title,
+    }) as IconParams;
 
     const renderedIcon = icon(iconLookup, o);
     if (!renderedIcon) {
@@ -131,7 +135,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
   }
 
   get iconAttributes(): Record<string, string> {
-    return this.abstractIcon?.attributes ?? {};
+    return (this.abstractIcon?.attributes as Record<string, string>) ?? {};
   }
 
   get dataPrefix(): string {
@@ -163,15 +167,16 @@ export default class FaIconComponent extends Component<FaIconSignature> {
   }
 
   get viewBox(): string {
-    return this.abstractIcon?.attributes?.viewBox ?? '0 0 448 512';
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    return (this.abstractIcon?.attributes?.viewBox as string) ?? '0 0 448 512';
   }
 
   normalizeIconArgs(
     prefix: IconPrefix | null | undefined,
     icon: IconName | IconLookup | undefined,
   ): IconLookup | null {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error Property 'resolveRegistration' does not exist on type 'Owner'.
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     const appConfig = getOwner(this).resolveRegistration(
       'config:environment',
     ) as {
