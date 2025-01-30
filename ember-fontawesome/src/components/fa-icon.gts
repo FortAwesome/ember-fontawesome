@@ -17,6 +17,7 @@ import {
 } from '@fortawesome/fontawesome-svg-core';
 import { htmlSafe, type SafeString } from '@ember/template';
 import { getOwner } from '@ember/application';
+import { get } from '@ember/helper';
 
 function objectWithKey(
   key: string,
@@ -109,7 +110,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
       'transform',
       typeof this.args.transform === 'string'
         ? parse.transform(this.args.transform)
-        : (this.args.transform ?? {}),
+        : this.args.transform ?? {},
     );
     const mask = objectWithKey(
       'mask',
@@ -216,4 +217,27 @@ export default class FaIconComponent extends Component<FaIconSignature> {
 
     return null;
   }
+
+  <template>
+    {{~#if this.iconExists~}}
+      <svg
+        style={{this.safeStyle}}
+        class={{get this.iconAttributes "class"}}
+        data-prefix={{this.dataPrefix}}
+        data-icon={{this.dataIcon}}
+        data-fa-transform={{this.dataFaTransform}}
+        data-fa-mask={{this.dataFaMask}}
+        data-fa-processed={{this.dataFaProcessed}}
+        aria-hidden={{this.ariaHidden}}
+        aria-labelledby={{this.ariaLabelledBy}}
+        focusable={{get this.iconAttributes "focusable"}}
+        role={{get this.iconAttributes "role"}}
+        xmlns={{get this.iconAttributes "xmlns"}}
+        viewBox={{this.viewBox}}
+        ...attributes
+      >
+        {{this.content}}
+      </svg>
+    {{~/if~}}
+  </template>
 }
