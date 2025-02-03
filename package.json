@@ -1,11 +1,8 @@
 {
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/FortAwesome/ember-fontawesome.git"
-  },
-  "license": "MIT",
-  "author": "",
+  "private": false,
+  "name": "@fortawesome/ember-fontawesome",
+  "description": "Official Ember component for Font Awesome",
+  "version": "3.0.0",
   "scripts": {
     "build": "pnpm --filter ember-fontawesome build",
     "lint": "pnpm --filter '*' lint",
@@ -16,6 +13,38 @@
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
+  "keywords": [
+    "ember-addon",
+    "fontawesome"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FortAwesome/ember-fontawesome.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "contributors": [
+    "Mike Wilkerson <mwilkerson@gmail.com>",
+    "Ilya Radchenko <knownasilya@gmail.com>",
+    "Jonathan Johnson <jon.johnson@ucsf.edu>",
+    "Rob Madole <robmadole@gmail.com>",
+    "Tom Carter <tomc@spiceworks.com>",
+    "Julien Guimont <julien.guimont@gmail.com>",
+    "Xaser Acheron <github.com/XaserAcheron>",
+    "samcic <github.com/samcic>",
+    "Josemar Luedke <github.com/josemarluedke>",
+    "Dan Freeman <github.com/dfreeman>",
+    "Bas Kamer <github.com/basz>",
+    "Robert Clancy <github.com/robclancy>",
+    "Robert Clancy <github.com/maxwondercorn>",
+    "Robert Clancy <github.com/dnstld>",
+    "mkszepp <github.com/mkszepp>",
+    "Davide Ferrero <github.com/davideferre>",
+    "Steve <github.com/st-h>",
+    "Stefan Topfstedt <github.com/stopfstedt>",
+    "François de Metz <github.com/francois2metz>",
+    "NullVoxPopuli <github.com/NullVoxPopuli>"
+  ],
   "packageManager": "pnpm@9.15.4",
   "devDependencies": {
     "@glint/core": "^1.5.2",

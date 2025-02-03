@@ -19,7 +19,7 @@ test     | Test all supported versions
 1. Edit `package.json` and update the version number
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
-1. `npm install` and `npm run build` and `npm run test`
+1. `pnpm install` and `npm run build` and `npm run test`
 1. `npm publish --tag latest --tag latest-3`
 1. `npm publish --tag latest --tag latest-3 --registry https://npm.fontawesome.com` (publish to Pro registry)
 1. `git add . && git commit -m 'Release VERSION'`
