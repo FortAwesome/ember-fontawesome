@@ -9,15 +9,14 @@
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v4.4 or above
-* Ember CLI v4.4 or above
-* Node.js v14 or above
+* Ember.js v3.28 or above
+- Embroider or ember-auto-import v2
 
 If you are using an older version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
 
 ------------------------------------------------------------------------------
 
-> Font Awesome 5 Ember component using SVG with JS
+> Font Awesome Ember component using SVG with JS
 
 <!-- toc -->
 
@@ -53,21 +52,21 @@ Hey there! We're glad you're here...
 If you've used Font Awesome in the past (version 5 or older) there are some
 things that you should learn before you dive in.
 
-> https://fontawesome.com/v6/docs/web/setup/upgrading/
+> https://docs.fontawesome.com/web/setup/upgrade
 
 ### Get started
 
 This package is for integrating with Ember.js. If you aren't using Ember then it's
 not going to help you. Head over to our "Get Started" page for some guidance.
 
-> https://fontawesome.com/v6/docs/web/setup/quick-start
+> https://docs.fontawesome.com/web/setup/get-started
 
 ### Learn about our new SVG implementation
 
 This package, under the hood, uses SVG with JS and the `@fortawesome/fontawesome-svg-core` library. This implementation differs drastically from
 the web fonts implementation that was used in version 4 and older of Font Awesome. You might head over there to learn about how it works.
 
-> https://fontawesome.com/v6/docs/web/dig-deeper/svg-core
+> https://docs.fontawesome.com/web/dig-deeper/svg-core
 
 ### Upgrading From Previous Versions
 
@@ -80,7 +79,7 @@ You might also be interested in the larger umbrella project [UPGRADING.md](https
 This project is an Ember addon. So we'll add that first:
 
 ```
-$ ember install @fortawesome/ember-fontawesome
+$ ember install @fortawesome/ember-fontawesome @fortawesome/fontawesome-svg-core
 ```
 
 We need at least one style. Let's start with the free version of Solid.
@@ -89,10 +88,49 @@ We need at least one style. Let's start with the free version of Solid.
 $ npm i --save-dev @fortawesome/free-solid-svg-icons
 ```
 
+or with pnpm 
+
+```
+$ pnpm add -D @fortawesome/free-solid-svg-icons
+```
+
 or with Yarn
 
 ```
 $ yarn add --dev @fortawesome/free-solid-svg-icons
+```
+
+After installation you need to setup Font Awesome in your `app.js/ts` by adding the setup section part like bellow.
+After these changes your app file should look something like:
+
+```ts
+import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from 'app-name/config/environment';
+
+// Start - Font Awesome setup
+import { library, config as faConfig } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic icon styles into your app
+import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
+
+// Disable auto CSS import into head. It solved the side effect for jumping icon size.
+// This is required to for Fastboot apps, otherwise build failes
+// It's the recommended way for setup Font Awesome in your app
+faConfig.autoAddCss = false;
+
+// option to import all icons from solid pack.
+// If you want to import only a subset of icons from pack, see section "Subsetting icons"
+library.add(freeSolidIcons['fas']);
+// End - Font Awesome setup
+
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
+
+loadInitializers(App, config.modulePrefix);
 ```
 
 ### Add more styles or Pro icons
@@ -108,8 +146,7 @@ $ npm i --save-dev @fortawesome/free-regular-svg-icons
 ```
 
 Do this for each icon pack you'll use in your app. By default, all installed
-icon packs will be bundled into `vendor.js` and also added to the Font Awesome
-library (i.e. `library.add()`)
+icon packs will be bundled into `vendor.js`.
 
 If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages.
 
@@ -124,59 +161,39 @@ Using the Pro packages requires [additional configuration](https://fontawesome.c
 
 ### Subsetting icons
 
-If you want to include only a subset of icons from an icon pack, add a
-`config/icons.js` file listing the icons you want to include.
+If you want to include only a subset of icons from an icon pack, you must import only the specific icons from pack and register them by using `libary.add()`.
+
 The following example declares that all icons in
-`free-solid-svg-icons` should be included build,
+`free-solid-svg-icons` should be included in build,
 and, only `adjust`, `ambulance`, and `pencil-alt` from `pro-light-svg-icons`
 are to be included.
 
-```js
-module.exports = function() {
-  return {
-    'free-solid-svg-icons': 'all',
-    'pro-light-svg-icons': [
-      'adjust',
-      'ambulance',
-      'pencil-alt'
-    ]
-  };
-};
-```
+```ts
+import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
+import {
+  faAdjust,
+  faAmbulance,
+  faPencilAlt,
+} from '@fortawesome/pro-light-svg-icons';
 
-By default, `ember-fontawesome` will warn if no icons are being included
-in the build. To disable this behavior (e.g. if icons are being added by
-some other means), set `warnIfNoIconsIncluded` to `false`.
+library.add(freeSolidIcons['fas']);
 
-
-```js
-let ENV = {
-  fontawesome: {
-    warnIfNoIconsIncluded: false,
-    // ...
-  }
-};
+library.add(
+  faAdjust,
+  faAmbulance,
+  faPencilAlt,
+);
 ```
 
 ### Using within an addon
 
 If you want to use icons in your addon there are a few steps to take.
 
-First ensure `@fortawesome/ember-fontawesome` and any icon packs are in
-the `dependencies` section of your `package.json`. This makes them available
-to the apps that use your addon.
+First ensure `@fortawesome/ember-fontawesome`, `@fortawesome/fontawesome-svg-core` and any icon packs are in
+the `peerDependency` section of your `package.json`. This requires the consumer app to install the necessary packages.
 
-Second you need to declare what icons you are using so apps that subset icons
-will know what to include. You do this in `config/icons.js`. The format is:
-
-```js
-module.exports = function() {
-  return {
-    'free-solid-svg-icons': ['bacon', 'pencil'],
-    'free-brands-svg-icons': ['font-awesome-flag'],
-  };
-};
-```
+Second you need to declare in your setup documentation what icons you are using, so apps that subset icons
+will know what to include. You can do this like bringing import example as explained in section "Subsetting icons"
 
 You should avoid listing any Font Awesome Pro packages as dependencies unless you are confident that whoever is using your addon has access to those.
 

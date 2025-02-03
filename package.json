@@ -1,157 +1,26 @@
 {
-  "name": "@fortawesome/ember-fontawesome",
-  "description": "Official Ember component for Font Awesome 5",
-  "version": "2.0.0",
-  "keywords": [
-    "ember-addon",
-    "fontawesome"
-  ],
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/FortAwesome/ember-fontawesome.git"
   },
   "license": "MIT",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
-  "contributors": [
-    "Mike Wilkerson <mwilkerson@gmail.com>",
-    "Ilya Radchenko <knownasilya@gmail.com>",
-    "Jonathan Johnson <jon.johnson@ucsf.edu>",
-    "Rob Madole <robmadole@gmail.com>",
-    "Tom Carter <tomc@spiceworks.com>",
-    "Julien Guimont <julien.guimont@gmail.com>",
-    "Xaser Acheron <github.com/XaserAcheron>",
-    "samcic <github.com/samcic>",
-    "Josemar Luedke <github.com/josemarluedke>",
-    "Dan Freeman <github.com/dfreeman>",
-    "Bas Kamer <github.com/basz>",
-    "Robert Clancy <github.com/robclancy>",
-    "Robert Clancy <github.com/maxwondercorn>",
-    "Robert Clancy <github.com/dnstld>",
-    "mkszepp <github.com/mkszepp>",
-    "Davide Ferrero <github.com/davideferre>",
-    "Steve <github.com/st-h>",
-    "Stefan Topfstedt <github.com/stopfstedt>",
-    "François de Metz <github.com/francois2metz>",
-    "NullVoxPopuli <github.com/NullVoxPopuli>"
-  ],
-  "homepage": "https://github.com/FortAwesome/ember-fontawesome",
+  "author": "",
   "scripts": {
-    "build": "ember build --environment=production",
-    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:css": "stylelint \"**/*.css\"",
-    "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
-    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
-    "lint:hbs": "ember-template-lint .",
-    "lint:hbs:fix": "ember-template-lint . --fix",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix",
-    "start": "ember serve",
-    "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
-    "test:ember": "ember test",
-    "test:ember-compatibility": "ember try:each",
-    "precommit": "npm run lint:js && lint-staged"
+    "build": "pnpm --filter ember-fontawesome build",
+    "lint": "pnpm --filter '*' lint",
+    "lint:fix": "pnpm --filter '*' lint:fix",
+    "start": "concurrently 'pnpm:start:*' --restart-after 5000 --prefixColors auto",
+    "start:addon": "pnpm --filter ember-fontawesome start --no-watch.clearScreen",
+    "start:test-app": "pnpm --filter test-app start",
+    "test": "pnpm --filter '*' test",
+    "test:ember": "pnpm --filter '*' test:ember"
   },
-  "lint-staged": {
-    "README.md": [
-      "markdown-toc -i",
-      "git add README.md"
-    ]
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.0",
-    "@rollup/plugin-node-resolve": "^15.1.0",
-    "array-unique": "^0.3.2",
-    "broccoli-file-creator": "^2.1.1",
-    "broccoli-merge-trees": "^4.2.0",
-    "broccoli-plugin": "^4.0.3",
-    "broccoli-rollup": "^5.0.0",
-    "broccoli-source": "^3.0.0",
-    "camel-case": "^4.1.1",
-    "ember-ast-helpers": "0.4.0",
-    "ember-auto-import": "^2.6.3",
-    "ember-cli-babel": "^7.26.11",
-    "ember-cli-htmlbars": "^6.2.0",
-    "ember-get-config": "^2.0.0",
-    "find-yarn-workspace-root": "^2.0.0",
-    "glob": "^10.3.3"
-  },
+  "packageManager": "pnpm@9.15.4",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/plugin-proposal-decorators": "^7.21.0",
-    "@ember/optional-features": "^2.0.0",
-    "@ember/string": "^3.0.1",
-    "@ember/test-helpers": "^3.2.0",
-    "@embroider/test-setup": "^3.0.1",
-    "@fortawesome/free-brands-svg-icons": "^6.2.0",
-    "@fortawesome/free-regular-svg-icons": "^6.2.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.0",
-    "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
-    "broccoli-asset-rev": "^3.0.0",
-    "broccoli-stew": "^3.0.0",
-    "broccoli-viz": "^5.0.0",
-    "concurrently": "^8.0.1",
-    "ember-cli": "~4.12.2",
-    "ember-cli-dependency-checker": "^3.3.1",
-    "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-sri": "^2.1.1",
-    "ember-cli-terser": "^4.0.2",
-    "ember-compatibility-helpers": "^1.2.6",
-    "ember-load-initializers": "^2.1.2",
-    "ember-page-title": "^8.0.0",
-    "ember-qunit": "^7.0.0",
-    "ember-resolver": "^11.0.0",
-    "ember-source": "~4.12.0",
-    "ember-source-channel-url": "^3.0.0",
-    "ember-template-lint": "^5.7.2",
-    "ember-try": "^2.0.0",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-ember": "^11.10.0",
-    "eslint-plugin-n": "^16.0.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-qunit": "^8.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^9.2.5",
-    "loader.js": "^4.7.0",
-    "markdown-toc": "^1.2.0",
-    "prettier": "^3.0.2",
-    "qunit": "^2.19.4",
-    "qunit-dom": "^2.0.0",
-    "stylelint": "^15.10.3",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-prettier": "^4.0.2",
-    "webpack": "^5.78.0"
-  },
-  "peerDependencies": {
-    "ember-source": "^4.0.0 || >=5.0.0"
-  },
-  "engines": {
-    "node": "14.* || 16.* || >= 18"
-  },
-  "ember": {
-    "edition": "octane"
-  },
-  "ember-addon": {
-    "configPath": "tests/dummy/config",
-    "defaultBlueprint": "ember-fontawesome"
-  },
-  "files": [
-    "CHANGELOG.md",
-    "CODE_OF_CONDUCT.md",
-    "CONTRIBUTING.md",
-    "LICENSE.md",
-    "UPGRADING.md",
-    "ember-cli-build.js",
-    "index.js",
-    "addon/",
-    "app/",
-    "blueprints/",
-    "config/",
-    "lib/",
-    "vendor/"
-  ]
+    "@glint/core": "^1.5.2",
+    "concurrently": "^9.1.2",
+    "prettier": "^3.4.2",
+    "prettier-plugin-ember-template-tag": "^2.0.4"
+  }
 }

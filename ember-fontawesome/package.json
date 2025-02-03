@@ -1,0 +1,131 @@
+{
+  "name": "@fortawesome/ember-fontawesome",
+  "version": "2.0.0",
+  "description": "Official Ember component for Font Awesome 5 and 6",
+  "keywords": [
+    "ember-addon",
+    "fontawesome"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FortAwesome/ember-fontawesome.git"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Mike Wilkerson <mwilkerson@gmail.com>",
+    "Ilya Radchenko <knownasilya@gmail.com>",
+    "Jonathan Johnson <jon.johnson@ucsf.edu>",
+    "Rob Madole <robmadole@gmail.com>",
+    "Tom Carter <tomc@spiceworks.com>",
+    "Julien Guimont <julien.guimont@gmail.com>",
+    "Xaser Acheron <github.com/XaserAcheron>",
+    "samcic <github.com/samcic>",
+    "Josemar Luedke <github.com/josemarluedke>",
+    "Dan Freeman <github.com/dfreeman>",
+    "Bas Kamer <github.com/basz>",
+    "Robert Clancy <github.com/robclancy>",
+    "Robert Clancy <github.com/maxwondercorn>",
+    "Robert Clancy <github.com/dnstld>",
+    "mkszepp <github.com/mkszepp>",
+    "Davide Ferrero <github.com/davideferre>",
+    "Steve <github.com/st-h>",
+    "Stefan Topfstedt <github.com/stopfstedt>",
+    "François de Metz <github.com/francois2metz>",
+    "NullVoxPopuli <github.com/NullVoxPopuli>"
+  ],
+  "homepage": "https://github.com/FortAwesome/ember-fontawesome",
+  "exports": {
+    ".": {
+      "types": "./declarations/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./declarations/*.d.ts",
+      "default": "./dist/*.js"
+    },
+    "./addon-main.js": "./addon-main.cjs"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "declarations/*"
+      ]
+    }
+  },
+  "files": [
+    "addon-main.cjs",
+    "declarations",
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "format": "prettier . --cache --write",
+    "lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
+    "lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\" --prefixColors auto && pnpm run format",
+    "lint:format": "prettier . --cache --check",
+    "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
+    "lint:hbs:fix": "ember-template-lint . --fix --no-error-on-unmatched-pattern",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
+    "lint:types": "glint",
+    "prepack": "rollup --config",
+    "start": "rollup --config --watch",
+    "test": "echo 'A v2 addon does not have tests, run tests in test-app'"
+  },
+  "dependencies": {
+    "@embroider/addon-shim": "^1.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.7",
+    "@babel/eslint-parser": "^7.26.5",
+    "@babel/plugin-transform-typescript": "^7.26.7",
+    "@babel/runtime": "^7.26.7",
+    "@embroider/addon-dev": "^7.1.1",
+    "@eslint/js": "^9.19.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@glimmer/component": "^2.0.0",
+    "@glint/core": "^1.5.2",
+    "@glint/environment-ember-loose": "^1.5.2",
+    "@glint/environment-ember-template-imports": "^1.5.2",
+    "@glint/template": "^1.5.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@tsconfig/ember": "^3.0.9",
+    "babel-plugin-ember-template-compilation": "^2.3.0",
+    "concurrently": "^9.1.2",
+    "ember-source": "^6.1.0",
+    "ember-template-lint": "^6.1.0",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-ember": "^12.3.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^17.15.1",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-ember-template-tag": "^2.0.4",
+    "rollup": "^4.32.1",
+    "rollup-plugin-copy": "^3.5.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.22.0",
+    "webpack": "^5.97.1"
+  },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@glimmer/component": ">= 1.1.2",
+    "@glimmer/tracking": "^1.1.2",
+    "ember-source": "^3.28.0 || ^4.0.0 || >=5.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {
+      "./components/fa-icon.js": "./dist/_app_/components/fa-icon.js"
+    }
+  }
+}
