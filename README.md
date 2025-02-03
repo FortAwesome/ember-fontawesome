@@ -2,7 +2,7 @@
   <img align="right" width="100" height="100" alt="Official Javascript Component" src="https://img.fortawesome.com/349cfdf6/official-javascript-component.svg">
 </a>
 
-# ember-fontawesome (2.x)
+# ember-fontawesome (3.x)
 
 [![npm](https://img.shields.io/npm/v/@fortawesome/ember-fontawesome.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/ember-fontawesome)
 
@@ -12,7 +12,8 @@ Compatibility
 * Ember.js v3.28 or above
 - Embroider or ember-auto-import v2
 
-If you are using an older version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
+If you are using an older version of Ember, see [our 2.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
+If you are using an ancient version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
 
 ------------------------------------------------------------------------------
 

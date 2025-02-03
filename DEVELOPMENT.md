@@ -7,10 +7,9 @@ The following commands are available through `npm run`
 Command  | Purpose
 -------- | -----------------------------------------------------------------
 build    | Build this project
-lint:js  | Check linting using ESLint
-start    | Starts `ember serve`
-test     | Test on the latest stable version of Ember
-test:all | Test all supported versions as specified in `config/ember-try.js`
+lint     | Check linting using ESLint
+start    | Starts the addon and the test app
+test     | Test all supported versions
 
 ## Releasing a new version
 <a name="release"></a>
@@ -21,8 +20,8 @@ test:all | Test all supported versions as specified in `config/ember-try.js`
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
 1. `npm install` and `npm run build` and `npm run test`
-1. `npm publish --tag latest --tag latest-2`
-1. `npm publish --tag latest --tag latest-2 --registry https://npm.fontawesome.com` (publish to Pro registry)
+1. `npm publish --tag latest --tag latest-3`
+1. `npm publish --tag latest --tag latest-3 --registry https://npm.fontawesome.com` (publish to Pro registry)
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`
 1. Create a [new release](https://github.com/FortAwesome/ember-fontawesome/releases/new) with `CHANGELOG` details
