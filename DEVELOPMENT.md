@@ -16,14 +16,15 @@ test     | Test all supported versions
 
 **See authenticating with the npm.fontawesome.com registry before doing the following**
 
-1. Edit `package.json` and update the version number
+1. Open `package.json` from `ember-fontawesome` folder and update the version number
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
-1. `pnpm install` and `npm run build` and `npm run test`
-1. `npm publish --tag latest --tag latest-3`
-1. `npm publish --tag latest --tag latest-3 --registry https://npm.fontawesome.com` (publish to Pro registry)
+1. `pnpm install`, run `pnpm build`, `pnpm lint` and `pnpm test`
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`
+1. `cd ember-fontawesome`
+1. `pnpm publish --tag latest --tag latest-3`
+1. `pnpm publish --tag latest --tag latest-3 --registry https://npm.fontawesome.com` (publish to Pro registry)
 1. Create a [new release](https://github.com/FortAwesome/ember-fontawesome/releases/new) with `CHANGELOG` details
 
 ## Authenticating with the npm.fontawesome.com registry
