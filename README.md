@@ -10,9 +10,9 @@ Compatibility
 ------------------------------------------------------------------------------
 
 * Ember.js v3.28 or above
-- Embroider or ember-auto-import v2
+* Embroider or ember-auto-import v2
 
-If you are using an older version of Ember, see [our 2.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
+If you are using an older version of Ember, see [our 2.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/2.x).
 If you are using an ancient version of Ember, see [our 1.x branch](https://github.com/FortAwesome/ember-fontawesome/tree/1.x).
 
 ------------------------------------------------------------------------------
