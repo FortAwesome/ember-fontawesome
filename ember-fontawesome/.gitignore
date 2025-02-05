@@ -3,6 +3,8 @@
 # will also appear in published NPM packages.
 /README.md
 /LICENSE.md
+/CHANGELOG.md
+/DEVELOPMENT.md
 
 # compiled output
 dist/
