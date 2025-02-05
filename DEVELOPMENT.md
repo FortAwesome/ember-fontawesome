@@ -16,10 +16,11 @@ test     | Test all supported versions
 
 **See authenticating with the npm.fontawesome.com registry before doing the following**
 
+1. Check if all CI tests on github 3.x branch were passed
 1. Open `package.json` from `ember-fontawesome` folder and update the version number
 1. Add new contributors to the `contributors` section
 1. Update the `CHANGELOG.md`
-1. `pnpm install`, run `pnpm build`, `pnpm lint` and `pnpm test`
+1. `pnpm install`, run `pnpm build` and `pnpm lint`
 1. `git add . && git commit -m 'Release VERSION'`
 1. `git push`
 1. `cd ember-fontawesome`
