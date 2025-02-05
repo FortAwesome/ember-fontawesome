@@ -8,8 +8,7 @@ name: Push dist
 on:
   push:
     branches:
-      - main
-      - master
+      - 3.x
 
 jobs:
   push-dist:
@@ -29,6 +28,6 @@ jobs:
         run: pnpm install --frozen-lockfile
       - uses: kategengler/put-built-npm-package-contents-on-branch@v2.0.0
         with:
-          branch: dist
+          branch: dist-3.x
           token: ${{ secrets.GITHUB_TOKEN }}
           working-directory: 'ember-fontawesome'
