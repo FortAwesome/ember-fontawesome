@@ -186,6 +186,24 @@ library.add(
 );
 ```
 
+### Glint
+
+Update your template registry to extend this addon. Check the [Glint documentation](https://typed-ember.gitbook.io/glint/environments/ember/using-addons#using-glint-enabled-addons) for more information.
+
+```ts
+/* types/global.d.ts */
+
+import '@glint/environment-ember-loose';
+
+import type EmberFontAwesomeRegistry from '@fortawesome/ember-fontawesome/template-registry';
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry extends EmberFontAwesomeRegistry, /* other addon registries */ {
+    // local entries
+  }
+}
+```
+
 ### Using within an addon
 
 If you want to use icons in your addon there are a few steps to take.
