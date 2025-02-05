@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Changed
 * Convert addon to an ember v2 addon
 * Convert addon to TypeScript & add glint support
+* Switch component into strict mode
 * Move `@fortawesome/fontawesome-svg-core` to peerDependencies
 * Install fastboot package in test-app, so that we are save that it works also inside fastboot apps
 
