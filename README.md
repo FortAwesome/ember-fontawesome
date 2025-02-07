@@ -80,19 +80,19 @@ You might also be interested in the larger umbrella project [UPGRADING.md](https
 This project is an Ember addon. So we'll add that first:
 
 ```
-$ ember install @fortawesome/ember-fontawesome
+ember install @fortawesome/ember-fontawesome
 ```
 
 We need at least one style. Let's start with the free version of Solid.
 
 ```
-$ npm i --save-dev @fortawesome/free-solid-svg-icons
+npm i --save-dev @fortawesome/free-solid-svg-icons
 ```
 
 or with Yarn
 
 ```
-$ yarn add --dev @fortawesome/free-solid-svg-icons
+yarn add --dev @fortawesome/free-solid-svg-icons
 ```
 
 ### Add more styles or Pro icons
@@ -103,8 +103,8 @@ version 4 to 5 we have a limited number of Regular icons available.
 **Visit [fontawesome.com/icons](https://fontawesome.com/icons) to search for free and Pro icons**
 
 ```
-$ npm i --save-dev @fortawesome/free-brands-svg-icons
-$ npm i --save-dev @fortawesome/free-regular-svg-icons
+npm i --save-dev @fortawesome/free-brands-svg-icons
+npm i --save-dev @fortawesome/free-regular-svg-icons
 ```
 
 Do this for each icon pack you'll use in your app. By default, all installed
@@ -114,10 +114,10 @@ library (i.e. `library.add()`)
 If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages.
 
 ```
-$ npm i --save-dev @fortawesome/pro-solid-svg-icons
-$ npm i --save-dev @fortawesome/pro-regular-svg-icons
-$ npm i --save-dev @fortawesome/pro-light-svg-icons
-$ npm i --save-dev @fortawesome/pro-duotone-svg-icons
+npm i --save-dev @fortawesome/pro-solid-svg-icons
+npm i --save-dev @fortawesome/pro-regular-svg-icons
+npm i --save-dev @fortawesome/pro-light-svg-icons
+npm i --save-dev @fortawesome/pro-duotone-svg-icons
 ```
 
 Using the Pro packages requires [additional configuration](https://fontawesome.com/docs/web/setup/packages).
