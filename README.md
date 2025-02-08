@@ -80,25 +80,25 @@ You might also be interested in the larger umbrella project [UPGRADING.md](https
 This project is an Ember addon. So we'll add that first:
 
 ```
-$ ember install @fortawesome/ember-fontawesome @fortawesome/fontawesome-svg-core
+ember install @fortawesome/ember-fontawesome @fortawesome/fontawesome-svg-core
 ```
 
 We need at least one style. Let's start with the free version of Solid.
 
 ```
-$ npm i --save-dev @fortawesome/free-solid-svg-icons
+npm install --save-dev @fortawesome/free-solid-svg-icons
 ```
 
 or with pnpm 
 
 ```
-$ pnpm add -D @fortawesome/free-solid-svg-icons
+pnpm add -D @fortawesome/free-solid-svg-icons
 ```
 
 or with Yarn
 
 ```
-$ yarn add --dev @fortawesome/free-solid-svg-icons
+yarn add --dev @fortawesome/free-solid-svg-icons
 ```
 
 After installation you need to setup Font Awesome in your `app.js/ts` by adding the setup section part like bellow.
@@ -142,20 +142,33 @@ version 4 to 5 we have a limited number of Regular icons available.
 **Visit [fontawesome.com/icons](https://fontawesome.com/icons) to search for free and Pro icons**
 
 ```
-$ npm i --save-dev @fortawesome/free-brands-svg-icons
-$ npm i --save-dev @fortawesome/free-regular-svg-icons
+npm install --save-dev @fortawesome/free-solid-svg-icons
+npm install --save-dev @fortawesome/free-regular-svg-icons
+npm install --save-dev @fortawesome/free-brands-svg-icons
 ```
 
 Do this for each icon pack you'll use in your app. By default, all installed
 icon packs will be bundled into `vendor.js`.
 
-If you are a [Font Awesome Pro](https://fontawesome.com/pro) subscriber you can install Pro packages.
+If you are a [Font Awesome Pro](https://fontawesome.com/plans) subscriber you can install Pro packages.
 
 ```
-$ npm i --save-dev @fortawesome/pro-solid-svg-icons
-$ npm i --save-dev @fortawesome/pro-regular-svg-icons
-$ npm i --save-dev @fortawesome/pro-light-svg-icons
-$ npm i --save-dev @fortawesome/pro-duotone-svg-icons
+npm install --save-dev @fortawesome/pro-solid-svg-icons
+npm install --save-dev @fortawesome/pro-regular-svg-icons
+npm install --save-dev @fortawesome/pro-light-svg-icons
+npm install --save-dev @fortawesome/pro-thin-svg-icons
+npm install --save-dev @fortawesome/pro-duotone-svg-icons
+npm install --save-dev @fortawesome/duotone-regular-svg-icons
+npm install --save-dev @fortawesome/duotone-light-svg-icons
+npm install --save-dev @fortawesome/duotone-thin-svg-icons
+npm install --save-dev @fortawesome/sharp-solid-svg-icons
+npm install --save-dev @fortawesome/sharp-regular-svg-icons
+npm install --save-dev @fortawesome/sharp-light-svg-icons
+npm install --save-dev @fortawesome/sharp-thin-svg-icons
+npm install --save-dev @fortawesome/sharp-duotone-solid-svg-icons
+npm install --save-dev @fortawesome/sharp-duotone-regular-svg-icons
+npm install --save-dev @fortawesome/sharp-duotone-light-svg-icons
+npm install --save-dev @fortawesome/sharp-duotone-thin-svg-icons
 ```
 
 Using the Pro packages requires [additional configuration](https://fontawesome.com/docs/web/setup/packages).
