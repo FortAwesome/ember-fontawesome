@@ -73,7 +73,7 @@ faConfig.autoAddCss = false;
 ```
 
 You might wonder why we manually import the CSS and disable `faConfig.autoAddCss`.
-1. The default value (faConfig.autoAddCss = true) does not work properly with [Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).
+1. The default value (`faConfig.autoAddCss = true`) does not work properly with [Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).
 2. When using `autoAddCss`, styles are loaded too late, causing icons to appear incorrectly at app startup.
 
 
@@ -85,4 +85,4 @@ After making these changes, your `app.js/ts` file should match the structure des
 
 ### Glint support
 
-If you are using [glint](https://typed-ember.gitbook.io/glint), you can set it up as described [here](./3.x?tab=readme-ov-file#glint)
+If you are using [glint](https://typed-ember.gitbook.io/glint), you can set it up as described [here](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#glint)
