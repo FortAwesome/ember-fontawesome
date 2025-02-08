@@ -394,7 +394,7 @@ being awesome contributors to this project. **We'd like to take a moment to reco
 | Robert Clancy     | [@robclancy](https://github.com/robclancy)                 |
 | maxwondercorn     | [@maxwondercorn](https://github.com/maxwondercorn)         |
 | Denis Toledo      | [@dnstld](https://github.com/dnstld)                       |
-| mkszepp           | [@mkszepp](https://github.com/mkszepp)                     |
+| Markus Sanin      | [@mkszepp](https://github.com/mkszepp)                     |
 | davideferre       | [@davideferre](https://github.com/davideferre)             |
 | st-h              | [@st-h](https://github.com/st-h)                           |
 | stopfstedt        | [@st-h](https://github.com/stopfstedt)                     |
