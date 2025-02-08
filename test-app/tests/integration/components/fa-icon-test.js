@@ -17,9 +17,6 @@ const faCoffee = {
   ],
 };
 
-const faCalendar =
-  'M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z';
-
 module('Integration | Component | fa icon', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -41,7 +38,14 @@ module('Integration | Component | fa icon', function (hooks) {
   test('it renders calendar with regular style (prefix test)', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
-    this.set('faCoffee', faCoffee);
+
+    let path =
+      'M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z';
+
+    if (!gte('@fortawesome/free-regular-svg-icons', '6.0.0')) {
+      path =
+        'M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z';
+    }
 
     await render(hbs`<FaIcon @icon="calendar" @prefix="far" />`);
 
@@ -50,7 +54,7 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.ok(
       find('svg').getAttribute('class').split(/\s+/).includes('fa-calendar'),
     );
-    assert.dom('svg path').hasAttribute('d', faCalendar);
+    assert.dom('svg path').hasAttribute('d', path);
   });
 
   test('it renders framework style', async function (assert) {
