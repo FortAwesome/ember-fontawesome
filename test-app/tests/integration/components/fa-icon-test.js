@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, pauseTest } from '@ember/test-helpers';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { htmlSafe } from '@ember/template';
 import { gte } from 'ember-compatibility-helpers';
@@ -44,8 +44,6 @@ module('Integration | Component | fa icon', function (hooks) {
     this.set('faCoffee', faCoffee);
 
     await render(hbs`<FaIcon @icon="calendar" @prefix="far" />`);
-    
-    await pauseTest();
 
     assert.dom('*').hasText('');
     assert.dom('svg').hasAttribute('data-icon', 'calendar');
