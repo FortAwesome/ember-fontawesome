@@ -127,7 +127,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
     const renderedIcon = icon(iconLookup, o);
     if (!renderedIcon) {
       console.warn(
-        `Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}. You may need to add it to your icons.js.`,
+        `Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}. You may need to add it to your app.js/ts.`,
       );
       return null;
     }
@@ -199,11 +199,15 @@ export default class FaIconComponent extends Component<FaIconSignature> {
 
     if (parse.icon) {
       if (typeof prefix === 'string' && typeof icon === 'string') {
-        return parse.icon(icon);
+        // Issue https://github.com/FortAwesome/Font-Awesome/issues/20231
+        // @ts-expect-error Argument of type '{ prefix: IconPrefix; iconName: IconName; }' is not assignable to parameter of type 'string'. 
+        return parse.icon({ prefix: prefix, iconName: icon });
       }
 
       if (typeof icon === 'string') {
-        return parse.icon(icon);
+        // Issue https://github.com/FortAwesome/Font-Awesome/issues/20231
+        // @ts-expect-error Argument of type '{ prefix: IconPrefix; iconName: IconName; }' is not assignable to parameter of type 'string'.
+        return parse.icon({ prefix: defaultPrefix, iconName: icon });
       }
     }
 
