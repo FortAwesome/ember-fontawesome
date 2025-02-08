@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render, find, pauseTest } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { htmlSafe } from '@ember/template';
 import { gte } from 'ember-compatibility-helpers';
@@ -17,8 +17,8 @@ const faCoffee = {
   ],
 };
 
-const faCalendarXmarkPath =
-  'M128 0c13.3 0 24 10.7 24 24l0 40 144 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 40 0c35.3 0 64 28.7 64 64l0 16 0 48 0 256c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 192l0-48 0-16C0 92.7 28.7 64 64 64l40 0 0-40c0-13.3 10.7-24 24-24zM400 192L48 192l0 256c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-256zm-95 89l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z';
+const faCalendar =
+  'M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z';
 
 module('Integration | Component | fa icon', function (hooks) {
   setupRenderingTest(hooks);
@@ -38,22 +38,21 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('svg path').hasAttribute('d', faCoffee.icon[4]);
   });
 
-  test('it renders calendar-xmark with regular style (prefix test)', async function (assert) {
+  test('it renders calendar with regular style (prefix test)', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`<FaIcon @icon="calendar-xmark" @prefix="far" />`);
+    await render(hbs`<FaIcon @icon="calendar" @prefix="far" />`);
+    
+    await pauseTest();
 
     assert.dom('*').hasText('');
-    assert.dom('svg').hasAttribute('data-icon', 'calendar-xmark');
+    assert.dom('svg').hasAttribute('data-icon', 'calendar');
     assert.ok(
-      find('svg')
-        .getAttribute('class')
-        .split(/\s+/)
-        .includes('fa-calendar-xmark'),
+      find('svg').getAttribute('class').split(/\s+/).includes('fa-calendar'),
     );
-    assert.dom('svg path').hasAttribute('d', faCalendarXmarkPath);
+    assert.dom('svg path').hasAttribute('d', faCalendar);
   });
 
   test('it renders framework style', async function (assert) {
