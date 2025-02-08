@@ -29,6 +29,7 @@ If you are using an ancient version of Ember, see [our 1.x branch](https://githu
 - [Installation](#installation)
   * [Add more styles or Pro icons](#add-more-styles-or-pro-icons)
   * [Subsetting icons](#subsetting-icons)
+  * [Glint](#glint)
   * [Using within an addon](#using-within-an-addon)
 - [Usage](#usage)
   * [Configuration](#configuration)
