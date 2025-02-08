@@ -54,7 +54,7 @@ library.add(freeRegularSvgIcons['far']); // option to import all icons of far
 ```
 
 Switching to this approach reduces maintenance costs for the addon while allowing you to use any newly released Font Awesome icon package without requiring updates to this addon.
-Additionally, you no longer need to restart your Ember server when adding new icons.
+Additionally, you no longer need to restart your Ember when adding new icons.
 
 
 ### Style
