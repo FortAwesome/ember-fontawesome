@@ -102,29 +102,35 @@ or with Yarn
 yarn add --dev @fortawesome/free-solid-svg-icons
 ```
 
-After installation you need to setup Font Awesome in your `app.js/ts` by adding the setup section part like bellow.
-After these changes your app file should look something like:
+After installation you need to setup the package in your app by adding the section parts like bellow.
+
+Create `app/font-awesome.js/ts` with following content
 
 ```ts
-import Application from '@ember/application';
-import Resolver from 'ember-resolver';
-import loadInitializers from 'ember-load-initializers';
-import config from 'app-name/config/environment';
-
-// Start - Font Awesome setup
+// app/font-awesome.ts
 import { library, config as faConfig } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic icon styles into your app
 import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 // Disable auto CSS import into head. It solved the side effect for jumping icon size.
-// This is required to for Fastboot apps, otherwise build failes
+// This is required to for Fastboot apps, otherwise build fails
 // It's the recommended way for setup Font Awesome in your app
 faConfig.autoAddCss = false;
 
 // option to import all icons from solid pack.
 // If you want to import only a subset of icons from pack, see section "Subsetting icons"
 library.add(freeSolidIcons['fas']);
-// End - Font Awesome setup
+```
+
+Import the created `font-awesome.js/ts` file in `app.js/ts`.
+
+```ts
+// app/app.ts
+import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from 'app-name/config/environment';
+import './font-awesome'; // Add this import statement for Font Awesome setup
 
 export default class App extends Application {
   modulePrefix = config.modulePrefix;
