@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Removed
 * Drop support for `enableExperimentalBuildTimeTransform` (it was never documented)
 * Option `warnIfNoIconsIncluded` as it was used only in build time code (index.js) which doesn't exists in v2 addons
-* Remove ´config/icons.js` (you need to setup in app.js/ts, see migration process)
+* Remove `config/icons.js` (you need to setup in app.js/ts, see migration process)
 
 ### Fixed
 * Re-add support for ember v3.28
