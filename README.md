@@ -108,14 +108,14 @@ Create `app/font-awesome.js/ts` with following content
 
 ```ts
 // app/font-awesome.ts
-import { library, config as faConfig } from '@fortawesome/fontawesome-svg-core';
+import { library, config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic icon styles into your app
 import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 // Disable auto CSS import into head. It solved the side effect for jumping icon size.
 // This is required to for Fastboot apps, otherwise build fails
 // It's the recommended way for setup Font Awesome in your app
-faConfig.autoAddCss = false;
+config.autoAddCss = false;
 
 // option to import all icons from solid pack.
 // If you want to import only a subset of icons from pack, see section "Subsetting icons"
@@ -278,6 +278,19 @@ If you want to use an icon from any style other than the default, use `prefix=`.
 
 ```hbs
 <FaIcon @icon="square" @prefix="far" />
+```
+
+Note: The packages also allows passing `@icon` as an object, as shown below:
+If you use this approach consistently, you only need to configure `config.autoAddCss = false;` inside `font-awesome.ts`.
+This use case is especially useful for people using template tag components (.gjs/.gts). You can find more about template tags [here](https://guides.emberjs.com/release/components/template-tag-format/)
+
+```ts
+// app/components/some-component.gts
+import { faSquare } from '@fortawesome/free-solid-svg-icons';
+
+<template>
+  <FaIcon @icon={{faSquare}} />
+</template>
 ```
 
 ## Features
