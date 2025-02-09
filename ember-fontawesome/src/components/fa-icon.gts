@@ -6,6 +6,7 @@ import {
   type AbstractElement,
   type FaSymbol,
   type FlipProp,
+  type IconDefinition,
   type IconLookup,
   type IconName,
   type IconParams,
@@ -34,7 +35,7 @@ function objectWithKey(
 interface FaIconSignature {
   Element: SVGElement;
   Args: {
-    icon: IconName | IconLookup;
+    icon: IconName | IconLookup | IconDefinition;
     prefix?: IconPrefix;
     flip?: FlipProp;
     spin?: boolean;
@@ -48,7 +49,7 @@ interface FaIconSignature {
     transform?: Transform | string;
     symbol?: FaSymbol;
     title?: string;
-    mask?: IconName | IconLookup;
+    mask?: IconName | IconLookup | IconDefinition;
   };
 }
 
@@ -98,7 +99,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
   }
 
   get abstractIcon(): AbstractElement | null {
-    const iconLookup = this.normalizeIconArgs(this.args.prefix, this.args.icon);
+    const iconLookup = this.normalizeIconArgs(this.args.icon, this.args.prefix);
     if (!iconLookup) {
       console.warn(
         'Could not find icon: Icon argument was passed empty, undefined or null!',
@@ -114,7 +115,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
     );
     const mask = objectWithKey(
       'mask',
-      this.normalizeIconArgs(null, this.args.mask),
+      this.args.mask ? this.normalizeIconArgs(this.args.mask) : null,
     );
     const symbol = this.args.symbol ?? false;
     const title = this.args.title ? `${this.args.title}` : null;
@@ -127,7 +128,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
     const renderedIcon = icon(iconLookup, o);
     if (!renderedIcon) {
       console.warn(
-        `Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}. You may need to add it to your app.js/ts.`,
+        `Could not find icon: iconName=${iconLookup.iconName}, prefix=${iconLookup.prefix}. You may need to add it to your font-awesome.js/ts.`,
       );
       return null;
     }
@@ -172,9 +173,9 @@ export default class FaIconComponent extends Component<FaIconSignature> {
     return (this.abstractIcon?.attributes?.viewBox as string) ?? '0 0 448 512';
   }
 
-  normalizeIconArgs(
-    prefix: IconPrefix | null | undefined,
-    icon: IconName | IconLookup | undefined,
+  private normalizeIconArgs(
+    icon: IconName | IconLookup | IconDefinition,
+    prefix?: IconPrefix,
   ): IconLookup | null {
     // @ts-expect-error Property 'resolveRegistration' does not exist on type 'Owner'.
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
