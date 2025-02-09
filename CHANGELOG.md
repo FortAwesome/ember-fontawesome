@@ -25,8 +25,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
-For migration see https://github.com/FortAwesome/ember-fontawesome/pull/239
+For upgrading see [here](https://github.com/FortAwesome/ember-fontawesome/blob/3.x/UPGRADING.md)
 
 ---
 
-Previous 2.x CHANGELOG available https://github.com/FortAwesome/ember-fontawesome/blob/2.x/CHANGELOG.md
+Previous 2.x CHANGELOG is available [here](https://github.com/FortAwesome/ember-fontawesome/blob/2.x/CHANGELOG.md)

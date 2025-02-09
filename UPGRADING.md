@@ -30,7 +30,7 @@ module.exports = function () {
 };
 ```
 
-The icon import must be added now into the file `app/font-awesome.js/ts` like in this example:
+The icon imports must now be added to the `app/font-awesome.js/ts` file, as shown in this example:
 
 ```ts
 // app/font-awesome.ts
@@ -72,14 +72,14 @@ To do so, add the following lines to your `app.js/ts`:
 
 ```ts
 // app/font-awesome.ts
-import { config as faConfig } from '@fortawesome/fontawesome-svg-core';
+import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-faConfig.autoAddCss = false;
+config.autoAddCss = false;
 ```
 
-You might wonder why we manually import the CSS and disable `faConfig.autoAddCss`.
-1. The default value (`faConfig.autoAddCss = true`) does not work properly with [Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).
+You might wonder why we manually import the CSS and disable `config.autoAddCss`.
+1. The default value (`config.autoAddCss = true`) does not work properly with [Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).
 2. When using `autoAddCss`, styles are loaded too late, causing icons to appear incorrectly at app startup.
 
 
@@ -88,6 +88,8 @@ In previous versions (<3.0), this configuration was handled automatically within
 
 After making these changes, your `app/font-awesome.js/ts` and `app/app.js/ts` file should match the structure described in the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation)
 
+
+Note: If you passed the icon definition (object) to `@icon`, the only change you may need to make is importing the styles. Everything else should work as before.
 
 ### Glint support
 
