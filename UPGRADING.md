@@ -30,10 +30,10 @@ module.exports = function () {
 };
 ```
 
-Now, you must import each icon directly in `app.js/ts`, as shown in this example:
+The icon imports must now be added to the `app/font-awesome.js/ts` file, as shown in this example:
 
 ```ts
-// app.ts
+// app/font-awesome.ts
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faCoffee,
@@ -53,9 +53,15 @@ library.add(freeBrandSvgIcons['fab']); // option to import all icons of fab
 library.add(freeRegularSvgIcons['far']); // option to import all icons of far
 ```
 
+In your `app.js/ts` file you need to add this import
+
+```ts
+// app/app.ts
+import './font-awesome';
+```
+
 Switching to this approach reduces maintenance costs for the addon while allowing you to use any newly released Font Awesome icon package without requiring updates to this addon.
 Additionally, you no longer need to restart your Ember when adding new icons.
-
 
 ### Style
 
@@ -65,23 +71,25 @@ With the v2 addon format, this behavior has been removed, meaning you must now m
 To do so, add the following lines to your `app.js/ts`:
 
 ```ts
-// app.ts
-import { config as faConfig } from '@fortawesome/fontawesome-svg-core';
+// app/font-awesome.ts
+import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
-faConfig.autoAddCss = false;
+config.autoAddCss = false;
 ```
 
-You might wonder why we manually import the CSS and disable `faConfig.autoAddCss`.
-1. The default value (`faConfig.autoAddCss = true`) does not work properly with [Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).
+You might wonder why we manually import the CSS and disable `config.autoAddCss`.
+1. The default value (`config.autoAddCss = true`) does not work properly with [Fastboot](https://github.com/ember-fastboot/ember-cli-fastboot).
 2. When using `autoAddCss`, styles are loaded too late, causing icons to appear incorrectly at app startup.
 
 
 In previous versions (<3.0), this configuration was handled automatically within the addon. To avoid unwanted behavior, we recommend adding these lines explicitly to your project.
 
+After making these changes, your `app/font-awesome.js/ts` and `app/app.js/ts` file should match the structure described in the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation).
 
-After making these changes, your `app.js/ts` file should match the structure described in the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation)
+If you are using `.gjs / .gts`, check out the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation) for an alternative setup option.
 
+Note: If you passed the icon definition (object) to `@icon`, the only change you may need to make is importing the styles. Everything else should work as before.
 
 ### Glint support
 
