@@ -117,7 +117,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic icon styles into your app
 
 // Disable auto CSS import into head. It solved the side effect for jumping icon size.
-// This is required to for Fastboot apps, otherwise build fails
+// This is required for Fastboot apps, otherwise build fails
 // It's the recommended way for setup Font Awesome in your app
 config.autoAddCss = false;
 ```
@@ -143,7 +143,7 @@ loadInitializers(App, config.modulePrefix);
 
 In your template, you can use icons like this:
 
-```gts
+```ts
 // app/components/some-component.gts
 import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
@@ -154,7 +154,7 @@ import { faSquare } from '@fortawesome/free-solid-svg-icons';
 ```
 
 With this approach, you no longer need to pass `@prefix` and the `defaultPrefix` configuration in `environment.js` will be ignored.
-However, when using this setup, you must always pass the icon definition instead of a string. Otherwise, the icon will not render, and a warning will appear in the developer console.
+However, with this setup, you must always pass the icon definition instead of a string; otherwise, the icon will not render, and a warning will appear in the developer console.
 
 Note:
 This setup also works with `.hbs` files, but it is more complex to use.
@@ -171,7 +171,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic ic
 import * as freeSolidIcons from '@fortawesome/free-solid-svg-icons';
 
 // Disable auto CSS import into head. It solved the side effect for jumping icon size.
-// This is required to for Fastboot apps, otherwise build fails
+// This is required for Fastboot apps, otherwise build fails
 // It's the recommended way for setup Font Awesome in your app
 config.autoAddCss = false;
 
@@ -343,7 +343,7 @@ The packages also allows passing `@icon` as an object (Icon Definition), as show
 If you use this approach consistently, you only need to configure `config.autoAddCss = false;` inside `font-awesome.ts`.
 This use case is especially useful for people using template tag components (.gjs/.gts). You can find more about template tags [here](https://guides.emberjs.com/release/components/template-tag-format/)
 
-```gts
+```ts
 // app/components/some-component.gts
 import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
