@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
-## [3.0.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/3.0.0) - 2025-02-03
+## [3.0.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/3.0.0) - 2025-02-11
 
 ### Changed
 * Convert addon to an ember v2 addon
