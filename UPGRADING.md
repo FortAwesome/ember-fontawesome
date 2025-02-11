@@ -85,9 +85,9 @@ You might wonder why we manually import the CSS and disable `config.autoAddCss`.
 
 In previous versions (<3.0), this configuration was handled automatically within the addon. To avoid unwanted behavior, we recommend adding these lines explicitly to your project.
 
+After making these changes, your `app/font-awesome.js/ts` and `app/app.js/ts` file should match the structure described in the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation).
 
-After making these changes, your `app/font-awesome.js/ts` and `app/app.js/ts` file should match the structure described in the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation)
-
+If you are using `.gjs / .gts`, check out the [installation guide](https://github.com/FortAwesome/ember-fontawesome/tree/3.x?tab=readme-ov-file#installation) for an alternative setup option.
 
 Note: If you passed the icon definition (object) to `@icon`, the only change you may need to make is importing the styles. Everything else should work as before.
 

@@ -104,6 +104,64 @@ yarn add --dev @fortawesome/free-solid-svg-icons
 
 After installation you need to setup the package in your app by adding the section parts like bellow.
 
+### Using in Projects with Template Tag (.gjs / .gts) - Recommended
+
+If you are using [template tag](https://guides.emberjs.com/release/components/template-tag-format/) you can set it up as follows.
+With this approach, you can import icons directly in your template without needing to import each one individually in `font-awesome.js/ts`.
+
+To configure this setup, create `font-awesome.js/ts` with following content:
+
+```ts
+// app/font-awesome.ts
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css'; // This adds the basic icon styles into your app
+
+// Disable auto CSS import into head. It solved the side effect for jumping icon size.
+// This is required to for Fastboot apps, otherwise build fails
+// It's the recommended way for setup Font Awesome in your app
+config.autoAddCss = false;
+```
+
+Import the created `font-awesome.js/ts` file in `app.js/ts`.
+
+```ts
+// app/app.ts
+import Application from '@ember/application';
+import Resolver from 'ember-resolver';
+import loadInitializers from 'ember-load-initializers';
+import config from 'app-name/config/environment';
+import './font-awesome'; // Add this import statement for Font Awesome setup
+
+export default class App extends Application {
+  modulePrefix = config.modulePrefix;
+  podModulePrefix = config.podModulePrefix;
+  Resolver = Resolver;
+}
+
+loadInitializers(App, config.modulePrefix);
+```
+
+In your template, you can use icons like this:
+
+```gts
+// app/components/some-component.gts
+import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
+import { faSquare } from '@fortawesome/free-solid-svg-icons';
+
+<template>
+  <FaIcon @icon={{faSquare}} />
+</template>
+```
+
+With this approach, you no longer need to pass `@prefix` and the `defaultPrefix` configuration in `environment.js` will be ignored.
+However, when using this setup, you must always pass the icon definition instead of a string. Otherwise, the icon will not render, and a warning will appear in the developer console.
+
+Note:
+This setup also works with `.hbs` files, but it is more complex to use.
+
+
+### Classic setup (if you don't have Template Tag)
+
 Create `app/font-awesome.js/ts` with following content
 
 ```ts
@@ -280,18 +338,23 @@ If you want to use an icon from any style other than the default, use `prefix=`.
 <FaIcon @icon="square" @prefix="far" />
 ```
 
-Note: The packages also allows passing `@icon` as an object, as shown below:
+Note:
+The packages also allows passing `@icon` as an object (Icon Definition), as shown below:
 If you use this approach consistently, you only need to configure `config.autoAddCss = false;` inside `font-awesome.ts`.
 This use case is especially useful for people using template tag components (.gjs/.gts). You can find more about template tags [here](https://guides.emberjs.com/release/components/template-tag-format/)
 
-```ts
+```gts
 // app/components/some-component.gts
+import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 
 <template>
   <FaIcon @icon={{faSquare}} />
 </template>
 ```
+
+In this case you don't need to pass `@prefix` because the prefix is automatically defined within the imported object.
+
 
 ## Features
 
