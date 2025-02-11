@@ -22,6 +22,7 @@ test     | Test all supported versions
 1. Update the `CHANGELOG.md`
 1. `pnpm install`, run `pnpm build` and `pnpm lint`
 1. `git add . && git commit -m 'Release VERSION'`
+1. `git tag 3.0.0` (update 3.0.0 always to released version number)
 1. `git push`
 1. `cd ember-fontawesome`
 1. `pnpm publish --tag latest`
