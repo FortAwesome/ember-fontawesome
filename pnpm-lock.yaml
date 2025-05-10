@@ -37,8 +37,8 @@ importers:
         specifier: ^7.26.7
         version: 7.26.7(@babel/core@7.26.7)
       '@babel/runtime':
-        specifier: ^7.26.7
-        version: 7.26.7
+        specifier: ^7.26.10
+        version: 7.27.1
       '@embroider/addon-dev':
         specifier: ^7.1.1
         version: 7.1.1(@glint/template@1.5.2)(rollup@4.32.1)
@@ -149,7 +149,7 @@ importers:
         version: 9.19.0
       '@fortawesome/ember-fontawesome':
         specifier: workspace:*
-        version: file:ember-fontawesome(@fortawesome/fontawesome-svg-core@6.7.2)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(ember-source@6.1.0(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.97.1))
+        version: link:../ember-fontawesome
       '@fortawesome/fontawesome-svg-core':
         specifier: ^6.7.2
         version: 6.7.2
@@ -880,8 +880,8 @@ packages:
   '@babel/runtime@7.12.18':
     resolution: {integrity: sha512-BogPQ7ciE6SYAUPtlm9tWbgI9+2AgqSam6QivMgXgAT+fKbgppaj4ZX15MHeLC1PVF5sNk70huBu20XxWOs8Cg==}
 
-  '@babel/runtime@7.26.7':
-    resolution: {integrity: sha512-AOPI3D+a8dXnja+iwsUqGRjr1BbZIe771sXdapOtYI531gSqpi92vXivKcq2asu/DFpdl1ceFAKZyRzK2PCVcQ==}
+  '@babel/runtime@7.27.1':
+    resolution: {integrity: sha512-1x3D2xEk2fRo3PAhwQwu5UubzgiVWSXTBfWpVd2Mx2AzRqJuDJCsgaDVZ7HB5iGzDW1Hl1sWN2mFyKjmR9uAog==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.25.9':
@@ -1050,14 +1050,6 @@ packages:
   '@eslint/plugin-kit@0.2.5':
     resolution: {integrity: sha512-lB05FkqEdUg2AA0xEbUz0SnkXT1LcCTa438W4IWTUh4hdOnVbQyOJ81OrDXsJk/LSiJHubgGEFoR5EHq1NsH1A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@fortawesome/ember-fontawesome@file:ember-fontawesome':
-    resolution: {directory: ember-fontawesome, type: directory}
-    peerDependencies:
-      '@fortawesome/fontawesome-svg-core': ^6.6.0
-      '@glimmer/component': '>= 1.1.2'
-      '@glimmer/tracking': ^1.1.2
-      ember-source: ^3.28.0 || ^4.0.0 || >=5.0.0
 
   '@fortawesome/fontawesome-common-types@6.7.2':
     resolution: {integrity: sha512-Zs+YeHUC5fkt7Mg1l6XTniei3k4bwG/yo3iFUtZWd/pMx9g3fdvkSK9E0FOC+++phXOka78uJcYb8JaFkW52Xg==}
@@ -5507,9 +5499,6 @@ packages:
   regenerator-runtime@0.13.11:
     resolution: {integrity: sha512-kY1AZVr2Ra+t+piVaJ4gxaFaReZVH40AKNo7UCX6W+dEwBo/2oZJzqfuN1qLq1oL45o56cPaTXELwrTh8Fpggg==}
 
-  regenerator-runtime@0.14.1:
-    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-
   regenerator-transform@0.15.2:
     resolution: {integrity: sha512-hfMp2BoF0qOk3uc5V20ALGDS2ddjQaLrdl7xrGXvAIow7qeWRM2VA2HuCHkUKk9slq3VwEwLNK3DFBqDfPGYtg==}
 
@@ -7472,9 +7461,7 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.13.11
 
-  '@babel/runtime@7.26.7':
-    dependencies:
-      regenerator-runtime: 0.14.1
+  '@babel/runtime@7.27.1': {}
 
   '@babel/template@7.25.9':
     dependencies:
@@ -7721,16 +7708,6 @@ snapshots:
     dependencies:
       '@eslint/core': 0.10.0
       levn: 0.4.1
-
-  '@fortawesome/ember-fontawesome@file:ember-fontawesome(@fortawesome/fontawesome-svg-core@6.7.2)(@glimmer/component@2.0.0)(@glimmer/tracking@1.1.2)(ember-source@6.1.0(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.97.1))':
-    dependencies:
-      '@embroider/addon-shim': 1.9.0
-      '@fortawesome/fontawesome-svg-core': 6.7.2
-      '@glimmer/component': 2.0.0
-      '@glimmer/tracking': 1.1.2
-      ember-source: 6.1.0(@glimmer/component@2.0.0)(@glint/template@1.5.2)(rsvp@4.8.5)(webpack@5.97.1)
-    transitivePeerDependencies:
-      - supports-color
 
   '@fortawesome/fontawesome-common-types@6.7.2': {}
 
@@ -12101,7 +12078,7 @@ snapshots:
 
   is-language-code@3.1.0:
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.27.1
 
   is-map@2.0.3: {}
 
@@ -13299,11 +13276,9 @@ snapshots:
 
   regenerator-runtime@0.13.11: {}
 
-  regenerator-runtime@0.14.1: {}
-
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.26.7
+      '@babel/runtime': 7.27.1
 
   regex-not@1.0.2:
     dependencies:

@@ -75,7 +75,7 @@
     "@babel/core": "^7.26.7",
     "@babel/eslint-parser": "^7.26.5",
     "@babel/plugin-transform-typescript": "^7.26.7",
-    "@babel/runtime": "^7.26.7",
+    "@babel/runtime": "^7.26.10",
     "@embroider/addon-dev": "^7.1.1",
     "@eslint/js": "^9.19.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
