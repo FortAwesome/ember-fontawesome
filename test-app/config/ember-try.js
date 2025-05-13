@@ -26,6 +26,8 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             '@glimmer/component': '^1.1.2',
+            '@ember/test-helpers': '5.1.0',
+            '@ember/test-waiters': '^3.1.0',
             'ember-load-initializers': '^2.1.2',
             'ember-resolver': '^8.0.0',
             'ember-source': '~4.4.0',
@@ -84,6 +86,14 @@ module.exports = async function () {
             '@fortawesome/free-brands-svg-icons': '^5.15.4',
             '@fortawesome/free-regular-svg-icons': '^5.15.4',
             '@fortawesome/free-solid-svg-icons': '^5.15.4',
+          },
+        },
+      },
+      {
+        name: 'ember-lts-6.4',
+        npm: {
+          devDependencies: {
+            'ember-source': '~6.4.0',
           },
         },
       },

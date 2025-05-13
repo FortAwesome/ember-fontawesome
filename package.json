@@ -16,11 +16,11 @@
     "test": "pnpm --filter '*' test",
     "test:ember": "pnpm --filter '*' test:ember"
   },
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.10.0",
   "devDependencies": {
     "@glint/core": "^1.5.2",
     "concurrently": "^9.1.2",
-    "prettier": "^3.4.2",
-    "prettier-plugin-ember-template-tag": "^2.0.4"
+    "prettier": "^3.5.3",
+    "prettier-plugin-ember-template-tag": "^2.0.5"
   }
 }

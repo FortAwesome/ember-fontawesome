@@ -19,7 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -41,7 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -72,6 +70,7 @@ jobs:
           - ember-lts-5.8
           - ember-lts-5.12
           - ember-lts-5.12-with-fa5
+          - ember-lts-6.4
           - ember-release
           - ember-beta
           - ember-canary
@@ -81,7 +80,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 20
