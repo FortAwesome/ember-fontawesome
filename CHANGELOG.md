@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [3.0.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/3.0.1) - 2025-05-13
+
+### Added
+* Note for tree-shaking issue in docs with ember classic
+
+### Fixed
+* Remove `ember-source` as peerDependency
+
+
 ## [3.0.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/3.0.0) - 2025-02-11
 
 ### Changed
