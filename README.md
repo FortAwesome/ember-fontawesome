@@ -264,6 +264,10 @@ library.add(
 );
 ```
 
+Note: In Ember Classic builds, tree-shaking does not work as expected. This means that all icons from the package may be included in your build, not just the ones you’ve selected. To work around this, you can use direct imports, for example:
+`import { faAdjust } from '@fortawesome/pro-light-svg-icons/faAdjust';`
+For more information and other known tree-shaking issues, see the [Font Awesome documentation](https://docs.fontawesome.com/apis/javascript/tree-shaking#alternative-to-tree-shaking-deep-imports).
+
 ### Glint
 
 Update your template registry to extend this addon. Check the [Glint documentation](https://typed-ember.gitbook.io/glint/environments/ember/using-addons#using-glint-enabled-addons) for more information.
