@@ -111,7 +111,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
       'transform',
       typeof this.args.transform === 'string'
         ? parse.transform(this.args.transform)
-        : this.args.transform ?? {},
+        : (this.args.transform ?? {}),
     );
     const mask = objectWithKey(
       'mask',
