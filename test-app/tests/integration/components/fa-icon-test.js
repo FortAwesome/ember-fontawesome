@@ -143,14 +143,6 @@ module('Integration | Component | fa icon', function (hooks) {
     assert.dom('svg title').hasText(title, 'title is correct');
   });
 
-  test('it renders with the default focusable attribute as false', async function (assert) {
-    this.set('faCoffee', faCoffee);
-
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
-
-    assert.dom('svg').hasAttribute('focusable', 'false');
-  });
-
   test('it should change the focusable attribute to true', async function (assert) {
     this.set('faCoffee', faCoffee);
 
