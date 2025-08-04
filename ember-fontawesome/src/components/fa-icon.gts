@@ -200,14 +200,10 @@ export default class FaIconComponent extends Component<FaIconSignature> {
 
     if (parse.icon) {
       if (typeof prefix === 'string' && typeof icon === 'string') {
-        // Issue https://github.com/FortAwesome/Font-Awesome/issues/20231
-        // @ts-expect-error Argument of type '{ prefix: IconPrefix; iconName: IconName; }' is not assignable to parameter of type 'string'.
         return parse.icon({ prefix: prefix, iconName: icon });
       }
 
       if (typeof icon === 'string') {
-        // Issue https://github.com/FortAwesome/Font-Awesome/issues/20231
-        // @ts-expect-error Argument of type '{ prefix: IconPrefix; iconName: IconName; }' is not assignable to parameter of type 'string'.
         return parse.icon({ prefix: defaultPrefix, iconName: icon });
       }
     }
