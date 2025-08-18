@@ -119,11 +119,15 @@ module('Integration | Component | fa icon', function (hooks) {
     this.set('faCoffee', faCoffee);
 
     if (gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
-      await render(hbs`<FaIcon @icon={{this.faCoffee}} aria-label={{this.title}} />`);
+      await render(
+        hbs`<FaIcon @icon={{this.faCoffee}} aria-label={{this.title}} />`,
+      );
 
       assert.dom('svg').hasAttribute('aria-label', title);
     } else {
-      await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
+      await render(
+        hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`,
+      );
 
       assert.dom('svg title').exists({ count: 1 }, 'has title element');
       assert.dom('svg title').hasText(title, 'title is correct');
@@ -144,9 +148,10 @@ module('Integration | Component | fa icon', function (hooks) {
     this.set('title', htmlSafe(title));
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
-
     if (!gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      await render(
+        hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`,
+      );
       assert.dom('svg title').exists({ count: 1 }, 'has title element');
       assert.dom('svg title').hasText(title, 'title is correct');
     } else {

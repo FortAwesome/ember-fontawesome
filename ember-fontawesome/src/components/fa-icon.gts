@@ -19,6 +19,7 @@ import {
 import { htmlSafe, type SafeString } from '@ember/template';
 import { getOwner } from '@ember/application';
 import { get } from '@ember/helper';
+import { dependencySatisfies, macroCondition } from '@embroider/macros';
 
 function objectWithKey(
   key: string,
@@ -100,6 +101,18 @@ export default class FaIconComponent extends Component<FaIconSignature> {
   }
 
   get abstractIcon(): AbstractElement | null {
+    if (
+      macroCondition(
+        dependencySatisfies('@fortawesome/fontawesome-svg-core', '>=7.0.0'),
+      )
+    ) {
+      if (this.args.title !== undefined) {
+        throw new Error(
+          '@title has no effect in Font Awesome 7+. If you want to keep this behavior, use aria-label instead. For more details, see: https://docs.fontawesome.com/upgrade/whats-changed#simpler-accessibility',
+        );
+      }
+    }
+
     const iconLookup = this.normalizeIconArgs(this.args.icon, this.args.prefix);
     if (!iconLookup) {
       console.warn(
