@@ -51,10 +51,12 @@ Hey there! We're glad you're here...
 
 ### Upgrading Font Awesome?
 
-If you've used Font Awesome in the past (version 5 or older) there are some
+If you've used Font Awesome in the past (version 6 or older) there are some
 things that you should learn before you dive in.
 
-> https://docs.fontawesome.com/web/setup/upgrade
+> v6: https://docs.fontawesome.com/upgrade/whats-changed
+> 
+> Older: https://docs.fontawesome.com/upgrade/upgrade-from-older-versions
 
 ### Get started
 
