@@ -48,6 +48,7 @@ interface FaIconSignature {
     pull?: PullProp;
     transform?: Transform | string;
     symbol?: FaSymbol;
+    // Note: Title is only supported for FA 5 + 6... for FA 7+ pass title as aria-label https://docs.fontawesome.com/upgrade/whats-changed#simpler-accessibility
     title?: string;
     mask?: IconName | IconLookup | IconDefinition;
   };
@@ -118,6 +119,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
       this.args.mask ? this.normalizeIconArgs(this.args.mask) : null,
     );
     const symbol = this.args.symbol ?? false;
+    // Title is only supported for FA 5 + 6... for FA 7+ pass title as aria-label https://docs.fontawesome.com/upgrade/whats-changed#simpler-accessibility
     const title = this.args.title ? `${this.args.title}` : null;
 
     const o = Object.assign({}, classes, transform, mask, {

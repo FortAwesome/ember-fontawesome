@@ -113,23 +113,30 @@ module('Integration | Component | fa icon', function (hooks) {
     );
   });
 
-  test('it binds title', async function (assert) {
+  test('it binds aria-label or title', async function (assert) {
     const title = 'awesome is as awesome does';
     this.set('title', title);
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
+    if (gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      await render(hbs`<FaIcon @icon={{this.faCoffee}} aria-label={{this.title}} />`);
 
-    assert.dom('svg title').exists({ count: 1 }, 'has title element');
-    assert.dom('svg title').hasText(title, 'title is correct');
+      assert.dom('svg').hasAttribute('aria-label', title);
+    } else {
+      await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
+
+      assert.dom('svg title').exists({ count: 1 }, 'has title element');
+      assert.dom('svg title').hasText(title, 'title is correct');
+    }
   });
 
-  test('no title attribute gives no title element', async function (assert) {
+  test('no aria-label and title attribute gives no title element', async function (assert) {
     this.set('faCoffee', faCoffee);
 
     await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
 
     assert.dom('svg title').doesNotExist('has not title element');
+    assert.dom('svg').doesNotHaveAttribute('aria-label');
   });
 
   test('title from string like object', async function (assert) {
@@ -139,8 +146,12 @@ module('Integration | Component | fa icon', function (hooks) {
 
     await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
 
-    assert.dom('svg title').exists({ count: 1 }, 'has title element');
-    assert.dom('svg title').hasText(title, 'title is correct');
+    if (!gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      assert.dom('svg title').exists({ count: 1 }, 'has title element');
+      assert.dom('svg title').hasText(title, 'title is correct');
+    } else {
+      assert.ok(true);
+    }
   });
 
   test('it should change the focusable attribute to true', async function (assert) {
