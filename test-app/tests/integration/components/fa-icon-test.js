@@ -39,9 +39,17 @@ module('Integration | Component | fa icon', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
 
+    // Fa 7
     let path =
-      'M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z';
+      'M120 0c13.3 0 24 10.7 24 24l0 40 160 0 0-40c0-13.3 10.7-24 24-24s24 10.7 24 24l0 40 32 0c35.3 0 64 28.7 64 64l0 288c0 35.3-28.7 64-64 64L64 480c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l32 0 0-40c0-13.3 10.7-24 24-24zm0 112l-56 0c-8.8 0-16 7.2-16 16l0 48 352 0 0-48c0-8.8-7.2-16-16-16l-264 0zM48 224l0 192c0 8.8 7.2 16 16 16l320 0c8.8 0 16-7.2 16-16l0-192-352 0z';
 
+    // Fa 6
+    if (!gte('@fortawesome/free-regular-svg-icons', '7.0.0')) {
+      path =
+        'M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z';
+    }
+
+    // Fa 5
     if (!gte('@fortawesome/free-regular-svg-icons', '6.0.0')) {
       path =
         'M400 64h-48V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H160V12c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v52H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zm-6 400H54c-3.3 0-6-2.7-6-6V160h352v298c0 3.3-2.7 6-6 6z';
@@ -105,23 +113,34 @@ module('Integration | Component | fa icon', function (hooks) {
     );
   });
 
-  test('it binds title', async function (assert) {
+  test('it binds aria-label or title', async function (assert) {
     const title = 'awesome is as awesome does';
     this.set('title', title);
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
+    if (gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      await render(
+        hbs`<FaIcon @icon={{this.faCoffee}} aria-label={{this.title}} />`,
+      );
 
-    assert.dom('svg title').exists({ count: 1 }, 'has title element');
-    assert.dom('svg title').hasText(title, 'title is correct');
+      assert.dom('svg').hasAttribute('aria-label', title);
+    } else {
+      await render(
+        hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`,
+      );
+
+      assert.dom('svg title').exists({ count: 1 }, 'has title element');
+      assert.dom('svg title').hasText(title, 'title is correct');
+    }
   });
 
-  test('no title attribute gives no title element', async function (assert) {
+  test('no aria-label and title attribute gives no title element', async function (assert) {
     this.set('faCoffee', faCoffee);
 
     await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
 
     assert.dom('svg title').doesNotExist('has not title element');
+    assert.dom('svg').doesNotHaveAttribute('aria-label');
   });
 
   test('title from string like object', async function (assert) {
@@ -129,18 +148,15 @@ module('Integration | Component | fa icon', function (hooks) {
     this.set('title', htmlSafe(title));
     this.set('faCoffee', faCoffee);
 
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`);
-
-    assert.dom('svg title').exists({ count: 1 }, 'has title element');
-    assert.dom('svg title').hasText(title, 'title is correct');
-  });
-
-  test('it renders with the default focusable attribute as false', async function (assert) {
-    this.set('faCoffee', faCoffee);
-
-    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
-
-    assert.dom('svg').hasAttribute('focusable', 'false');
+    if (!gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      await render(
+        hbs`<FaIcon @icon={{this.faCoffee}} @title={{this.title}} />`,
+      );
+      assert.dom('svg title').exists({ count: 1 }, 'has title element');
+      assert.dom('svg title').hasText(title, 'title is correct');
+    } else {
+      assert.ok(true);
+    }
   });
 
   test('it should change the focusable attribute to true', async function (assert) {
@@ -227,9 +243,18 @@ module('Integration | Component | fa icon', function (hooks) {
     await render(hbs`<FaIcon @icon="trash-alt" />`);
 
     let icon = 'trash-can';
-    let path =
-      'M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z';
 
+    // Fa 7
+    let path =
+      'M136.7 5.9C141.1-7.2 153.3-16 167.1-16l113.9 0c13.8 0 26 8.8 30.4 21.9L320 32 416 32c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 8.7-26.1zM32 144l384 0 0 304c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-304zm88 64c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24zm104 0c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24zm104 0c-13.3 0-24 10.7-24 24l0 192c0 13.3 10.7 24 24 24s24-10.7 24-24l0-192c0-13.3-10.7-24-24-24z';
+
+    // Fa 6
+    if (!gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      path =
+        'M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z';
+    }
+
+    // Fa 5
     if (!gte('@fortawesome/free-brands-svg-icons', '6.0.0')) {
       icon = 'trash-alt';
       path =

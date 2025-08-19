@@ -19,6 +19,7 @@ import {
 import { htmlSafe, type SafeString } from '@ember/template';
 import { getOwner } from '@ember/application';
 import { get } from '@ember/helper';
+import { dependencySatisfies, macroCondition } from '@embroider/macros';
 
 function objectWithKey(
   key: string,
@@ -48,6 +49,7 @@ interface FaIconSignature {
     pull?: PullProp;
     transform?: Transform | string;
     symbol?: FaSymbol;
+    // Note: Title is only supported for FA 5 + 6... for FA 7+ pass title as aria-label https://docs.fontawesome.com/upgrade/whats-changed#simpler-accessibility
     title?: string;
     mask?: IconName | IconLookup | IconDefinition;
   };
@@ -99,6 +101,18 @@ export default class FaIconComponent extends Component<FaIconSignature> {
   }
 
   get abstractIcon(): AbstractElement | null {
+    if (
+      macroCondition(
+        dependencySatisfies('@fortawesome/fontawesome-svg-core', '>=7.0.0'),
+      )
+    ) {
+      if (this.args.title !== undefined) {
+        throw new Error(
+          '@title has no effect in Font Awesome 7+. If you want to keep this behavior, use aria-label instead. For more details, see: https://docs.fontawesome.com/upgrade/whats-changed#simpler-accessibility',
+        );
+      }
+    }
+
     const iconLookup = this.normalizeIconArgs(this.args.icon, this.args.prefix);
     if (!iconLookup) {
       console.warn(
@@ -118,6 +132,7 @@ export default class FaIconComponent extends Component<FaIconSignature> {
       this.args.mask ? this.normalizeIconArgs(this.args.mask) : null,
     );
     const symbol = this.args.symbol ?? false;
+    // Title is only supported for FA 5 + 6... for FA 7+ pass title as aria-label https://docs.fontawesome.com/upgrade/whats-changed#simpler-accessibility
     const title = this.args.title ? `${this.args.title}` : null;
 
     const o = Object.assign({}, classes, transform, mask, {
@@ -200,14 +215,10 @@ export default class FaIconComponent extends Component<FaIconSignature> {
 
     if (parse.icon) {
       if (typeof prefix === 'string' && typeof icon === 'string') {
-        // Issue https://github.com/FortAwesome/Font-Awesome/issues/20231
-        // @ts-expect-error Argument of type '{ prefix: IconPrefix; iconName: IconName; }' is not assignable to parameter of type 'string'.
         return parse.icon({ prefix: prefix, iconName: icon });
       }
 
       if (typeof icon === 'string') {
-        // Issue https://github.com/FortAwesome/Font-Awesome/issues/20231
-        // @ts-expect-error Argument of type '{ prefix: IconPrefix; iconName: IconName; }' is not assignable to parameter of type 'string'.
         return parse.icon({ prefix: defaultPrefix, iconName: icon });
       }
     }
