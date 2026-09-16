@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ---
 
+## [3.1.1](https://github.com/FortAwesome/ember-fontawesome/releases/tag/3.1.0) - 2026-09-16
+
+### Fixed
+* Omit unset icon attributes instead of rendering them empty
+
+
 ## [3.1.0](https://github.com/FortAwesome/ember-fontawesome/releases/tag/3.1.0) - 2025-08-19
 
 ### Added
