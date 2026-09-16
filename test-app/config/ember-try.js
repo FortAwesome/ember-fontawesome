@@ -12,6 +12,7 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             '@ember/test-helpers': '^2.9.4',
+            '@ember/test-waiters': '^3.1.0',
             '@glimmer/component': '^1.1.2',
             'ember-cli': '~4.12.2',
             'ember-load-initializers': '^2.1.2',
