@@ -155,32 +155,32 @@ export default class FaIconComponent extends Component<FaIconSignature> {
     return (this.abstractIcon?.attributes as Record<string, string>) ?? {};
   }
 
-  get dataPrefix(): string {
-    return this.iconAttributes['data-prefix'] ?? '';
+  get dataPrefix(): string | undefined {
+    return this.iconAttributes['data-prefix'];
   }
 
-  get dataIcon(): string {
-    return this.iconAttributes['data-icon'] ?? '';
+  get dataIcon(): string | undefined {
+    return this.iconAttributes['data-icon'];
   }
 
-  get dataFaTransform(): string {
-    return this.iconAttributes['data-fa-transform'] ?? '';
+  get dataFaTransform(): string | undefined {
+    return this.iconAttributes['data-fa-transform'];
   }
 
-  get dataFaMask(): string {
-    return this.iconAttributes['data-fa-mask'] ?? '';
+  get dataFaMask(): string | undefined {
+    return this.iconAttributes['data-fa-mask'];
   }
 
-  get dataFaProcessed(): string {
-    return this.iconAttributes['data-fa-processed'] ?? '';
+  get dataFaProcessed(): string | undefined {
+    return this.iconAttributes['data-fa-processed'];
   }
 
-  get ariaHidden(): string {
-    return this.iconAttributes['aria-hidden'] ?? '';
+  get ariaHidden(): string | undefined {
+    return this.iconAttributes['aria-hidden'];
   }
 
-  get ariaLabelledBy(): string {
-    return this.iconAttributes['aria-labelledby'] ?? '';
+  get ariaLabelledBy(): string | undefined {
+    return this.iconAttributes['aria-labelledby'];
   }
 
   get viewBox(): string {
