@@ -272,7 +272,34 @@ For more information and other known tree-shaking issues, see the [Font Awesome 
 
 ### Glint
 
-Update your template registry to extend this addon. Check the [Glint documentation](https://typed-ember.gitbook.io/glint/environments/ember/using-addons#using-glint-enabled-addons) for more information.
+#### Glint v2
+
+[Glint v2](https://typed-ember.gitbook.io/glint/v2-upgrade) only supports strict mode
+templates (`.gts` / `.gjs`), so there is no template registry to extend. Import the
+component where you use it and Glint picks up its types automatically:
+
+```gts
+/* app/components/my-component.gts */
+
+import FaIcon from '@fortawesome/ember-fontawesome/components/fa-icon';
+
+<template>
+  <FaIcon @icon="coffee" />
+</template>
+```
+
+Make sure your ambient types pull in the Glint v2 declarations:
+
+```ts
+/* types/global.d.ts */
+
+import '@glint/ember-tsc/types';
+```
+
+#### Glint v1 (loose mode)
+
+If you are still on Glint v1 and have non-strict `.hbs` templates, update your template
+registry to extend this addon. Check the [Glint documentation](https://typed-ember.gitbook.io/glint/environments/ember/using-addons#using-glint-enabled-addons) for more information.
 
 ```ts
 /* types/global.d.ts */

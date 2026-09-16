@@ -1,1 +1,1 @@
-import '@glint/environment-ember-loose';
+import '@glint/ember-tsc/types';

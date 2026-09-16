@@ -12,6 +12,7 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             '@ember/test-helpers': '^2.9.4',
+            '@ember/test-waiters': '^3.1.0',
             '@glimmer/component': '^1.1.2',
             'ember-cli': '~4.12.2',
             'ember-load-initializers': '^2.1.2',
@@ -87,10 +88,26 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-6.4-with-fa5',
+        name: 'ember-lts-6.8',
         npm: {
           devDependencies: {
-            'ember-source': '~6.4.0',
+            'ember-source': '~6.8.0',
+          },
+        },
+      },
+      {
+        name: 'ember-lts-6.12',
+        npm: {
+          devDependencies: {
+            'ember-source': '~6.12.0',
+          },
+        },
+      },
+      {
+        name: 'ember-lts-6.12-with-fa5',
+        npm: {
+          devDependencies: {
+            'ember-source': '~6.12.0',
             '@fortawesome/fontawesome-svg-core': '^6.6.0',
             '@fortawesome/free-brands-svg-icons': '^5.15.4',
             '@fortawesome/free-regular-svg-icons': '^5.15.4',
@@ -99,10 +116,10 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-lts-6.4-with-fa6',
+        name: 'ember-lts-6.12-with-fa6',
         npm: {
           devDependencies: {
-            'ember-source': '~6.4.0',
+            'ember-source': '~6.12.0',
             '@fortawesome/fontawesome-svg-core': '^6.6.0',
             '@fortawesome/free-brands-svg-icons': '^6.7.2',
             '@fortawesome/free-regular-svg-icons': '^6.7.2',

@@ -70,8 +70,10 @@ jobs:
           - ember-lts-5.8
           - ember-lts-5.12
           - ember-lts-6.4
-          - ember-lts-6.4-with-fa5
-          - ember-lts-6.4-with-fa6
+          - ember-lts-6.8
+          - ember-lts-6.12
+          - ember-lts-6.12-with-fa5
+          - ember-lts-6.12-with-fa6
           - ember-release
           - ember-beta
           - ember-canary
