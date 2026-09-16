@@ -75,6 +75,34 @@ module('Integration | Component | fa icon', function (hooks) {
     );
   });
 
+  test('it omits data attributes that are not set', async function (assert) {
+    this.set('faCoffee', faCoffee);
+    await render(hbs`<FaIcon @icon={{this.faCoffee}} />`);
+
+    assert.dom('svg').hasAttribute('data-prefix', 'fas');
+    assert.dom('svg').hasAttribute('data-icon', 'coffee');
+    assert.dom('svg').doesNotHaveAttribute('data-fa-transform');
+    assert.dom('svg').doesNotHaveAttribute('data-fa-mask');
+    assert.dom('svg').doesNotHaveAttribute('data-fa-processed');
+    assert.dom('svg').doesNotHaveAttribute('aria-labelledby');
+  });
+
+  test('it renders aria-labelledby only when a title is set', async function (assert) {
+    // @title (and with it the generated aria-labelledby) is only supported in
+    // Font Awesome 5 + 6.
+    if (gte('@fortawesome/free-brands-svg-icons', '7.0.0')) {
+      assert.expect(0);
+      return;
+    }
+
+    this.set('faCoffee', faCoffee);
+    await render(
+      hbs`<FaIcon @icon={{this.faCoffee}} @title="awesome is as awesome does" />`,
+    );
+
+    assert.dom('svg').hasAttribute('aria-labelledby');
+  });
+
   test('it renders extra classes', async function (assert) {
     this.set('faCoffee', faCoffee);
     this.set('class', 'foo-xyz');
